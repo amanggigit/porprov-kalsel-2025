@@ -28,5 +28,25 @@
     "hours": "05:00 - 21:00",
     "contact": "+62 814-3333-4444",
     "status": "Aktif"
+  },
+  {
+    "id": 4,
+    "name": "Media Center",
+    "category": "Media",
+    "description": "Pusat informasi dan layanan media dengan fasilitas internet, ruang konferensi pers, dan akreditasi wartawan.",
+    "location": "Gedung Media Center - Stadion Demang Lehman",
+    "hours": "06:00 - 23:00",
+    "contact": "+62 815-4444-5555",
+    "status": "Aktif"
+  },
+  {
+    "id": 5,
+    "name": "Security & Keamanan",
+    "category": "Keamanan",
+    "description": "Layanan keamanan terpadu dengan petugas bersertifikat, CCTV monitoring, dan koordinasi dengan Polres setempat.",
+    "location": "Pos Komando Keamanan - Semua Venue",
+    "hours": "24 Jam",
+    "contact": "+62 816-5555-6666",
+    "status": "Aktif"
   }
 ]
