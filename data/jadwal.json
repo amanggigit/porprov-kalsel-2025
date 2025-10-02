@@ -3,9 +3,40 @@
     "id": 1,
     "category": "Putra",
     "sport": "Sepak Bola",
-    "date": "2025-10-31",
+    "date": "2025-01-18",
     "time": "15:00",
     "match": "Tapin vs Banjar",
-    "venue": "Stadion Demang Lehman"
+    "venue": "Stadion Demang Lehman",
+    "status": "Scheduled"
+  },
+  {
+    "id": 2,
+    "category": "Putri",
+    "sport": "Bola Voli",
+    "date": "2025-01-18",
+    "time": "16:30",
+    "match": "Banjarmasin vs Barito Kuala",
+    "venue": "GOR Tuntung Pandang",
+    "status": "Scheduled"
+  },
+  {
+    "id": 3,
+    "category": "Putra",
+    "sport": "Renang",
+    "date": "2025-01-18",
+    "time": "09:00",
+    "match": "Final 100m Gaya Bebas",
+    "venue": "Aquatic Center Tapin",
+    "status": "Live"
+  },
+  {
+    "id": 4,
+    "category": "Beregu Campuran",
+    "sport": "Bulu Tangkis",
+    "date": "2025-01-18",
+    "time": "13:00",
+    "match": "Semifinal Ganda Campuran",
+    "venue": "GOR Tuntung Pandang",
+    "status": "Scheduled"
   }
 ]
