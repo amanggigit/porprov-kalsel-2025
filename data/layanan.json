@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": 1,
+    "name": "Layanan Medis Darurat",
+    "category": "Medis",
+    "description": "Layanan kesehatan 24 jam dengan ambulans siaga, dokter spesialis olahraga, dan peralatan medis lengkap untuk menangani cedera atlet dan emergency medis.",
+    "location": "Posko Medis Utama - Stadion Demang Lehman",
+    "hours": "24 Jam",
+    "contact": "+62 812-1111-2222",
+    "status": "Aktif"
+  },
+  {
+    "id": 2,
+    "name": "Shuttle Bus Atlet",
+    "category": "Transportasi",
+    "description": "Layanan transportasi khusus atlet dan official dari hotel ke venue pertandingan dengan jadwal reguler setiap 30 menit.",
+    "location": "Terminal Shuttle - Hotel Tapin Plaza",
+    "hours": "05:00 - 22:00",
+    "contact": "+62 813-2222-3333",
+    "status": "Aktif"
+  },
+  {
+    "id": 3,
+    "name": "Catering Atlet",
+    "category": "Konsumsi",
+    "description": "Penyediaan makanan bergizi seimbang untuk atlet dengan menu khusus diet olahraga, halal, dan pilihan vegetarian.",
+    "location": "Dapur Utama - Kompleks Olahraga Tapin",
+    "hours": "05:00 - 21:00",
+    "contact": "+62 814-3333-4444",
+    "status": "Aktif"
+  },
+  {
+    "id": 5,
+    "name": "Security & Keamanan",
+    "category": "Keamanan",
+    "description": "Layanan keamanan terpadu dengan petugas bersertifikat, CCTV monitoring, dan koordinasi dengan Polres setempat.",
+    "location": "Pos Komando Keamanan - Semua Venue",
+    "hours": "24 Jam",
+    "contact": "+62 816-5555-6666",
+    "status": "Aktif"
+  }
+]
