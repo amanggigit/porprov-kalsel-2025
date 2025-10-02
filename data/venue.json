@@ -1,1 +1,46 @@
-[]
+[
+  {
+    "id": 1,
+    "name": "Stadion Demang Lehman",
+    "type": "Stadion",
+    "capacity": 15000,
+    "location": "Jl. Ahmad Yani, Rantau, Tapin",
+    "sports": "Sepak Bola, Atletik, Upacara",
+    "facilities": "Parkir 500 mobil, Toilet 20 unit, Kantin 5 outlet, Sound system profesional, Ruang VIP, Tribun bertingkat",
+    "contact": "+62 511-41234",
+    "status": "Aktif"
+  },
+  {
+    "id": 2,
+    "name": "GOR Tuntung Pandang",
+    "type": "GOR",
+    "capacity": 3000,
+    "location": "Jl. Tuntung Pandang, Rantau, Tapin",
+    "sports": "Bola Voli, Bulu Tangkis, Basket, Futsal",
+    "facilities": "AC central, Parkir 200 mobil, Toilet 12 unit, Kantin 2 outlet, Ruang ganti 8 unit",
+    "contact": "+62 511-41235",
+    "status": "Aktif"
+  },
+  {
+    "id": 3,
+    "name": "Aquatic Center Tapin",
+    "type": "Kolam Renang",
+    "capacity": 1500,
+    "location": "Kompleks Olahraga Tapin, Rantau",
+    "sports": "Renang, Polo Air, Loncat Indah",
+    "facilities": "Kolam Olympic 50m, Kolam loncat indah, Tribun 1500 kursi, Ruang ganti 12 unit, Cafeteria",
+    "contact": "+62 511-41236",
+    "status": "Aktif"
+  },
+  {
+    "id": 4,
+    "name": "Arena Pencak Silat Tapin",
+    "type": "Arena",
+    "capacity": 800,
+    "location": "Gedung Serbaguna Tapin, Rantau",
+    "sports": "Pencak Silat, Karate, Taekwondo, Judo",
+    "facilities": "Matras profesional, Sound system, Tribun portable, Ruang ganti 6 unit",
+    "contact": "+62 511-41237",
+    "status": "Aktif"
+  }
+]
