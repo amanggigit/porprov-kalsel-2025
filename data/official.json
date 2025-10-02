@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "id": 1,
+    "name": "Dr. H. Ahmad Suryadi, M.Pd",
+    "position": "Ketua Umum",
+    "organization": "KONI Kalimantan Selatan",
+    "sport": "Umum",
+    "phone": "+62 812-3456-7890",
+    "email": "ahmad.suryadi@koni-kalsel.org",
+    "certification": "Manajemen Olahraga Nasional, Sertifikat IOC"
+  },
+  {
+    "id": 2,
+    "name": "Drs. Bambang Hermanto",
+    "position": "Wasit",
+    "organization": "PSSI Kalsel",
+    "sport": "Sepak Bola",
+    "phone": "+62 813-4567-8901",
+    "email": "bambang@pssi-kalsel.org",
+    "certification": "Wasit FIFA, Lisensi AFC Pro"
+  },
+  {
+    "id": 3,
+    "name": "Siti Nurhaliza, S.Pd",
+    "position": "Juri",
+    "organization": "PBVSI Kalsel",
+    "sport": "Bola Voli",
+    "phone": "+62 814-5678-9012",
+    "email": "siti@pbvsi-kalsel.org",
+    "certification": "Juri Internasional FIVB Level 2"
+  }
+]
