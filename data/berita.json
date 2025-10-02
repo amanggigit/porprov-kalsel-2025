@@ -1,2 +1,23 @@
-[]
-
+[
+  {
+    "id": 1,
+    "title": "Pembukaan PORPROV Kalsel 2025 Meriah",
+    "category": "acara",
+    "content": "Upacara pembukaan PORPROV Kalsel 2025 berlangsung meriah di Stadion Demang Lehman.",
+    "date": "2025-10-30"
+  },
+  {
+    "id": 1759413466889,
+    "title": "tesss",
+    "category": "acara",
+    "content": "aaaaaaaaaaaa",
+    "date": "2025-10-02"
+  },
+  {
+    "id": 1759413543725,
+    "title": "tesss",
+    "category": "acara",
+    "content": "aaa",
+    "date": "2025-10-02"
+  }
+]
