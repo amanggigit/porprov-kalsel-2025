@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - PORPROV Kalsel 2025</title>
+    <title>PORPROV Kalsel 2025 - Pekan Olahraga Provinsi Kalimantan Selatan</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
@@ -18,121 +18,79 @@
             background: linear-gradient(135deg, #F8B400 0%, #fbbf24 100%);
         }
         
-        .tab-active {
-            background: #F8B400;
-            color: #00204A;
+        .hero-section {
+            background: linear-gradient(135deg, rgba(0, 32, 74, 0.9) 0%, rgba(30, 58, 138, 0.9) 100%), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="stadium" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="2" fill="rgba(248,180,0,0.1)"/></pattern></defs><rect width="1200" height="600" fill="url(%23stadium)"/></svg>');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
         }
         
-        .admin-card {
+        .card-hover {
             transition: all 0.3s ease;
-            border: 2px solid transparent;
         }
         
-        .admin-card:hover {
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .medal-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 2px solid transparent;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .medal-card:hover {
             border-color: #F8B400;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(248, 180, 0, 0.2);
         }
         
-        .login-container {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #00204A 0%, #1e3a8a 100%);
-        }
-        
-        .admin-sidebar {
-            background: linear-gradient(180deg, #00204A 0%, #1e3a8a 100%);
-        }
-        
-        .sidebar-item {
+        .schedule-item {
+            background: white;
+            border-left: 4px solid #F8B400;
+            border-radius: 8px;
             transition: all 0.3s ease;
         }
         
-        .sidebar-item:hover {
-            background: rgba(248, 180, 0, 0.1);
-            border-left: 4px solid #F8B400;
+        .schedule-item:hover {
+            background: #fffbf0;
+            transform: translateX(5px);
         }
         
-        .sidebar-item.active {
-            background: rgba(248, 180, 0, 0.2);
-            border-left: 4px solid #F8B400;
-        }
-        
-        .stats-widget {
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            border: 1px solid #e2e8f0;
-        }
-        
-        .notification-badge {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: #ef4444;
-            color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            font-size: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .form-section {
+        .venue-card {
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        .data-table {
-            background: white;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, #F8B400 0%, #fbbf24 100%);
-            color: #00204A;
-            font-weight: bold;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
         
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(248, 180, 0, 0.3);
+        .venue-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
         }
         
-        .btn-danger {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-            color: white;
-            font-weight: bold;
-        }
-        
-        .btn-success {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-            font-weight: bold;
-        }
-        
-        .hidden {
-            display: none !important;
-        }
-        
-        .modal {
-            display: none;
+        .floating-action {
             position: fixed;
+            bottom: 30px;
+            right: 30px;
             z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-        
-        .modal.show {
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         
         .pulse-animation {
@@ -143,340 +101,537 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0.7; }
         }
-
-        .github-sync-panel {
-            background: linear-gradient(135deg, #24292e 0%, #1a1e22 100%);
-            color: white;
+        
+        .countdown-digit {
+            background: linear-gradient(135deg, #F8B400 0%, #fbbf24 100%);
+            color: #00204A;
             border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        .sync-button {
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-            color: white;
             font-weight: bold;
+            text-align: center;
+            padding: 16px;
+            min-width: 80px;
+        }
+        
+        .live-indicator {
+            background: #ef4444;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+        
+        .category-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .category-hasil { background: #dcfce7; color: #166534; }
+        .category-atlet { background: #dbeafe; color: #1e40af; }
+        .category-venue { background: #fef3c7; color: #92400e; }
+        .category-acara { background: #fce7f3; color: #be185d; }
+        
+        .stats-counter {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #F8B400;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: #F8B400;
+            border-radius: 2px;
+        }
+        
+        .nav-link {
+            position: relative;
             transition: all 0.3s ease;
         }
-
-        .sync-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+        
+        .nav-link:hover {
+            color: #F8B400;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #F8B400;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #F8B400;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body class="bg-gray-50">
-    
-    <script>
-        // GitHub Configuration - GANTI DENGAN DATA ANDA
-        const GITHUB_CONFIG = {
-            username: 'USERNAME_GITHUB_ANDA', // Ganti dengan username GitHub Anda
-            repository: 'porprov-kalsel-2025-data', // Nama repository yang dibuat
-            token: 'GITHUB_TOKEN_ANDA', // Personal Access Token dari langkah 1C
-            branch: 'main'
-        };
-
-        // Enhanced GitHub API Functions with aggressive SHA conflict resolution
-        async function syncToGitHub(filename, data, retryCount = 0) {
-            if (!GITHUB_CONFIG.token || GITHUB_CONFIG.token === 'GITHUB_TOKEN_ANDA') {
-                showNotification('⚠️ GitHub token belum dikonfigurasi!', 'error');
-                return false;
-            }
-
-            const url = `https://api.github.com/repos/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repository}/contents/data/${filename}`;
-            const maxRetries = 8; // Increased retry attempts
-            
-            try {
-                // Aggressive delay to prevent race conditions
-                if (retryCount > 0) {
-                    const delay = Math.min(2000 * Math.pow(1.5, retryCount), 15000); // Longer delays
-                    console.log(`⏳ Waiting ${delay}ms before retry ${retryCount} for ${filename}`);
-                    await new Promise(resolve => setTimeout(resolve, delay));
-                }
-
-                // Force fresh SHA retrieval with cache busting
-                let sha = null;
-                let attempts = 0;
-                const maxShaAttempts = 3;
-                
-                while (attempts < maxShaAttempts) {
-                    try {
-                        const timestamp = Date.now();
-                        const shaResponse = await fetch(`${url}?t=${timestamp}`, {
-                            headers: {
-                                'Authorization': `token ${GITHUB_CONFIG.token}`,
-                                'Accept': 'application/vnd.github.v3+json',
-                                'Cache-Control': 'no-cache, no-store, must-revalidate',
-                                'Pragma': 'no-cache',
-                                'Expires': '0'
-                            }
-                        });
-                        
-                        if (shaResponse.ok) {
-                            const fileData = await shaResponse.json();
-                            sha = fileData.sha;
-                            console.log(`🔍 Retrieved fresh SHA for ${filename}: ${sha}`);
-                            break;
-                        } else if (shaResponse.status === 404) {
-                            console.log(`📝 File ${filename} doesn't exist, creating new`);
-                            sha = null;
-                            break;
-                        }
-                    } catch (e) {
-                        console.log(`⚠️ SHA retrieval attempt ${attempts + 1} failed for ${filename}`);
-                        attempts++;
-                        if (attempts < maxShaAttempts) {
-                            await new Promise(resolve => setTimeout(resolve, 1000));
-                        }
-                    }
-                }
-
-                // Convert data to JSON string with proper formatting
-                const jsonString = JSON.stringify(data, null, 2);
-                
-                // Enhanced UTF-8 to Base64 conversion with error handling
-                function utf8ToBase64(str) {
-                    try {
-                        // Method 1: Standard approach
-                        return btoa(unescape(encodeURIComponent(str)));
-                    } catch (e) {
-                        console.log('⚠️ Standard btoa failed, using TextEncoder fallback');
-                        try {
-                            // Method 2: TextEncoder approach
-                            const utf8Bytes = new TextEncoder().encode(str);
-                            let binary = '';
-                            for (let i = 0; i < utf8Bytes.length; i++) {
-                                binary += String.fromCharCode(utf8Bytes[i]);
-                            }
-                            return btoa(binary);
-                        } catch (e2) {
-                            console.log('⚠️ TextEncoder failed, using manual base64');
-                            // Method 3: Manual base64 encoding
-                            const utf8Bytes = new TextEncoder().encode(str);
-                            let result = '';
-                            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
-                            
-                            for (let i = 0; i < utf8Bytes.length; i += 3) {
-                                const a = utf8Bytes[i];
-                                const b = utf8Bytes[i + 1] || 0;
-                                const c = utf8Bytes[i + 2] || 0;
-                                
-                                const bitmap = (a << 16) | (b << 8) | c;
-                                
-                                result += chars.charAt((bitmap >> 18) & 63);
-                                result += chars.charAt((bitmap >> 12) & 63);
-                                result += (i + 1 < utf8Bytes.length) ? chars.charAt((bitmap >> 6) & 63) : '=';
-                                result += (i + 2 < utf8Bytes.length) ? chars.charAt(bitmap & 63) : '=';
-                            }
-                            
-                            return result;
-                        }
-                    }
-                }
-
-                const content = utf8ToBase64(jsonString);
-                const updateData = {
-                    message: `Update ${filename} - ${new Date().toLocaleString('id-ID')} (attempt ${retryCount + 1})`,
-                    content: content,
-                    branch: GITHUB_CONFIG.branch
-                };
-
-                // Only include SHA if we have one
-                if (sha) {
-                    updateData.sha = sha;
-                    console.log(`📤 Syncing ${filename} with SHA: ${sha}`);
-                } else {
-                    console.log(`📤 Creating new file ${filename}`);
-                }
-
-                const response = await fetch(url, {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': `token ${GITHUB_CONFIG.token}`,
-                        'Accept': 'application/vnd.github.v3+json',
-                        'Content-Type': 'application/json',
-                        'User-Agent': 'PORPROV-Admin-Panel'
-                    },
-                    body: JSON.stringify(updateData)
-                });
-
-                if (response.ok) {
-                    const result = await response.json();
-                    console.log(`✅ ${filename} synced successfully! New SHA: ${result.content.sha}`);
-                    showNotification(`✅ Data ${filename} berhasil disinkron ke GitHub!`, 'success');
-                    return true;
-                } else {
-                    const error = await response.json();
-                    console.error(`❌ Sync error for ${filename}:`, error);
-                    
-                    // Enhanced SHA conflict detection and handling
-                    const isShaConflict = error.message && (
-                        error.message.includes('but expected') || 
-                        error.message.includes('does not match') ||
-                        error.message.includes('is at') ||
-                        error.message.includes('SHA') ||
-                        response.status === 409 ||
-                        response.status === 422
-                    );
-                    
-                    if (isShaConflict && retryCount < maxRetries) {
-                        console.log(`🔄 SHA conflict detected for ${filename}, retrying... (${retryCount + 1}/${maxRetries + 1})`);
-                        // Clear any cached SHA and force fresh retrieval
-                        return await syncToGitHub(filename, data, retryCount + 1);
-                    }
-                    
-                    showNotification(`❌ Gagal sync ${filename}: ${error.message}`, 'error');
-                    return false;
-                }
-            } catch (error) {
-                console.error(`🌐 Network error for ${filename}:`, error);
-                if (retryCount < maxRetries) {
-                    console.log(`🔄 Network error for ${filename}, retrying... (${retryCount + 1}/${maxRetries + 1})`);
-                    return await syncToGitHub(filename, data, retryCount + 1);
-                }
-                
-                showNotification(`❌ Error sync ${filename}: ${error.message}`, 'error');
-                return false;
-            }
-        }
-
-        // Notification function
-        function showNotification(message, type = 'info') {
-            const notification = document.createElement('div');
-            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg max-w-sm ${
-                type === 'success' ? 'bg-green-500 text-white' :
-                type === 'error' ? 'bg-red-500 text-white' :
-                'bg-blue-500 text-white'
-            }`;
-            notification.innerHTML = `
-                <div class="flex items-center space-x-2">
-                    <span>${message}</span>
-                    <button onclick="this.parentElement.parentElement.remove()" class="ml-2 text-white hover:text-gray-200">×</button>
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white shadow-lg fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <!-- Logo -->
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center">
+                        <span class="text-xl font-bold text-blue-900">🏆</span>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold">PORPROV Kalsel 2025</h1>
+                        <p class="text-blue-200 text-sm">Kabupaten Tapin</p>
+                    </div>
                 </div>
-            `;
-            document.body.appendChild(notification);
-            
-            // Auto remove after 5 seconds
-            setTimeout(() => {
-                if (notification.parentElement) {
-                    notification.remove();
-                }
-            }, 5000);
-        }
-
-        // Enhanced sync all data to GitHub with intelligent sequencing
-        async function syncAllToGitHub() {
-            showNotification('🔄 Memulai sinkronisasi ke GitHub...', 'info');
-            
-            const syncFiles = [
-                { filename: 'berita.json', data: newsData },
-                { filename: 'jadwal.json', data: scheduleData },
-                { filename: 'klasemen.json', data: medalData },
-                { filename: 'venue.json', data: venueData || [] },
-                { filename: 'official.json', data: officialData || [] },
-                { filename: 'layanan.json', data: serviceData || [] }
-            ];
-
-            let successCount = 0;
-            let totalFiles = syncFiles.length;
-            
-            // Show progress
-            showNotification(`📊 Sinkronisasi 0/${totalFiles} file...`, 'info');
-            
-            // Sync files sequentially with progressive delays
-            for (let i = 0; i < syncFiles.length; i++) {
-                const file = syncFiles[i];
-                try {
-                    console.log(`🚀 Starting sync ${i + 1}/${totalFiles}: ${file.filename}`);
-                    showNotification(`📤 Sync ${i + 1}/${totalFiles}: ${file.filename}...`, 'info');
-                    
-                    const result = await syncToGitHub(file.filename, file.data);
-                    if (result) {
-                        successCount++;
-                        showNotification(`✅ ${file.filename} berhasil (${successCount}/${totalFiles})`, 'success');
-                    } else {
-                        showNotification(`❌ ${file.filename} gagal`, 'error');
-                    }
-                    
-                    // Progressive delay: longer delays for later files to avoid conflicts
-                    const delay = Math.min(3000 + (i * 1000), 8000);
-                    if (i < syncFiles.length - 1) { // Don't delay after last file
-                        console.log(`⏳ Waiting ${delay}ms before next sync...`);
-                        await new Promise(resolve => setTimeout(resolve, delay));
-                    }
-                } catch (error) {
-                    console.error(`💥 Critical error syncing ${file.filename}:`, error);
-                    showNotification(`💥 Error kritis: ${file.filename}`, 'error');
-                }
-            }
-            
-            // Final status
-            if (successCount === totalFiles) {
-                showNotification('🎉 Semua data berhasil disinkron ke GitHub!', 'success');
-            } else if (successCount > 0) {
-                showNotification(`⚠️ ${successCount}/${totalFiles} data berhasil disinkron. Coba sync ulang untuk file yang gagal.`, 'success');
-            } else {
-                showNotification('❌ Semua sync gagal. Periksa konfigurasi GitHub Anda.', 'error');
-            }
-        }
-
-        // Auto sync when data changes
-        function autoSync(filename, data) {
-            if (GITHUB_CONFIG.token && GITHUB_CONFIG.token !== 'GITHUB_TOKEN_ANDA') {
-                // Add small delay for auto sync to prevent conflicts
-                setTimeout(() => {
-                    syncToGitHub(filename, data);
-                }, 1000);
-            }
-        }
-
-        // Login function
-        function handleLogin(event) {
-            event.preventDefault();
-            
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            // Demo credentials
-            if (username === 'admin' && password === 'porprov2025') {
-                // Hide login screen and show dashboard
-                document.getElementById('loginScreen').classList.add('hidden');
-                document.getElementById('adminDashboard').classList.remove('hidden');
                 
-                // Initialize dashboard
-                initializeDashboard();
-            } else {
-                alert('Username atau password salah!\n\nGunakan:\nUsername: admin\nPassword: porprov2025');
-            }
-        }
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#beranda" class="nav-link">Beranda</a>
+                    <a href="#berita" class="nav-link">Berita</a>
+                    <a href="#jadwal" class="nav-link">Jadwal</a>
+                    <a href="#klasemen" class="nav-link">Klasemen</a>
+                    <a href="#venue" class="nav-link">Venue</a>
+                    <a href="#layanan" class="nav-link">Layanan</a>
+                    <a href="#kontak" class="nav-link">Kontak</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
         
-        // Logout function
-        function logout() {
-            document.getElementById('adminDashboard').classList.add('hidden');
-            document.getElementById('loginScreen').classList.remove('hidden');
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu md:hidden fixed top-0 right-0 w-64 h-full bg-blue-900 shadow-lg">
+            <div class="p-6">
+                <button id="closeMobileMenu" class="float-right text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                <div class="clear-both mt-8 space-y-4">
+                    <a href="#beranda" class="block py-2 text-white hover:text-yellow-400">Beranda</a>
+                    <a href="#berita" class="block py-2 text-white hover:text-yellow-400">Berita</a>
+                    <a href="#jadwal" class="block py-2 text-white hover:text-yellow-400">Jadwal</a>
+                    <a href="#klasemen" class="block py-2 text-white hover:text-yellow-400">Klasemen</a>
+                    <a href="#venue" class="block py-2 text-white hover:text-yellow-400">Venue</a>
+                    <a href="#layanan" class="block py-2 text-white hover:text-yellow-400">Layanan</a>
+                    <a href="#kontak" class="block py-2 text-white hover:text-yellow-400">Kontak</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="hero-section flex items-center justify-center text-white">
+        <div class="container mx-auto px-4 text-center">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                    PORPROV KALSEL
+                    <span class="block text-yellow-400">2025</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 text-blue-200">
+                    Pekan Olahraga Provinsi Kalimantan Selatan
+                </p>
+                <p class="text-lg mb-12 text-blue-100">
+                    🏟️ Kabupaten Tapin • 📅 15-25 Januari 2025 • 🏆 35+ Cabang Olahraga
+                </p>
+                
+                <!-- Countdown Timer -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-bold mb-6">Countdown Pembukaan</h3>
+                    <div id="countdown" class="flex justify-center space-x-4">
+                        <div class="countdown-digit">
+                            <div id="days" class="text-3xl">00</div>
+                            <div class="text-sm">Hari</div>
+                        </div>
+                        <div class="countdown-digit">
+                            <div id="hours" class="text-3xl">00</div>
+                            <div class="text-sm">Jam</div>
+                        </div>
+                        <div class="countdown-digit">
+                            <div id="minutes" class="text-3xl">00</div>
+                            <div class="text-sm">Menit</div>
+                        </div>
+                        <div class="countdown-digit">
+                            <div id="seconds" class="text-3xl">00</div>
+                            <div class="text-sm">Detik</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="#jadwal" class="gold-gradient text-blue-900 px-8 py-4 rounded-full font-bold text-lg hover:shadow-lg transition-all">
+                        📅 Lihat Jadwal Pertandingan
+                    </a>
+                    <a href="#klasemen" class="border-2 border-yellow-400 text-yellow-400 px-8 py-4 rounded-full font-bold text-lg hover:bg-yellow-400 hover:text-blue-900 transition-all">
+                        🏆 Klasemen Medali
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="stats-counter" id="statsAthletes">2,500+</div>
+                    <p class="text-gray-600 font-semibold">Atlet</p>
+                </div>
+                <div class="text-center">
+                    <div class="stats-counter" id="statsSports">35+</div>
+                    <p class="text-gray-600 font-semibold">Cabang Olahraga</p>
+                </div>
+                <div class="text-center">
+                    <div class="stats-counter" id="statsRegions">13</div>
+                    <p class="text-gray-600 font-semibold">Kabupaten/Kota</p>
+                </div>
+                <div class="text-center">
+                    <div class="stats-counter" id="statsVenues">15+</div>
+                    <p class="text-gray-600 font-semibold">Venue</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Updates -->
+    <section class="py-16 bg-gradient-to-r from-blue-50 to-yellow-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="section-title text-4xl font-bold text-blue-900 mb-4">Live Updates</h2>
+                <p class="text-gray-600 text-lg">Informasi terkini dari PORPROV Kalsel 2025</p>
+            </div>
             
-            // Clear form
-            document.getElementById('username').value = '';
-            document.getElementById('password').value = '';
-        }
-        
-        // Initialize dashboard
-        function initializeDashboard() {
-            loadSampleData();
-            showAdminSection('dashboard');
-        }
-        
-        // Sample data
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Live Matches -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl font-bold text-blue-900">🔴 Pertandingan Live</h3>
+                        <span class="live-indicator">LIVE</span>
+                    </div>
+                    <div id="liveMatches" class="space-y-4">
+                        <div class="loading-spinner mx-auto"></div>
+                    </div>
+                </div>
+                
+                <!-- Latest Results -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <h3 class="text-xl font-bold text-blue-900 mb-6">🏆 Hasil Terbaru</h3>
+                    <div id="latestResults" class="space-y-4">
+                        <div class="loading-spinner mx-auto"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="berita" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="section-title text-4xl font-bold text-blue-900 mb-4">Berita Terkini</h2>
+                <p class="text-gray-600 text-lg">Update terbaru seputar PORPROV Kalsel 2025</p>
+            </div>
+            
+            <div id="newsContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="loading-spinner mx-auto"></div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button onclick="loadMoreNews()" class="gold-gradient text-blue-900 px-8 py-3 rounded-full font-bold hover:shadow-lg transition-all">
+                    Muat Berita Lainnya
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="jadwal" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="section-title text-4xl font-bold text-blue-900 mb-4">Jadwal Pertandingan</h2>
+                <p class="text-gray-600 text-lg">Jadwal lengkap semua cabang olahraga</p>
+            </div>
+            
+            <!-- Schedule Filter -->
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <button onclick="filterSchedule('all')" class="schedule-filter active bg-yellow-400 text-blue-900 px-6 py-2 rounded-full font-semibold">
+                    Semua
+                </button>
+                <button onclick="filterSchedule('today')" class="schedule-filter bg-white text-blue-900 px-6 py-2 rounded-full font-semibold border-2 border-gray-200">
+                    Hari Ini
+                </button>
+                <button onclick="filterSchedule('tomorrow')" class="schedule-filter bg-white text-blue-900 px-6 py-2 rounded-full font-semibold border-2 border-gray-200">
+                    Besok
+                </button>
+                <button onclick="filterSchedule('live')" class="schedule-filter bg-white text-blue-900 px-6 py-2 rounded-full font-semibold border-2 border-gray-200">
+                    🔴 Live
+                </button>
+            </div>
+            
+            <div id="scheduleContainer" class="space-y-4">
+                <div class="loading-spinner mx-auto"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Medal Standings -->
+    <section id="klasemen" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="section-title text-4xl font-bold text-blue-900 mb-4">Klasemen Medali</h2>
+                <p class="text-gray-600 text-lg">Perolehan medali sementara PORPROV Kalsel 2025</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="bg-gradient-to-r from-blue-900 to-blue-800 text-white p-6">
+                        <div class="grid grid-cols-6 gap-4 font-bold">
+                            <div class="text-center">Peringkat</div>
+                            <div class="col-span-2">Kabupaten/Kota</div>
+                            <div class="text-center">🥇</div>
+                            <div class="text-center">🥈</div>
+                            <div class="text-center">🥉</div>
+                        </div>
+                    </div>
+                    <div id="medalStandings" class="divide-y divide-gray-200">
+                        <div class="loading-spinner mx-auto my-8"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Venues Section -->
+    <section id="venue" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="section-title text-4xl font-bold text-blue-900 mb-4">Venue Pertandingan</h2>
+                <p class="text-gray-600 text-lg">Fasilitas olahraga terbaik di Kabupaten Tapin</p>
+            </div>
+            
+            <div id="venueContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="loading-spinner mx-auto"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="layanan" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="section-title text-4xl font-bold text-blue-900 mb-4">Layanan PORPROV</h2>
+                <p class="text-gray-600 text-lg">Layanan terpadu untuk kenyamanan atlet dan pengunjung</p>
+            </div>
+            
+            <div id="servicesContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="loading-spinner mx-auto"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontak" class="py-16 bg-gradient-to-r from-blue-900 to-blue-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Hubungi Kami</h2>
+                <p class="text-blue-200 text-lg">Informasi dan bantuan PORPROV Kalsel 2025</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">📞</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Hotline</h3>
+                    <p class="text-blue-200">+62 511-41234</p>
+                    <p class="text-blue-200">24 Jam Selama Event</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">📧</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Email</h3>
+                    <p class="text-blue-200">info@porprovkalsel2025.id</p>
+                    <p class="text-blue-200">media@porprovkalsel2025.id</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">📍</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Lokasi</h3>
+                    <p class="text-blue-200">Stadion Demang Lehman</p>
+                    <p class="text-blue-200">Rantau, Kabupaten Tapin</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-950 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center">
+                            <span class="text-lg font-bold text-blue-900">🏆</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">PORPROV Kalsel 2025</h3>
+                            <p class="text-blue-200 text-sm">Kabupaten Tapin</p>
+                        </div>
+                    </div>
+                    <p class="text-blue-200 text-sm">
+                        Pekan Olahraga Provinsi Kalimantan Selatan yang diselenggarakan di Kabupaten Tapin.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Menu Utama</h4>
+                    <ul class="space-y-2 text-sm text-blue-200">
+                        <li><a href="#beranda" class="hover:text-white">Beranda</a></li>
+                        <li><a href="#berita" class="hover:text-white">Berita</a></li>
+                        <li><a href="#jadwal" class="hover:text-white">Jadwal</a></li>
+                        <li><a href="#klasemen" class="hover:text-white">Klasemen</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Informasi</h4>
+                    <ul class="space-y-2 text-sm text-blue-200">
+                        <li><a href="#venue" class="hover:text-white">Venue</a></li>
+                        <li><a href="#layanan" class="hover:text-white">Layanan</a></li>
+                        <li><a href="#kontak" class="hover:text-white">Kontak</a></li>
+                        <li><a href="admin.html" class="hover:text-white">Admin Panel</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Media Sosial</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-yellow-400 hover:text-blue-900 transition-colors">
+                            <span class="text-sm">📘</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-yellow-400 hover:text-blue-900 transition-colors">
+                            <span class="text-sm">📷</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-yellow-400 hover:text-blue-900 transition-colors">
+                            <span class="text-sm">🐦</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-yellow-400 hover:text-blue-900 transition-colors">
+                            <span class="text-sm">📺</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-blue-800 mt-8 pt-6 text-center">
+                <p class="text-blue-200 text-sm">
+                    &copy; 2025 KONI Kalimantan Selatan. Hak Cipta Dilindungi.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <div class="floating-action">
+        <button onclick="scrollToTop()" class="w-14 h-14 bg-yellow-400 text-blue-900 rounded-full shadow-lg hover:shadow-xl transition-all pulse-animation">
+            <span class="text-xl">⬆️</span>
+        </button>
+    </div>
+
+    <script>
+        // Data Storage - Will be populated from GitHub or local storage
         let newsData = [];
         let scheduleData = [];
         let medalData = [];
         let venueData = [];
-        let officialData = [];
         let serviceData = [];
         
-        // Load sample data from main website structure
+        // GitHub Configuration
+        const GITHUB_CONFIG = {
+            username: 'USERNAME_GITHUB_ANDA',
+            repository: 'porprov-kalsel-2025-data',
+            token: 'GITHUB_TOKEN_ANDA',
+            branch: 'main'
+        };
+
+        // Load data from GitHub or fallback to sample data
+        async function loadDataFromGitHub() {
+            try {
+                const files = ['berita.json', 'jadwal.json', 'klasemen.json', 'venue.json', 'layanan.json'];
+                const promises = files.map(file => 
+                    fetch(`https://api.github.com/repos/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repository}/contents/data/${file}`)
+                        .then(response => response.ok ? response.json() : null)
+                        .then(data => data ? JSON.parse(atob(data.content)) : null)
+                        .catch(() => null)
+                );
+                
+                const results = await Promise.all(promises);
+                
+                if (results[0]) newsData = results[0];
+                if (results[1]) scheduleData = results[1];
+                if (results[2]) medalData = results[2];
+                if (results[3]) venueData = results[3];
+                if (results[4]) serviceData = results[4];
+                
+                // If no data from GitHub, load sample data
+                if (!newsData.length && !scheduleData.length) {
+                    loadSampleData();
+                }
+                
+            } catch (error) {
+                console.log('Loading sample data due to GitHub error:', error);
+                loadSampleData();
+            }
+        }
+
+        // Sample data fallback
         function loadSampleData() {
-            // Sample news - matching main website structure
             newsData = [
                 {
                     id: 1,
@@ -507,7 +662,6 @@
                 }
             ];
             
-            // Sample schedule - comprehensive data
             scheduleData = [
                 {
                     id: 1,
@@ -517,7 +671,7 @@
                     time: "15:00",
                     match: "Tapin vs Banjar",
                     venue: "Stadion Demang Lehman",
-                    status: "Scheduled"
+                    status: "Live"
                 },
                 {
                     id: 2,
@@ -533,168 +687,50 @@
                     id: 3,
                     category: "Putra",
                     sport: "Renang",
-                    date: "2025-01-18",
+                    date: "2025-01-19",
                     time: "09:00",
                     match: "Final 100m Gaya Bebas",
                     venue: "Aquatic Center Tapin",
-                    status: "Live"
-                },
-                {
-                    id: 4,
-                    category: "Beregu Campuran",
-                    sport: "Bulu Tangkis",
-                    date: "2025-01-18",
-                    time: "13:00",
-                    match: "Semifinal Ganda Campuran",
-                    venue: "GOR Tuntung Pandang",
                     status: "Scheduled"
                 }
             ];
             
-            // Sample medals - realistic standings
             medalData = [
-                {
-                    id: 1,
-                    region: "Tapin",
-                    gold: 12,
-                    silver: 8,
-                    bronze: 6,
-                    total: 26
-                },
-                {
-                    id: 2,
-                    region: "Banjarmasin",
-                    gold: 10,
-                    silver: 12,
-                    bronze: 8,
-                    total: 30
-                },
-                {
-                    id: 3,
-                    region: "Banjar",
-                    gold: 8,
-                    silver: 6,
-                    bronze: 10,
-                    total: 24
-                },
-                {
-                    id: 4,
-                    region: "Barito Kuala",
-                    gold: 6,
-                    silver: 8,
-                    bronze: 12,
-                    total: 26
-                },
-                {
-                    id: 5,
-                    region: "Tanah Laut",
-                    gold: 5,
-                    silver: 7,
-                    bronze: 9,
-                    total: 21
-                }
+                { id: 1, region: "Tapin", gold: 12, silver: 8, bronze: 6, total: 26 },
+                { id: 2, region: "Banjarmasin", gold: 10, silver: 12, bronze: 8, total: 30 },
+                { id: 3, region: "Banjar", gold: 8, silver: 6, bronze: 10, total: 24 },
+                { id: 4, region: "Barito Kuala", gold: 6, silver: 8, bronze: 12, total: 26 },
+                { id: 5, region: "Tanah Laut", gold: 5, silver: 7, bronze: 9, total: 21 }
             ];
 
-            // Sample venues - comprehensive list
             venueData = [
                 {
                     id: 1,
                     name: "Stadion Demang Lehman",
                     type: "Stadion",
                     capacity: 15000,
-                    location: "Jl. Ahmad Yani, Rantau, Tapin",
-                    sports: "Sepak Bola, Atletik, Upacara",
-                    facilities: "Parkir 500 mobil, Toilet 20 unit, Kantin 5 outlet, Sound system profesional, Ruang VIP, Tribun bertingkat",
-                    contact: "+62 511-41234",
-                    status: "Aktif"
+                    location: "Rantau, Tapin",
+                    sports: "Sepak Bola, Atletik",
+                    facilities: "Parkir luas, Toilet, Kantin, Sound system"
                 },
                 {
                     id: 2,
                     name: "GOR Tuntung Pandang",
                     type: "GOR",
                     capacity: 3000,
-                    location: "Jl. Tuntung Pandang, Rantau, Tapin",
-                    sports: "Bola Voli, Bulu Tangkis, Basket, Futsal",
-                    facilities: "AC central, Parkir 200 mobil, Toilet 12 unit, Kantin 2 outlet, Ruang ganti 8 unit",
-                    contact: "+62 511-41235",
-                    status: "Aktif"
-                },
-                {
-                    id: 3,
-                    name: "Aquatic Center Tapin",
-                    type: "Kolam Renang",
-                    capacity: 1500,
-                    location: "Kompleks Olahraga Tapin, Rantau",
-                    sports: "Renang, Polo Air, Loncat Indah",
-                    facilities: "Kolam Olympic 50m, Kolam loncat indah, Tribun 1500 kursi, Ruang ganti 12 unit, Cafeteria",
-                    contact: "+62 511-41236",
-                    status: "Aktif"
-                },
-                {
-                    id: 4,
-                    name: "Arena Pencak Silat Tapin",
-                    type: "Arena",
-                    capacity: 800,
-                    location: "Gedung Serbaguna Tapin, Rantau",
-                    sports: "Pencak Silat, Karate, Taekwondo, Judo",
-                    facilities: "Matras profesional, Sound system, Tribun portable, Ruang ganti 6 unit",
-                    contact: "+62 511-41237",
-                    status: "Aktif"
+                    location: "Rantau, Tapin",
+                    sports: "Bola Voli, Bulu Tangkis, Basket",
+                    facilities: "AC, Parkir, Toilet, Kantin"
                 }
             ];
 
-            // Sample officials - comprehensive list
-            officialData = [
-                {
-                    id: 1,
-                    name: "Dr. H. Ahmad Suryadi, M.Pd",
-                    position: "Ketua Umum",
-                    organization: "KONI Kalimantan Selatan",
-                    sport: "Umum",
-                    phone: "+62 812-3456-7890",
-                    email: "ahmad.suryadi@koni-kalsel.org",
-                    certification: "Manajemen Olahraga Nasional, Sertifikat IOC"
-                },
-                {
-                    id: 2,
-                    name: "Drs. Bambang Hermanto",
-                    position: "Wasit",
-                    organization: "PSSI Kalsel",
-                    sport: "Sepak Bola",
-                    phone: "+62 813-4567-8901",
-                    email: "bambang@pssi-kalsel.org",
-                    certification: "Wasit FIFA, Lisensi AFC Pro"
-                },
-                {
-                    id: 3,
-                    name: "Siti Nurhaliza, S.Pd",
-                    position: "Juri",
-                    organization: "PBVSI Kalsel",
-                    sport: "Bola Voli",
-                    phone: "+62 814-5678-9012",
-                    email: "siti@pbvsi-kalsel.org",
-                    certification: "Juri Internasional FIVB Level 2"
-                },
-                {
-                    id: 4,
-                    name: "Muhammad Fadli, S.Kes",
-                    position: "Medical Officer",
-                    organization: "IDI Kalsel",
-                    sport: "Medis",
-                    phone: "+62 815-6789-0123",
-                    email: "fadli@idi-kalsel.org",
-                    certification: "Dokter Olahraga, Sertifikat FIFA Medical"
-                }
-            ];
-
-            // Sample services - comprehensive services
             serviceData = [
                 {
                     id: 1,
                     name: "Layanan Medis Darurat",
                     category: "Medis",
-                    description: "Layanan kesehatan 24 jam dengan ambulans siaga, dokter spesialis olahraga, dan peralatan medis lengkap untuk menangani cedera atlet dan emergency medis.",
-                    location: "Posko Medis Utama - Stadion Demang Lehman",
+                    description: "Layanan kesehatan 24 jam dengan ambulans siaga dan dokter spesialis olahraga.",
+                    location: "Posko Medis Utama",
                     hours: "24 Jam",
                     contact: "+62 812-1111-2222",
                     status: "Aktif"
@@ -703,1452 +739,326 @@
                     id: 2,
                     name: "Shuttle Bus Atlet",
                     category: "Transportasi",
-                    description: "Layanan transportasi khusus atlet dan official dari hotel ke venue pertandingan dengan jadwal reguler setiap 30 menit.",
-                    location: "Terminal Shuttle - Hotel Tapin Plaza",
+                    description: "Layanan transportasi khusus atlet dari hotel ke venue pertandingan.",
+                    location: "Terminal Shuttle",
                     hours: "05:00 - 22:00",
                     contact: "+62 813-2222-3333",
                     status: "Aktif"
-                },
-                {
-                    id: 3,
-                    name: "Catering Atlet",
-                    category: "Konsumsi",
-                    description: "Penyediaan makanan bergizi seimbang untuk atlet dengan menu khusus diet olahraga, halal, dan pilihan vegetarian.",
-                    location: "Dapur Utama - Kompleks Olahraga Tapin",
-                    hours: "05:00 - 21:00",
-                    contact: "+62 814-3333-4444",
-                    status: "Aktif"
-                },
-                {
-                    id: 4,
-                    name: "Media Center",
-                    category: "Media",
-                    description: "Pusat informasi dan layanan media dengan fasilitas internet, ruang konferensi pers, dan akreditasi wartawan.",
-                    location: "Gedung Media Center - Stadion Demang Lehman",
-                    hours: "06:00 - 23:00",
-                    contact: "+62 815-4444-5555",
-                    status: "Aktif"
-                },
-                {
-                    id: 5,
-                    name: "Security & Keamanan",
-                    category: "Keamanan",
-                    description: "Layanan keamanan terpadu dengan petugas bersertifikat, CCTV monitoring, dan koordinasi dengan Polres setempat.",
-                    location: "Pos Komando Keamanan - Semua Venue",
-                    hours: "24 Jam",
-                    contact: "+62 816-5555-6666",
-                    status: "Aktif"
                 }
             ];
-            
-            // Update tables
-            updateNewsTable();
-            updateScheduleTable();
-            updateMedalTable();
-            updateVenueTable();
-            updateOfficialTable();
-            updateServiceTable();
-            
-            // Update dashboard stats
-            updateDashboardStats();
         }
-        
-        // Show admin section
-        function showAdminSection(section) {
-            // Hide all sections
-            const sections = document.querySelectorAll('.admin-section');
-            sections.forEach(s => s.classList.add('hidden'));
+
+        // Countdown Timer
+        function updateCountdown() {
+            const eventDate = new Date('2025-01-15T09:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
             
-            // Show selected section
-            document.getElementById('admin-' + section).classList.remove('hidden');
-            
-            // Update sidebar
-            const sidebarItems = document.querySelectorAll('.sidebar-item');
-            sidebarItems.forEach(item => item.classList.remove('active'));
-            event.target.classList.add('active');
+            if (distance > 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            } else {
+                document.getElementById('countdown').innerHTML = '<div class="text-2xl font-bold text-green-400">🎉 EVENT SEDANG BERLANGSUNG! 🎉</div>';
+            }
         }
-        
-        // Update news table
-        function updateNewsTable() {
-            const tbody = document.getElementById('newsTableBody');
-            tbody.innerHTML = '';
+
+        // Load and display news
+        function displayNews() {
+            const container = document.getElementById('newsContainer');
+            container.innerHTML = '';
             
-            newsData.forEach(news => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${news.title}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${news.category}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${news.date}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <button onclick="editNews(${news.id})" class="text-blue-600 hover:text-blue-900 mr-2">Edit</button>
-                        <button onclick="deleteNews(${news.id})" class="text-red-600 hover:text-red-900">Hapus</button>
-                    </td>
+            newsData.slice(0, 6).forEach(news => {
+                const categoryClass = `category-${news.category}`;
+                const newsCard = document.createElement('div');
+                newsCard.className = 'news-card card-hover';
+                newsCard.innerHTML = `
+                    <div class="p-6">
+                        <div class="text-6xl mb-4 text-center">${news.image || '📰'}</div>
+                        <div class="category-badge ${categoryClass} mb-3">${news.category.toUpperCase()}</div>
+                        <h3 class="text-xl font-bold text-blue-900 mb-3">${news.title}</h3>
+                        <p class="text-gray-600 mb-4 line-clamp-3">${news.content}</p>
+                        <div class="flex justify-between items-center text-sm text-gray-500">
+                            <span>📅 ${new Date(news.date).toLocaleDateString('id-ID')}</span>
+                            <span>✍️ ${news.author}</span>
+                        </div>
+                    </div>
                 `;
-                tbody.appendChild(row);
+                container.appendChild(newsCard);
             });
         }
-        
-        // Update schedule table
-        function updateScheduleTable() {
-            const tbody = document.getElementById('scheduleTableBody');
-            tbody.innerHTML = '';
+
+        // Load and display schedule
+        function displaySchedule() {
+            const container = document.getElementById('scheduleContainer');
+            container.innerHTML = '';
             
             scheduleData.forEach(schedule => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${schedule.date}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${schedule.time}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${schedule.sport}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${schedule.category}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${schedule.match}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${schedule.venue}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <button onclick="editSchedule(${schedule.id})" class="text-blue-600 hover:text-blue-900 mr-2">Edit</button>
-                        <button onclick="deleteSchedule(${schedule.id})" class="text-red-600 hover:text-red-900">Hapus</button>
-                    </td>
+                const scheduleItem = document.createElement('div');
+                scheduleItem.className = 'schedule-item p-6 shadow-lg';
+                
+                const statusBadge = schedule.status === 'Live' ? 
+                    '<span class="live-indicator">LIVE</span>' : 
+                    `<span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm font-semibold">${schedule.status}</span>`;
+                
+                scheduleItem.innerHTML = `
+                    <div class="flex flex-col md:flex-row md:items-center justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center space-x-4 mb-2">
+                                <span class="text-2xl">⚽</span>
+                                <div>
+                                    <h3 class="text-lg font-bold text-blue-900">${schedule.match}</h3>
+                                    <p class="text-gray-600">${schedule.sport} - ${schedule.category}</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                <span>📅 ${new Date(schedule.date).toLocaleDateString('id-ID')}</span>
+                                <span>🕐 ${schedule.time}</span>
+                                <span>📍 ${schedule.venue}</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 md:mt-0">
+                            ${statusBadge}
+                        </div>
+                    </div>
                 `;
-                tbody.appendChild(row);
+                container.appendChild(scheduleItem);
             });
         }
-        
-        // Update medal table
-        function updateMedalTable() {
-            const tbody = document.getElementById('medalTableBody');
-            tbody.innerHTML = '';
+
+        // Load and display medal standings
+        function displayMedalStandings() {
+            const container = document.getElementById('medalStandings');
+            container.innerHTML = '';
             
-            // Sort by total medals
-            const sortedMedals = [...medalData].sort((a, b) => b.total - a.total);
+            const sortedMedals = [...medalData].sort((a, b) => {
+                if (b.gold !== a.gold) return b.gold - a.gold;
+                if (b.silver !== a.silver) return b.silver - a.silver;
+                return b.bronze - a.bronze;
+            });
             
             sortedMedals.forEach((medal, index) => {
-                const row = document.createElement('tr');
+                const row = document.createElement('div');
+                row.className = 'grid grid-cols-6 gap-4 p-4 hover:bg-gray-50 transition-colors';
+                
+                const rankClass = index < 3 ? 'text-yellow-600 font-bold' : 'text-gray-600';
+                const rankIcon = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : '';
+                
                 row.innerHTML = `
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${index + 1}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${medal.region}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900">${medal.gold}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900">${medal.silver}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900">${medal.bronze}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium text-gray-900">${medal.total}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <button onclick="editMedal(${medal.id})" class="text-blue-600 hover:text-blue-900 mr-2">Edit</button>
-                        <button onclick="deleteMedal(${medal.id})" class="text-red-600 hover:text-red-900">Hapus</button>
-                    </td>
+                    <div class="text-center ${rankClass}">
+                        ${rankIcon} ${index + 1}
+                    </div>
+                    <div class="col-span-2 font-semibold text-blue-900">${medal.region}</div>
+                    <div class="text-center font-bold text-yellow-600">${medal.gold}</div>
+                    <div class="text-center font-bold text-gray-500">${medal.silver}</div>
+                    <div class="text-center font-bold text-orange-600">${medal.bronze}</div>
                 `;
-                tbody.appendChild(row);
+                container.appendChild(row);
             });
         }
 
-        // Update venue table
-        function updateVenueTable() {
-            const tbody = document.getElementById('venueTableBody');
-            tbody.innerHTML = '';
+        // Load and display venues
+        function displayVenues() {
+            const container = document.getElementById('venueContainer');
+            container.innerHTML = '';
             
             venueData.forEach(venue => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${venue.name}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${venue.type}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${venue.capacity.toLocaleString()}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${venue.location}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${venue.sports}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <button onclick="editVenue(${venue.id})" class="text-blue-600 hover:text-blue-900 mr-2">Edit</button>
-                        <button onclick="deleteVenue(${venue.id})" class="text-red-600 hover:text-red-900">Hapus</button>
-                    </td>
+                const venueCard = document.createElement('div');
+                venueCard.className = 'venue-card card-hover';
+                
+                const typeIcon = venue.type === 'Stadion' ? '🏟️' : 
+                                venue.type === 'GOR' ? '🏢' : 
+                                venue.type === 'Kolam Renang' ? '🏊‍♂️' : '🏃‍♂️';
+                
+                venueCard.innerHTML = `
+                    <div class="p-6">
+                        <div class="text-6xl mb-4 text-center">${typeIcon}</div>
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">${venue.name}</h3>
+                        <p class="text-gray-600 mb-3">${venue.type} • Kapasitas: ${venue.capacity.toLocaleString()}</p>
+                        <p class="text-sm text-gray-500 mb-3">📍 ${venue.location}</p>
+                        <p class="text-sm text-blue-600 mb-3">🏃‍♂️ ${venue.sports}</p>
+                        <p class="text-xs text-gray-500">${venue.facilities}</p>
+                    </div>
                 `;
-                tbody.appendChild(row);
+                container.appendChild(venueCard);
             });
         }
 
-        // Update official table
-        function updateOfficialTable() {
-            const tbody = document.getElementById('officialTableBody');
-            tbody.innerHTML = '';
-            
-            officialData.forEach(official => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${official.name}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${official.position}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${official.organization}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${official.sport}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${official.phone}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <button onclick="editOfficial(${official.id})" class="text-blue-600 hover:text-blue-900 mr-2">Edit</button>
-                        <button onclick="deleteOfficial(${official.id})" class="text-red-600 hover:text-red-900">Hapus</button>
-                    </td>
-                `;
-                tbody.appendChild(row);
-            });
-        }
-
-        // Update service table
-        function updateServiceTable() {
-            const tbody = document.getElementById('serviceTableBody');
-            tbody.innerHTML = '';
+        // Load and display services
+        function displayServices() {
+            const container = document.getElementById('servicesContainer');
+            container.innerHTML = '';
             
             serviceData.forEach(service => {
-                const statusColor = service.status === 'Aktif' ? 'text-green-600' : 
-                                  service.status === 'Tidak Aktif' ? 'text-red-600' : 'text-yellow-600';
+                const serviceCard = document.createElement('div');
+                serviceCard.className = 'bg-white rounded-2xl p-6 shadow-lg card-hover';
                 
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${service.name}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${service.category}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${service.location}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${service.hours}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium ${statusColor}">${service.status}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <button onclick="editService(${service.id})" class="text-blue-600 hover:text-blue-900 mr-2">Edit</button>
-                        <button onclick="deleteService(${service.id})" class="text-red-600 hover:text-red-900">Hapus</button>
-                    </td>
+                const categoryIcon = service.category === 'Medis' ? '🏥' :
+                                   service.category === 'Transportasi' ? '🚌' :
+                                   service.category === 'Konsumsi' ? '🍽️' :
+                                   service.category === 'Keamanan' ? '🛡️' : '🛎️';
+                
+                const statusColor = service.status === 'Aktif' ? 'text-green-600' : 'text-red-600';
+                
+                serviceCard.innerHTML = `
+                    <div class="text-center mb-4">
+                        <div class="text-5xl mb-2">${categoryIcon}</div>
+                        <h3 class="text-xl font-bold text-blue-900">${service.name}</h3>
+                        <p class="text-sm text-gray-500">${service.category}</p>
+                    </div>
+                    <p class="text-gray-600 mb-4 text-sm">${service.description}</p>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-gray-500">📍 Lokasi:</span>
+                            <span class="font-semibold">${service.location}</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-500">🕐 Jam:</span>
+                            <span class="font-semibold">${service.hours}</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-500">📞 Kontak:</span>
+                            <span class="font-semibold">${service.contact}</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-500">Status:</span>
+                            <span class="font-semibold ${statusColor}">${service.status}</span>
+                        </div>
+                    </div>
                 `;
-                tbody.appendChild(row);
+                container.appendChild(serviceCard);
             });
         }
-        
-        // Form handlers
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('newsForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const title = document.getElementById('newsTitle').value;
-                const category = document.getElementById('newsCategory').value;
-                const content = document.getElementById('newsContent').value;
-                
-                if (title && category && content) {
-                    const newNews = {
-                        id: Date.now(),
-                        title: title,
-                        category: category,
-                        content: content,
-                        date: new Date().toISOString().split('T')[0]
-                    };
-                    
-                    newsData.push(newNews);
-                    updateNewsTable();
-                    updateDashboardStats();
-                    clearNewsForm();
-                    alert('Berita berhasil ditambahkan!');
-                    
-                    // Auto sync to GitHub
-                    autoSync('berita.json', newsData);
-                }
-            });
+
+        // Load live matches
+        function displayLiveMatches() {
+            const container = document.getElementById('liveMatches');
+            const liveMatches = scheduleData.filter(match => match.status === 'Live');
             
-            document.getElementById('scheduleForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const category = document.getElementById('scheduleCategory').value;
-                const sport = document.getElementById('scheduleSport').value;
-                const date = document.getElementById('scheduleDate').value;
-                const time = document.getElementById('scheduleTime').value;
-                const match = document.getElementById('scheduleMatch').value;
-                const venue = document.getElementById('scheduleVenue').value;
-                
-                if (category && sport && date && time && match && venue) {
-                    const newSchedule = {
-                        id: Date.now(),
-                        category: category,
-                        sport: sport,
-                        date: date,
-                        time: time,
-                        match: match,
-                        venue: venue
-                    };
-                    
-                    scheduleData.push(newSchedule);
-                    updateScheduleTable();
-                    updateDashboardStats();
-                    clearScheduleForm();
-                    alert('Jadwal berhasil ditambahkan!');
-                    
-                    // Auto sync to GitHub
-                    autoSync('jadwal.json', scheduleData);
-                }
-            });
+            if (liveMatches.length === 0) {
+                container.innerHTML = '<p class="text-gray-500 text-center">Tidak ada pertandingan live saat ini</p>';
+                return;
+            }
             
-            document.getElementById('medalForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const region = document.getElementById('medalRegion').value;
-                const sport = document.getElementById('medalSport').value;
-                const gold = parseInt(document.getElementById('medalGold').value) || 0;
-                const silver = parseInt(document.getElementById('medalSilver').value) || 0;
-                const bronze = parseInt(document.getElementById('medalBronze').value) || 0;
-                
-                if (region) {
-                    // Check if region already exists
-                    const existingIndex = medalData.findIndex(m => m.region === region);
-                    
-                    if (existingIndex >= 0) {
-                        // Update existing
-                        medalData[existingIndex].gold += gold;
-                        medalData[existingIndex].silver += silver;
-                        medalData[existingIndex].bronze += bronze;
-                        medalData[existingIndex].total = medalData[existingIndex].gold + medalData[existingIndex].silver + medalData[existingIndex].bronze;
-                    } else {
-                        // Add new
-                        const newMedal = {
-                            id: Date.now(),
-                            region: region,
-                            gold: gold,
-                            silver: silver,
-                            bronze: bronze,
-                            total: gold + silver + bronze
-                        };
-                        medalData.push(newMedal);
-                    }
-                    
-                    updateMedalTable();
-                    clearMedalForm();
-                    alert('Medali berhasil diperbarui!');
-                    
-                    // Auto sync to GitHub
-                    autoSync('klasemen.json', medalData);
-                }
+            container.innerHTML = '';
+            liveMatches.forEach(match => {
+                const matchDiv = document.createElement('div');
+                matchDiv.className = 'bg-red-50 border border-red-200 rounded-lg p-4';
+                matchDiv.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h4 class="font-bold text-red-800">${match.match}</h4>
+                            <p class="text-sm text-red-600">${match.sport} - ${match.venue}</p>
+                        </div>
+                        <span class="live-indicator">LIVE</span>
+                    </div>
+                `;
+                container.appendChild(matchDiv);
             });
+        }
 
-            // Venue form handler
-            document.getElementById('venueForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const name = document.getElementById('venueName').value;
-                const type = document.getElementById('venueType').value;
-                const capacity = parseInt(document.getElementById('venueCapacity').value) || 0;
-                const location = document.getElementById('venueLocation').value;
-                const sports = document.getElementById('venueSports').value;
-                const facilities = document.getElementById('venueFacilities').value;
-                
-                if (name && type && location) {
-                    const newVenue = {
-                        id: Date.now(),
-                        name: name,
-                        type: type,
-                        capacity: capacity,
-                        location: location,
-                        sports: sports,
-                        facilities: facilities
-                    };
-                    
-                    venueData.push(newVenue);
-                    updateVenueTable();
-                    updateDashboardStats();
-                    clearVenueForm();
-                    alert('Venue berhasil ditambahkan!');
-                    
-                    // Auto sync to GitHub
-                    autoSync('venue.json', venueData);
-                }
+        // Load latest results
+        function displayLatestResults() {
+            const container = document.getElementById('latestResults');
+            const results = scheduleData.filter(match => match.status === 'Finished').slice(0, 3);
+            
+            if (results.length === 0) {
+                container.innerHTML = '<p class="text-gray-500 text-center">Belum ada hasil pertandingan</p>';
+                return;
+            }
+            
+            container.innerHTML = '';
+            results.forEach(result => {
+                const resultDiv = document.createElement('div');
+                resultDiv.className = 'bg-green-50 border border-green-200 rounded-lg p-4';
+                resultDiv.innerHTML = `
+                    <h4 class="font-bold text-green-800">${result.match}</h4>
+                    <p class="text-sm text-green-600">${result.sport} - ${result.venue}</p>
+                    <p class="text-xs text-green-500 mt-1">Selesai</p>
+                `;
+                container.appendChild(resultDiv);
             });
+        }
 
-            // Official form handler
-            document.getElementById('officialForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const name = document.getElementById('officialName').value;
-                const position = document.getElementById('officialPosition').value;
-                const organization = document.getElementById('officialOrganization').value;
-                const sport = document.getElementById('officialSport').value;
-                const phone = document.getElementById('officialPhone').value;
-                const email = document.getElementById('officialEmail').value;
-                const certification = document.getElementById('officialCertification').value;
-                
-                if (name && position && organization) {
-                    const newOfficial = {
-                        id: Date.now(),
-                        name: name,
-                        position: position,
-                        organization: organization,
-                        sport: sport,
-                        phone: phone,
-                        email: email,
-                        certification: certification
-                    };
-                    
-                    officialData.push(newOfficial);
-                    updateOfficialTable();
-                    updateDashboardStats();
-                    clearOfficialForm();
-                    alert('Official berhasil ditambahkan!');
-                    
-                    // Auto sync to GitHub
-                    autoSync('official.json', officialData);
-                }
+        // Filter functions
+        function filterSchedule(filter) {
+            // Update active filter button
+            document.querySelectorAll('.schedule-filter').forEach(btn => {
+                btn.classList.remove('active', 'bg-yellow-400', 'text-blue-900');
+                btn.classList.add('bg-white', 'text-blue-900', 'border-2', 'border-gray-200');
             });
+            event.target.classList.add('active', 'bg-yellow-400', 'text-blue-900');
+            event.target.classList.remove('bg-white', 'border-2', 'border-gray-200');
+            
+            // Filter logic would go here
+            displaySchedule(); // For now, just redisplay all
+        }
 
-            // Service form handler
-            document.getElementById('serviceForm').addEventListener('submit', function(e) {
+        // Utility functions
+        function loadMoreNews() {
+            // Implementation for loading more news
+            alert('Fitur muat lebih banyak berita akan segera hadir!');
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mobile menu functions
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.add('active');
+        });
+
+        document.getElementById('closeMobileMenu').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.remove('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
-                const name = document.getElementById('serviceName').value;
-                const category = document.getElementById('serviceCategory').value;
-                const description = document.getElementById('serviceDescription').value;
-                const location = document.getElementById('serviceLocation').value;
-                const hours = document.getElementById('serviceHours').value;
-                const contact = document.getElementById('serviceContact').value;
-                const status = document.getElementById('serviceStatus').value;
-                
-                if (name && category && description) {
-                    const newService = {
-                        id: Date.now(),
-                        name: name,
-                        category: category,
-                        description: description,
-                        location: location,
-                        hours: hours,
-                        contact: contact,
-                        status: status
-                    };
-                    
-                    serviceData.push(newService);
-                    updateServiceTable();
-                    clearServiceForm();
-                    alert('Layanan berhasil ditambahkan!');
-                    
-                    // Auto sync to GitHub
-                    autoSync('layanan.json', serviceData);
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
+                // Close mobile menu if open
+                document.getElementById('mobileMenu').classList.remove('active');
             });
         });
-        
-        // Clear form functions
-        function clearNewsForm() {
-            document.getElementById('newsForm').reset();
-        }
-        
-        function clearScheduleForm() {
-            document.getElementById('scheduleForm').reset();
-        }
-        
-        function clearMedalForm() {
-            document.getElementById('medalForm').reset();
-        }
 
-        function clearVenueForm() {
-            document.getElementById('venueForm').reset();
-        }
-
-        function clearOfficialForm() {
-            document.getElementById('officialForm').reset();
-        }
-
-        function clearServiceForm() {
-            document.getElementById('serviceForm').reset();
-        }
-        
-        // Delete functions
-        function deleteNews(id) {
-            if (confirm('Yakin ingin menghapus berita ini?')) {
-                newsData = newsData.filter(news => news.id !== id);
-                updateNewsTable();
-                updateDashboardStats();
-                autoSync('berita.json', newsData);
-            }
-        }
-        
-        function deleteSchedule(id) {
-            if (confirm('Yakin ingin menghapus jadwal ini?')) {
-                scheduleData = scheduleData.filter(schedule => schedule.id !== id);
-                updateScheduleTable();
-                updateDashboardStats();
-                autoSync('jadwal.json', scheduleData);
-            }
-        }
-        
-        function deleteMedal(id) {
-            if (confirm('Yakin ingin menghapus data medali ini?')) {
-                medalData = medalData.filter(medal => medal.id !== id);
-                updateMedalTable();
-                autoSync('klasemen.json', medalData);
-            }
-        }
-
-        function deleteVenue(id) {
-            if (confirm('Yakin ingin menghapus venue ini?')) {
-                venueData = venueData.filter(venue => venue.id !== id);
-                updateVenueTable();
-                updateDashboardStats();
-                autoSync('venue.json', venueData);
-            }
-        }
-
-        function deleteOfficial(id) {
-            if (confirm('Yakin ingin menghapus official ini?')) {
-                officialData = officialData.filter(official => official.id !== id);
-                updateOfficialTable();
-                updateDashboardStats();
-                autoSync('official.json', officialData);
-            }
-        }
-
-        function deleteService(id) {
-            if (confirm('Yakin ingin menghapus layanan ini?')) {
-                serviceData = serviceData.filter(service => service.id !== id);
-                updateServiceTable();
-                autoSync('layanan.json', serviceData);
-            }
-        }
-        
-        // Modal functions
-        function openNewsModal() { 
-            showAdminSection('berita');
-            document.getElementById('newsTitle').focus();
-        }
-        function openScheduleModal() { 
-            showAdminSection('jadwal');
-            document.getElementById('scheduleCategory').focus();
-        }
-        function openMedalModal() { 
-            showAdminSection('klasemen');
-            document.getElementById('medalRegion').focus();
-        }
-        function openVenueModal() { 
-            showAdminSection('venue');
-            document.getElementById('venueName').focus();
-        }
-        function openOfficialModal() { 
-            showAdminSection('official');
-            document.getElementById('officialName').focus();
-        }
-        function openServiceModal() { 
-            showAdminSection('layanan');
-            document.getElementById('serviceName').focus();
-        }
-        
-        // Update dashboard statistics
-        function updateDashboardStats() {
-            document.getElementById('statsNews').textContent = newsData.length;
-            document.getElementById('statsSchedule').textContent = scheduleData.length;
-            document.getElementById('statsVenue').textContent = venueData.length;
-            document.getElementById('statsOfficial').textContent = officialData.length;
-        }
-
-        // Edit functions (placeholder)
-        function editNews(id) { alert('Fitur edit akan segera hadir!'); }
-        function editSchedule(id) { alert('Fitur edit akan segera hadir!'); }
-        function editMedal(id) { alert('Fitur edit akan segera hadir!'); }
-        function editVenue(id) { alert('Fitur edit akan segera hadir!'); }
-        function editOfficial(id) { alert('Fitur edit akan segera hadir!'); }
-        function editService(id) { alert('Fitur edit akan segera hadir!'); }
-        
-        // Filter functions
-        function filterVenues() {
-            const filter = document.getElementById('venueFilter').value;
-            const tbody = document.getElementById('venueTableBody');
-            const rows = tbody.getElementsByTagName('tr');
+        // Initialize the website
+        async function initializeWebsite() {
+            // Load data
+            await loadDataFromGitHub();
             
-            for (let row of rows) {
-                const typeCell = row.cells[1];
-                if (filter === '' || typeCell.textContent.includes(filter)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            }
+            // Display all sections
+            displayNews();
+            displaySchedule();
+            displayMedalStandings();
+            displayVenues();
+            displayServices();
+            displayLiveMatches();
+            displayLatestResults();
+            
+            // Start countdown timer
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+            
+            // Update live data every 30 seconds
+            setInterval(() => {
+                displayLiveMatches();
+                displayLatestResults();
+            }, 30000);
         }
-        
-        function filterOfficials() {
-            const filter = document.getElementById('officialFilter').value;
-            const tbody = document.getElementById('officialTableBody');
-            const rows = tbody.getElementsByTagName('tr');
-            
-            for (let row of rows) {
-                const positionCell = row.cells[1];
-                if (filter === '' || positionCell.textContent.includes(filter)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            }
-        }
-        
-        function filterServices() {
-            const filter = document.getElementById('serviceFilter').value;
-            const tbody = document.getElementById('serviceTableBody');
-            const rows = tbody.getElementsByTagName('tr');
-            
-            for (let row of rows) {
-                const categoryCell = row.cells[1];
-                if (filter === '' || categoryCell.textContent.includes(filter)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            }
-        }
-        
-        function showSettingsTab(tab) {
-            // Hide all settings content
-            const contents = document.querySelectorAll('.settings-content');
-            contents.forEach(content => content.classList.add('hidden'));
-            
-            // Show selected content
-            document.getElementById('settings-' + tab).classList.remove('hidden');
-            
-            // Update tab styles
-            const tabs = document.querySelectorAll('.settings-tab');
-            tabs.forEach(tabEl => {
-                tabEl.classList.remove('border-yellow-400', 'text-yellow-600');
-                tabEl.classList.add('border-transparent', 'text-gray-500');
-            });
-            
-            // Activate clicked tab
-            event.target.classList.remove('border-transparent', 'text-gray-500');
-            event.target.classList.add('border-yellow-400', 'text-yellow-600');
-        }
-        function resetTheme() { alert('Fitur akan segera hadir!'); }
-        function previewHeader() { alert('Fitur akan segera hadir!'); }
-        function previewFooter() { alert('Fitur akan segera hadir!'); }
+
+        // Start the website when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initializeWebsite);
     </script>
-    <!-- Login Screen -->
-    <div id="loginScreen" class="login-container flex items-center justify-center">
-        <div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md mx-4">
-            <div class="text-center mb-8">
-                <div class="w-20 h-20 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span class="text-3xl">🏆</span>
-                </div>
-                <h1 class="text-3xl font-bold text-blue-900 mb-2">Admin Panel</h1>
-                <p class="text-gray-600">PORPROV Kalsel 2025</p>
-            </div>
-            
-            <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-6">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Username</label>
-                    <input type="text" id="username" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent" placeholder="Masukkan username" required>
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
-                    <input type="password" id="password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent" placeholder="Masukkan password" required>
-                </div>
-                
-                <button type="submit" class="w-full btn-primary py-3 rounded-lg font-semibold">
-                    Masuk ke Admin Panel
-                </button>
-            </form>
-            
-            <div class="mt-6 p-4 bg-blue-50 rounded-lg">
-                <p class="text-sm text-blue-800 font-semibold">Demo Login:</p>
-                <p class="text-xs text-blue-600">Username: admin</p>
-                <p class="text-xs text-blue-600">Password: porprov2025</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Admin Dashboard -->
-    <div id="adminDashboard" class="hidden">
-        <!-- Header -->
-        <header class="gradient-bg text-white py-4 shadow-lg">
-            <div class="container mx-auto px-4">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center">
-                            <span class="text-xl font-bold text-blue-900">🏆</span>
-                        </div>
-                        <div>
-                            <h1 class="text-2xl font-bold">Admin Panel PORPROV Kalsel 2025</h1>
-                            <p class="text-blue-200 text-sm">Sistem Manajemen Konten</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-4">
-                        <div class="text-right">
-                            <p class="font-semibold">Admin KONI Tapin</p>
-                            <p class="text-blue-200 text-sm">Online</p>
-                        </div>
-                        <button onclick="logout()" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg font-semibold transition-colors">
-                            Logout
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <div class="flex">
-            <!-- Sidebar -->
-            <div class="admin-sidebar w-64 min-h-screen text-white">
-                <div class="p-6">
-                    <h2 class="text-lg font-bold mb-6">Menu Admin</h2>
-                    <nav class="space-y-2">
-                        <button onclick="showAdminSection('dashboard')" class="sidebar-item w-full text-left px-4 py-3 rounded-lg active">
-                            📊 Dashboard
-                        </button>
-                        <button onclick="showAdminSection('berita')" class="sidebar-item w-full text-left px-4 py-3 rounded-lg">
-                            📰 Kelola Berita
-                        </button>
-                        <button onclick="showAdminSection('jadwal')" class="sidebar-item w-full text-left px-4 py-3 rounded-lg">
-                            📅 Kelola Jadwal
-                        </button>
-                        <button onclick="showAdminSection('klasemen')" class="sidebar-item w-full text-left px-4 py-3 rounded-lg">
-                            🏆 Kelola Klasemen
-                        </button>
-                        <button onclick="showAdminSection('venue')" class="sidebar-item w-full text-left px-4 py-3 rounded-lg">
-                            🏟️ Kelola Venue
-                        </button>
-                        <button onclick="showAdminSection('official')" class="sidebar-item w-full text-left px-4 py-3 rounded-lg">
-                            👥 Kelola Official
-                        </button>
-                        <button onclick="showAdminSection('layanan')" class="sidebar-item w-full text-left px-4 py-3 rounded-lg">
-                            🛎️ Kelola Layanan
-                        </button>
-                        <button onclick="showAdminSection('pengaturan')" class="sidebar-item w-full text-left px-4 py-3 rounded-lg">
-                            ⚙️ Pengaturan
-                        </button>
-                    </nav>
-                </div>
-            </div>
-
-            <!-- Main Content -->
-            <div class="flex-1 p-6">
-                <!-- GitHub Sync Panel -->
-                <div class="github-sync-panel mb-6">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <h3 class="text-lg font-bold flex items-center">
-                                <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
-                                </svg>
-                                GitHub Sync Status
-                            </h3>
-                            <p class="text-sm opacity-75">Sinkronisasi data ke repository GitHub</p>
-                        </div>
-                        <div class="flex flex-wrap gap-2">
-                            <button onclick="syncAllToGitHub()" class="sync-button px-4 py-2 rounded-lg">
-                                🔄 Sync Semua Data
-                            </button>
-                            <button onclick="syncToGitHub('berita.json', newsData)" class="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700">
-                                📰 Berita
-                            </button>
-                            <button onclick="syncToGitHub('jadwal.json', scheduleData)" class="bg-green-600 text-white px-3 py-1 rounded text-sm hover:bg-green-700">
-                                📅 Jadwal
-                            </button>
-                            <button onclick="syncToGitHub('klasemen.json', medalData)" class="bg-yellow-600 text-white px-3 py-1 rounded text-sm hover:bg-yellow-700">
-                                🏆 Klasemen
-                            </button>
-                            <button onclick="syncToGitHub('venue.json', venueData)" class="bg-purple-600 text-white px-3 py-1 rounded text-sm hover:bg-purple-700">
-                                🏟️ Venue
-                            </button>
-                            <button onclick="syncToGitHub('official.json', officialData)" class="bg-indigo-600 text-white px-3 py-1 rounded text-sm hover:bg-indigo-700">
-                                👥 Official
-                            </button>
-                            <button onclick="syncToGitHub('layanan.json', serviceData)" class="bg-pink-600 text-white px-3 py-1 rounded text-sm hover:bg-pink-700">
-                                🛎️ Layanan
-                            </button>
-                        </div>
-                    </div>
-                    <div class="mt-4 text-sm">
-                        <p><strong>Repository:</strong> <span id="repoInfo">Belum dikonfigurasi</span></p>
-                        <p><strong>Status:</strong> <span id="syncStatus">Siap untuk sync</span></p>
-                    </div>
-                </div>
-
-                <!-- Dashboard Section -->
-                <div id="admin-dashboard" class="admin-section">
-                    <h2 class="text-3xl font-bold text-blue-900 mb-6">Dashboard Admin</h2>
-                    
-                    <!-- Quick Stats -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                        <div class="stats-widget rounded-lg p-6 admin-card">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <p class="text-gray-600 text-sm">Total Berita</p>
-                                    <p id="statsNews" class="text-3xl font-bold text-blue-900">0</p>
-                                </div>
-                                <div class="text-4xl">📰</div>
-                            </div>
-                        </div>
-                        
-                        <div class="stats-widget rounded-lg p-6 admin-card">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <p class="text-gray-600 text-sm">Jadwal Aktif</p>
-                                    <p id="statsSchedule" class="text-3xl font-bold text-green-600">0</p>
-                                </div>
-                                <div class="text-4xl">📅</div>
-                            </div>
-                        </div>
-                        
-                        <div class="stats-widget rounded-lg p-6 admin-card">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <p class="text-gray-600 text-sm">Venue Terdaftar</p>
-                                    <p id="statsVenue" class="text-3xl font-bold text-purple-600">0</p>
-                                </div>
-                                <div class="text-4xl">🏟️</div>
-                            </div>
-                        </div>
-                        
-                        <div class="stats-widget rounded-lg p-6 admin-card">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <p class="text-gray-600 text-sm">Official Aktif</p>
-                                    <p id="statsOfficial" class="text-3xl font-bold text-yellow-600">0</p>
-                                </div>
-                                <div class="text-4xl">👥</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Recent Activities -->
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="form-section p-6">
-                            <h3 class="text-xl font-bold text-blue-900 mb-4">Aktivitas Terbaru</h3>
-                            <div class="space-y-4">
-                                <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                                    <div>
-                                        <p class="font-semibold text-sm">Berita baru ditambahkan</p>
-                                        <p class="text-xs text-gray-500">5 menit yang lalu</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                                    <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
-                                    <div>
-                                        <p class="font-semibold text-sm">Jadwal pertandingan diperbarui</p>
-                                        <p class="text-xs text-gray-500">15 menit yang lalu</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                                    <div class="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                                    <div>
-                                        <p class="font-semibold text-sm">Klasemen medali diperbarui</p>
-                                        <p class="text-xs text-gray-500">30 menit yang lalu</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="form-section p-6">
-                            <h3 class="text-xl font-bold text-blue-900 mb-4">Quick Actions</h3>
-                            <div class="space-y-3">
-                                <button onclick="showAdminSection('berita')" class="w-full btn-primary py-3 rounded-lg">
-                                    + Tambah Berita Baru
-                                </button>
-                                <button onclick="showAdminSection('jadwal')" class="w-full btn-success py-3 rounded-lg">
-                                    📅 Update Jadwal
-                                </button>
-                                <button onclick="showAdminSection('klasemen')" class="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold">
-                                    🏆 Update Klasemen
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Kelola Berita Section -->
-                <div id="admin-berita" class="admin-section hidden">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-3xl font-bold text-blue-900">Kelola Berita</h2>
-                        <button onclick="openNewsModal()" class="btn-primary px-6 py-3 rounded-lg">
-                            + Tambah Berita Baru
-                        </button>
-                    </div>
-
-                    <!-- News Form -->
-                    <div class="form-section p-6 mb-6">
-                        <h3 class="text-xl font-bold text-blue-900 mb-4">Form Berita</h3>
-                        <form id="newsForm" class="space-y-4">
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Judul Berita</label>
-                                    <input type="text" id="newsTitle" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400" placeholder="Masukkan judul berita">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Kategori</label>
-                                    <select id="newsCategory" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400">
-                                        <option value="hasil">Hasil Pertandingan</option>
-                                        <option value="atlet">Profil Atlet</option>
-                                        <option value="venue">Info Venue</option>
-                                        <option value="acara">Acara Khusus</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Konten Berita</label>
-                                <textarea id="newsContent" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400" placeholder="Tulis konten berita..."></textarea>
-                            </div>
-                            <div class="flex space-x-4">
-                                <button type="submit" class="btn-primary px-6 py-2 rounded-lg">Simpan Berita</button>
-                                <button type="button" onclick="clearNewsForm()" class="bg-gray-500 text-white px-6 py-2 rounded-lg">Reset</button>
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- News List -->
-                    <div class="data-table">
-                        <div class="p-4 border-b">
-                            <h3 class="text-lg font-bold text-blue-900">Daftar Berita</h3>
-                        </div>
-                        <div class="overflow-x-auto">
-                            <table class="w-full">
-                                <thead class="bg-gray-50">
-                                    <tr>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Judul</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Kategori</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Tanggal</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="newsTableBody" class="divide-y divide-gray-200">
-                                    <!-- News items will be populated here -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Kelola Jadwal Section -->
-                <div id="admin-jadwal" class="admin-section hidden">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-3xl font-bold text-blue-900">Kelola Jadwal</h2>
-                        <button onclick="openScheduleModal()" class="btn-primary px-6 py-3 rounded-lg">
-                            + Tambah Jadwal Baru
-                        </button>
-                    </div>
-
-                    <!-- Schedule Form -->
-                    <div class="form-section p-6 mb-6">
-                        <h3 class="text-xl font-bold text-blue-900 mb-4">Form Jadwal Pertandingan</h3>
-                        <form id="scheduleForm" class="space-y-4">
-                            <div class="grid md:grid-cols-4 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Kategori</label>
-                                    <select id="scheduleCategory" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400">
-                                        <option value="">Pilih Kategori</option>
-                                        <option value="Putra">👨 Putra</option>
-                                        <option value="Putri">👩 Putri</option>
-                                        <option value="Beregu Putra">👨‍👨‍👦 Beregu Putra</option>
-                                        <option value="Beregu Putri">👩‍👩‍👧 Beregu Putri</option>
-                                        <option value="Beregu Campuran">👫 Beregu Campuran</option>
-                                        <option value="Junior Putra">🧒 Junior Putra</option>
-                                        <option value="Junior Putri">👧 Junior Putri</option>
-                                        <option value="Senior Putra">👨‍🦳 Senior Putra</option>
-                                        <option value="Senior Putri">👩‍🦳 Senior Putri</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Cabang Olahraga</label>
-                                    <select id="scheduleSport" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400">
-                                        <option value="">Pilih Cabang Olahraga</option>
-                                        <option value="Atletik">🏃‍♂️ Atletik</option>
-                                        <option value="Renang">🏊‍♂️ Renang</option>
-                                        <option value="Sepak Bola">⚽ Sepak Bola</option>
-                                        <option value="Bulu Tangkis">🏸 Bulu Tangkis</option>
-                                        <option value="Bola Basket">🏀 Bola Basket</option>
-                                        <option value="Bola Voli">🏐 Bola Voli</option>
-                                        <option value="Tenis Meja">🏓 Tenis Meja</option>
-                                        <option value="Tenis Lapangan">🎾 Tenis Lapangan</option>
-                                        <option value="Futsal">⚽ Futsal</option>
-                                        <option value="Karate">🥋 Karate</option>
-                                        <option value="Taekwondo">🥋 Taekwondo</option>
-                                        <option value="Pencak Silat">🥋 Pencak Silat</option>
-                                        <option value="Judo">🥋 Judo</option>
-                                        <option value="Gulat">🤼‍♂️ Gulat</option>
-                                        <option value="Tinju">🥊 Tinju</option>
-                                        <option value="Angkat Besi">🏋️‍♂️ Angkat Besi</option>
-                                        <option value="Panahan">🏹 Panahan</option>
-                                        <option value="Menembak">🎯 Menembak</option>
-                                        <option value="Sepak Takraw">🦵 Sepak Takraw</option>
-                                        <option value="Catur">♟️ Catur</option>
-                                        <option value="Bridge">🃏 Bridge</option>
-                                        <option value="Billiard">🎱 Billiard</option>
-                                        <option value="Bowling">🎳 Bowling</option>
-                                        <option value="Dayung">🚣‍♂️ Dayung</option>
-                                        <option value="Kano">🛶 Kano</option>
-                                        <option value="Senam">🤸‍♀️ Senam</option>
-                                        <option value="Panjat Tebing">🧗‍♂️ Panjat Tebing</option>
-                                        <option value="Sepeda">🚴‍♂️ Sepeda</option>
-                                        <option value="Triathlon">🏊‍♂️🚴‍♂️🏃‍♂️ Triathlon</option>
-                                        <option value="Softball">🥎 Softball</option>
-                                        <option value="Baseball">⚾ Baseball</option>
-                                        <option value="Wushu">🥋 Wushu</option>
-                                        <option value="Kempo">🥋 Kempo</option>
-                                        <option value="Tarung Derajat">🥋 Tarung Derajat</option>
-                                        <option value="Yudo">🥋 Yudo</option>
-                                        <option value="Jujitsu">🥋 Jujitsu</option>
-                                        <option value="Sambo">🥋 Sambo</option>
-                                        <option value="Muay Thai">🥊 Muay Thai</option>
-                                        <option value="Kickboxing">🥊 Kickboxing</option>
-                                        <option value="MMA">🥊 MMA</option>
-                                        <option value="Esports">🎮 Esports</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal</label>
-                                    <input type="date" id="scheduleDate" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Waktu</label>
-                                    <input type="time" id="scheduleTime" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400">
-                                </div>
-                            </div>
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Pertandingan</label>
-                                    <input type="text" id="scheduleMatch" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400" placeholder="Contoh: Tapin vs Banjar">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Venue</label>
-                                    <select id="scheduleVenue" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400">
-                                        <option value="">Pilih Venue</option>
-                                        <option value="Stadion Demang Lehman">🏟️ Stadion Demang Lehman</option>
-                                        <option value="GOR Tuntung Pandang">🏟️ GOR Tuntung Pandang</option>
-                                        <option value="Aquatic Center Tapin">🏊‍♂️ Aquatic Center Tapin</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="flex space-x-4">
-                                <button type="submit" class="btn-primary px-6 py-2 rounded-lg">Simpan Jadwal</button>
-                                <button type="button" onclick="clearScheduleForm()" class="bg-gray-500 text-white px-6 py-2 rounded-lg">Reset</button>
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- Schedule List -->
-                    <div class="data-table">
-                        <div class="p-4 border-b">
-                            <h3 class="text-lg font-bold text-blue-900">Daftar Jadwal</h3>
-                        </div>
-                        <div class="overflow-x-auto">
-                            <table class="w-full">
-                                <thead class="bg-gray-50">
-                                    <tr>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Tanggal</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Waktu</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Cabor</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Kategori</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Pertandingan</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Venue</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="scheduleTableBody" class="divide-y divide-gray-200">
-                                    <!-- Schedule items will be populated here -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Kelola Klasemen Section -->
-                <div id="admin-klasemen" class="admin-section hidden">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-3xl font-bold text-blue-900">Kelola Klasemen Medali</h2>
-                        <button onclick="openMedalModal()" class="btn-primary px-6 py-3 rounded-lg">
-                            + Update Medali
-                        </button>
-                    </div>
-
-                    <!-- Medal Update Form -->
-                    <div class="form-section p-6 mb-6">
-                        <h3 class="text-xl font-bold text-blue-900 mb-4">Update Perolehan Medali</h3>
-                        <form id="medalForm" class="space-y-4">
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Kabupaten/Kota</label>
-                                    <select id="medalRegion" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400">
-                                        <option value="">Pilih Kabupaten/Kota</option>
-                                        <option value="Tapin">Kabupaten Tapin</option>
-                                        <option value="Banjar">Kabupaten Banjar</option>
-                                        <option value="Banjarmasin">Kota Banjarmasin</option>
-                                        <option value="Barito Kuala">Kabupaten Barito Kuala</option>
-                                        <option value="Tanah Laut">Kabupaten Tanah Laut</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Cabang Olahraga</label>
-                                    <input type="text" id="medalSport" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400" placeholder="Nama cabang olahraga">
-                                </div>
-                            </div>
-                            <div class="grid md:grid-cols-3 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Medali Emas 🥇</label>
-                                    <input type="number" id="medalGold" min="0" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400" placeholder="0">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Medali Perak 🥈</label>
-                                    <input type="number" id="medalSilver" min="0" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400" placeholder="0">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Medali Perunggu 🥉</label>
-                                    <input type="number" id="medalBronze" min="0" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400" placeholder="0">
-                                </div>
-                            </div>
-                            <div class="flex space-x-4">
-                                <button type="submit" class="btn-primary px-6 py-2 rounded-lg">Update Medali</button>
-                                <button type="button" onclick="clearMedalForm()" class="bg-gray-500 text-white px-6 py-2 rounded-lg">Reset</button>
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- Medal Standings -->
-                    <div class="data-table">
-                        <div class="p-4 border-b">
-                            <h3 class="text-lg font-bold text-blue-900">Klasemen Sementara</h3>
-                        </div>
-                        <div class="overflow-x-auto">
-                            <table class="w-full">
-                                <thead class="bg-gray-50">
-                                    <tr>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Peringkat</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Kabupaten/Kota</th>
-                                        <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">🥇</th>
-                                        <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">🥈</th>
-                                        <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">🥉</th>
-                                        <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Total</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="medalTableBody" class="divide-y divide-gray-200">
-                                    <!-- Medal standings will be populated here -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Kelola Venue Section -->
-                <div id="admin-venue" class="admin-section hidden">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-3xl font-bold text-blue-900">Kelola Venue</h2>
-                        <button onclick="openVenueModal()" class="btn-primary px-6 py-3 rounded-lg">
-                            + Tambah Venue Baru
-                        </button>
-                    </div>
-
-                    <!-- Venue Form -->
-                    <div class="form-section p-6 mb-6">
-                        <h3 class="text-xl font-bold text-blue-900 mb-4">Form Venue</h3>
-                        <form id="venueForm" class="space-y-4">
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Nama Venue</label>
-                                    <input type="text" id="venueName" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400" placeholder="Contoh: Stadion Demang Lehman">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Tipe Venue</label>
-                                    <select id="venueType" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400">
-                                        <option value="">Pilih Tipe</option>
-                                        <option value="Stadion">🏟️ Stadion</option>
-                                        <option value="GOR">🏢 Gedung Olahraga (GOR)</option>
-                                        <option value="Lapangan">🏃‍♂️ Lapangan</option>
-                                        <option value="Kolam Renang">🏊‍♂️ Kolam Renang</option>
-                                        <option value="Hall">🏛️ Hall/Aula</option>
-                                        <option value="Arena">🥊 Arena</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Kapasitas</label>
-                                    <input type="number" id="venueCapacity" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400" placeholder="Contoh: 5000">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Lokasi</label>
-                                    <input type="text" id="venueLocation" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400" placeholder="Contoh: Rantau, Tapin">
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Cabang Olahraga</label>
-                                <input type="text" id="venueSports" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400" placeholder="Contoh: Sepak Bola, Atletik">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Fasilitas</label>
-                                <textarea id="venueFacilities" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400" placeholder="Contoh: Parkir luas, Toilet, Kantin, Sound system"></textarea>
-                            </div>
-                            <div class="flex space-x-4">
-                                <button type="submit" class="btn-primary px-6 py-2 rounded-lg">Simpan Venue</button>
-                                <button type="button" onclick="clearVenueForm()" class="bg-gray-500 text-white px-6 py-2 rounded-lg">Reset</button>
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- Venue List -->
-                    <div class="data-table">
-                        <div class="p-4 border-b flex justify-between items-center">
-                            <h3 class="text-lg font-bold text-blue-900">Daftar Venue</h3>
-                            <div class="flex space-x-2">
-                                <select id="venueFilter" onchange="filterVenues()" class="px-3 py-1 border border-gray-300 rounded text-sm">
-                                    <option value="">Semua Tipe</option>
-                                    <option value="Stadion">Stadion</option>
-                                    <option value="GOR">GOR</option>
-                                    <option value="Lapangan">Lapangan</option>
-                                    <option value="Kolam Renang">Kolam Renang</option>
-                                    <option value="Hall">Hall</option>
-                                    <option value="Arena">Arena</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="overflow-x-auto">
-                            <table class="w-full">
-                                <thead class="bg-gray-50">
-                                    <tr>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nama Venue</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Tipe</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Kapasitas</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Lokasi</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Cabor</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="venueTableBody" class="divide-y divide-gray-200">
-                                    <!-- Venue items will be populated here -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Kelola Official Section -->
-                <div id="admin-official" class="admin-section hidden">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-3xl font-bold text-blue-900">Kelola Official</h2>
-                        <button onclick="openOfficialModal()" class="btn-primary px-6 py-3 rounded-lg">
-                            + Tambah Official Baru
-                        </button>
-                    </div>
-
-                    <!-- Official Form -->
-                    <div class="form-section p-6 mb-6">
-                        <h3 class="text-xl font-bold text-blue-900 mb-4">Form Official</h3>
-                        <form id="officialForm" class="space-y-4">
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
-                                    <input type="text" id="officialName" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400" placeholder="Contoh: Dr. Ahmad Suryadi">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Jabatan</label>
-                                    <select id="officialPosition" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400">
-                                        <option value="">Pilih Jabatan</option>
-                                        <option value="Ketua Umum">👑 Ketua Umum</option>
-                                        <option value="Wakil Ketua">🤝 Wakil Ketua</option>
-                                        <option value="Sekretaris Jenderal">📋 Sekretaris Jenderal</option>
-                                        <option value="Bendahara">💰 Bendahara</option>
-                                        <option value="Ketua Bidang">📊 Ketua Bidang</option>
-                                        <option value="Wasit">⚖️ Wasit</option>
-                                        <option value="Juri">👨‍⚖️ Juri</option>
-                                        <option value="Technical Delegate">🔧 Technical Delegate</option>
-                                        <option value="Media Officer">📺 Media Officer</option>
-                                        <option value="Medical Officer">🏥 Medical Officer</option>
-                                        <option value="Security Officer">🛡️ Security Officer</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Organisasi</label>
-                                    <input type="text" id="officialOrganization" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400" placeholder="Contoh: KONI Kalsel">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Cabang Olahraga</label>
-                                    <input type="text" id="officialSport" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400" placeholder="Contoh: Sepak Bola">
-                                </div>
-                            </div>
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">No. Telepon</label>
-                                    <input type="tel" id="officialPhone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400" placeholder="Contoh: +62 812-3456-7890">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                                    <input type="email" id="officialEmail" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400" placeholder="Contoh: ahmad@koni.id">
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Sertifikasi</label>
-                                <textarea id="officialCertification" rows="2" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400" placeholder="Contoh: Wasit FIFA Level 1, Sertifikat Pelatih AFC"></textarea>
-                            </div>
-                            <div class="flex space-x-4">
-                                <button type="submit" class="btn-primary px-6 py-2 rounded-lg">Simpan Official</button>
-                                <button type="button" onclick="clearOfficialForm()" class="bg-gray-500 text-white px-6 py-2 rounded-lg">Reset</button>
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- Official List -->
-                    <div class="data-table">
-                        <div class="p-4 border-b flex justify-between items-center">
-                            <h3 class="text-lg font-bold text-blue-900">Daftar Official</h3>
-                            <div class="flex space-x-2">
-                                <select id="officialFilter" onchange="filterOfficials()" class="px-3 py-1 border border-gray-300 rounded text-sm">
-                                    <option value="">Semua Jabatan</option>
-                                    <option value="Ketua Umum">Ketua Umum</option>
-                                    <option value="Wasit">Wasit</option>
-                                    <option value="Juri">Juri</option>
-                                    <option value="Technical Delegate">Technical Delegate</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="overflow-x-auto">
-                            <table class="w-full">
-                                <thead class="bg-gray-50">
-                                    <tr>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nama</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Jabatan</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Organisasi</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Cabor</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Kontak</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="officialTableBody" class="divide-y divide-gray-200">
-                                    <!-- Official items will be populated here -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Kelola Layanan Section -->
-                <div id="admin-layanan" class="admin-section hidden">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-3xl font-bold text-blue-900">Kelola Layanan</h2>
-                        <button onclick="openServiceModal()" class="btn-primary px-6 py-3 rounded-lg">
-                            + Tambah Layanan Baru
-                        </button>
-                    </div>
-
-                    <!-- Service Form -->
-                    <div class="form-section p-6 mb-6">
-                        <h3 class="text-xl font-bold text-blue-900 mb-4">Form Layanan</h3>
-                        <form id="serviceForm" class="space-y-4">
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Nama Layanan</label>
-                                    <input type="text" id="serviceName" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400" placeholder="Contoh: Layanan Medis">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Kategori</label>
-                                    <select id="serviceCategory" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400">
-                                        <option value="">Pilih Kategori</option>
-                                        <option value="Medis">🏥 Medis</option>
-                                        <option value="Transportasi">🚌 Transportasi</option>
-                                        <option value="Akomodasi">🏨 Akomodasi</option>
-                                        <option value="Konsumsi">🍽️ Konsumsi</option>
-                                        <option value="Keamanan">🛡️ Keamanan</option>
-                                        <option value="Informasi">ℹ️ Informasi</option>
-                                        <option value="Teknis">🔧 Teknis</option>
-                                        <option value="Media">📺 Media</option>
-                                        <option value="Protokol">🎖️ Protokol</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Deskripsi</label>
-                                <textarea id="serviceDescription" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400" placeholder="Deskripsi lengkap layanan..."></textarea>
-                            </div>
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Lokasi</label>
-                                    <input type="text" id="serviceLocation" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400" placeholder="Contoh: Posko Utama">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Jam Operasional</label>
-                                    <input type="text" id="serviceHours" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400" placeholder="Contoh: 24 Jam">
-                                </div>
-                            </div>
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Kontak</label>
-                                    <input type="text" id="serviceContact" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400" placeholder="Contoh: +62 812-3456-7890">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
-                                    <select id="serviceStatus" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400">
-                                        <option value="Aktif">🟢 Aktif</option>
-                                        <option value="Tidak Aktif">🔴 Tidak Aktif</option>
-                                        <option value="Maintenance">🟡 Maintenance</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="flex space-x-4">
-                                <button type="submit" class="btn-primary px-6 py-2 rounded-lg">Simpan Layanan</button>
-                                <button type="button" onclick="clearServiceForm()" class="bg-gray-500 text-white px-6 py-2 rounded-lg">Reset</button>
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- Service List -->
-                    <div class="data-table">
-                        <div class="p-4 border-b flex justify-between items-center">
-                            <h3 class="text-lg font-bold text-blue-900">Daftar Layanan</h3>
-                            <div class="flex space-x-2">
-                                <select id="serviceFilter" onchange="filterServices()" class="px-3 py-1 border border-gray-300 rounded text-sm">
-                                    <option value="">Semua Kategori</option>
-                                    <option value="Medis">Medis</option>
-                                    <option value="Transportasi">Transportasi</option>
-                                    <option value="Akomodasi">Akomodasi</option>
-                                    <option value="Konsumsi">Konsumsi</option>
-                                    <option value="Keamanan">Keamanan</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="overflow-x-auto">
-                            <table class="w-full">
-                                <thead class="bg-gray-50">
-                                    <tr>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Layanan</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Kategori</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Lokasi</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Jam</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="serviceTableBody" class="divide-y divide-gray-200">
-                                    <!-- Service items will be populated here -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="admin-pengaturan" class="admin-section hidden">
-                    <h2 class="text-3xl font-bold text-blue-900 mb-6">Pengaturan Sistem</h2>
-                    
-                    <!-- GitHub Configuration -->
-                    <div class="form-section p-6 mb-6">
-                        <h3 class="text-xl font-bold text-blue-900 mb-4">🔧 Konfigurasi GitHub</h3>
-                        <div class="space-y-4">
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Username GitHub</label>
-                                    <input type="text" id="githubUsername" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400" placeholder="username-github-anda">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Nama Repository</label>
-                                    <input type="text" id="githubRepo" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400" placeholder="porprov-kalsel-2025-data">
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Personal Access Token</label>
-                                <input type="password" id="githubToken" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
-                                <p class="text-xs text-gray-500 mt-1">Token akan disimpan di browser Anda secara lokal</p>
-                            </div>
-                            <div class="flex space-x-4">
-                                <button onclick="saveGitHubConfig()" class="btn-primary px-6 py-2 rounded-lg">
-                                    💾 Simpan Konfigurasi
-                                </button>
-                                <button onclick="testGitHubConnection()" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold">
-                                    🔍 Test Koneksi
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Instructions -->
-                    <div class="form-section p-6">
-                        <h3 class="text-xl font-bold text-blue-900 mb-4">📖 Petunjuk Setup</h3>
-                        <div class="space-y-4 text-sm">
-                            <div class="p-4 bg-blue-50 rounded-lg">
-                                <h4 class="font-semibold text-blue-900 mb-2">1. Buat Repository GitHub</h4>
-                                <p class="text-blue-800">Buat repository baru dengan nama <code>porprov-kalsel-2025-data</code> dan set sebagai public.</p>
-                            </div>
-                            <div class="p-4 bg-green-50 rounded-lg">
-                                <h4 class="font-semibold text-green-900 mb-2">2. Buat Personal Access Token</h4>
-                                <p class="text-green-800">Di GitHub Settings > Developer settings > Personal access tokens > Generate new token dengan scope <code>repo</code>.</p>
-                            </div>
-                            <div class="p-4 bg-yellow-50 rounded-lg">
-                                <h4 class="font-semibold text-yellow-900 mb-2">3. Konfigurasi Admin Panel</h4>
-                                <p class="text-yellow-800">Masukkan username, repository, dan token di form di atas, lalu klik "Simpan Konfigurasi".</p>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9888e4c3d0259daa',t:'MTc1OTQ1NzMyNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'988876bd80349fda',t:'MTc1OTQ1MjgyMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
