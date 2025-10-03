@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PORPROV Kalsel 2025 - Pekan Olahraga Provinsi Kalimantan Selatan</title>
+    <title>PORPROV Kalimantan Selatan 2025 - Tapin</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
@@ -19,11 +19,10 @@
         }
         
         .hero-section {
-            background: linear-gradient(135deg, rgba(0, 32, 74, 0.9) 0%, rgba(30, 58, 138, 0.9) 100%), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="stadium" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="2" fill="rgba(248,180,0,0.1)"/></pattern></defs><rect width="1200" height="600" fill="url(%23stadium)"/></svg>');
+            background: linear-gradient(135deg, rgba(0, 32, 74, 0.95) 0%, rgba(30, 58, 138, 0.95) 100%), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="stadium" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="2" fill="rgba(248,180,0,0.1)"/></pattern></defs><rect width="1000" height="1000" fill="url(%23stadium)"/></svg>');
             background-size: cover;
             background-position: center;
-            min-height: 100vh;
         }
         
         .card-hover {
@@ -69,75 +68,37 @@
         }
         
         .schedule-item:hover {
-            background: #fffbf0;
+            background: #fef3c7;
             transform: translateX(5px);
         }
         
         .venue-card {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
             transition: all 0.3s ease;
         }
         
         .venue-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            border-color: #F8B400;
+            box-shadow: 0 8px 25px rgba(248, 180, 0, 0.15);
         }
         
-        .floating-action {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1000;
-        }
-        
-        .pulse-animation {
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-        
-        .countdown-digit {
-            background: linear-gradient(135deg, #F8B400 0%, #fbbf24 100%);
-            color: #00204A;
+        .service-card {
+            background: white;
             border-radius: 12px;
-            font-weight: bold;
-            text-align: center;
-            padding: 16px;
-            min-width: 80px;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
         }
         
-        .live-indicator {
-            background: #ef4444;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            animation: pulse 2s infinite;
+        .service-card:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.1);
         }
         
-        .category-badge {
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-        
-        .category-hasil { background: #dcfce7; color: #166534; }
-        .category-atlet { background: #dbeafe; color: #1e40af; }
-        .category-venue { background: #fef3c7; color: #92400e; }
-        .category-acara { background: #fce7f3; color: #be185d; }
-        
-        .stats-counter {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #F8B400;
+        .floating-nav {
+            backdrop-filter: blur(10px);
+            background: rgba(0, 32, 74, 0.95);
         }
         
         .section-title {
@@ -152,231 +113,328 @@
             left: 0;
             width: 60px;
             height: 4px;
-            background: #F8B400;
+            background: linear-gradient(90deg, #F8B400, #fbbf24);
             border-radius: 2px;
         }
         
-        .nav-link {
-            position: relative;
-            transition: all 0.3s ease;
+        .live-indicator {
+            animation: pulse 2s infinite;
         }
         
-        .nav-link:hover {
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .status-live {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+        }
+        
+        .status-completed {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+        
+        .status-scheduled {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+        }
+        
+        .countdown-timer {
+            background: linear-gradient(135deg, #F8B400 0%, #fbbf24 100%);
+            color: #00204A;
+            font-weight: bold;
+            border-radius: 8px;
+            padding: 8px 16px;
+            display: inline-block;
+        }
+        
+        .stats-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #F8B400 0%, #fbbf24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .tab-button {
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .tab-button.active {
+            border-bottom-color: #F8B400;
+            background: rgba(248, 180, 0, 0.1);
             color: #F8B400;
         }
         
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
             left: 0;
-            width: 0;
-            height: 2px;
-            background: #F8B400;
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
+            top: 0;
             width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
         }
         
-        .mobile-menu {
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
-        .mobile-menu.active {
-            transform: translateX(0);
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            max-width: 90%;
+            max-height: 90%;
+            overflow-y: auto;
         }
         
-        .loading-spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #F8B400;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
+        .hidden {
+            display: none !important;
         }
         
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .filter-button {
+            transition: all 0.3s ease;
+            border: 2px solid #e5e7eb;
+        }
+        
+        .filter-button.active {
+            border-color: #F8B400;
+            background: #F8B400;
+            color: #00204A;
         }
     </style>
 </head>
 <body class="bg-gray-50">
     <!-- Navigation -->
-    <nav class="gradient-bg text-white shadow-lg fixed w-full top-0 z-50">
+    <nav class="floating-nav fixed top-0 w-full z-50 shadow-lg">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between py-4">
-                <!-- Logo -->
                 <div class="flex items-center space-x-4">
                     <div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center">
-                        <span class="text-xl font-bold text-blue-900">🏆</span>
+                        <span class="text-2xl font-bold text-blue-900">🏆</span>
                     </div>
                     <div>
-                        <h1 class="text-xl font-bold">PORPROV Kalsel 2025</h1>
+                        <h1 class="text-xl font-bold text-white">PORPROV Kalsel 2025</h1>
                         <p class="text-blue-200 text-sm">Kabupaten Tapin</p>
                     </div>
                 </div>
                 
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#beranda" class="nav-link">Beranda</a>
-                    <a href="#berita" class="nav-link">Berita</a>
-                    <a href="#jadwal" class="nav-link">Jadwal</a>
-                    <a href="#klasemen" class="nav-link">Klasemen</a>
-                    <a href="#venue" class="nav-link">Venue</a>
-                    <a href="#layanan" class="nav-link">Layanan</a>
-                    <a href="#kontak" class="nav-link">Kontak</a>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#beranda" class="text-white hover:text-yellow-400 transition-colors">Beranda</a>
+                    <a href="#berita" class="text-white hover:text-yellow-400 transition-colors">Berita</a>
+                    <a href="#jadwal" class="text-white hover:text-yellow-400 transition-colors">Jadwal</a>
+                    <a href="#klasemen" class="text-white hover:text-yellow-400 transition-colors">Klasemen</a>
+                    <a href="#venue" class="text-white hover:text-yellow-400 transition-colors">Venue</a>
+                    <a href="#official" class="text-white hover:text-yellow-400 transition-colors">Official</a>
+                    <a href="#layanan" class="text-white hover:text-yellow-400 transition-colors">Layanan</a>
+                    
+                    <!-- Quick Menu Dropdown -->
+                    <div class="relative">
+                        <button onclick="toggleQuickMenu()" class="flex items-center space-x-2 bg-yellow-400 text-blue-900 px-4 py-2 rounded-full font-semibold hover:bg-yellow-300 transition-all">
+                            <span>📋</span>
+                            <span>Menu Cepat</span>
+                            <svg class="w-4 h-4 transition-transform" id="quickMenuArrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        
+                        <div id="quickMenuDropdown" class="hidden absolute right-0 mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-gray-200 z-50">
+                            <div class="p-4">
+                                <h3 class="text-lg font-bold text-blue-900 mb-4 text-center">🚀 Akses Cepat</h3>
+                                
+                                <!-- Quick Actions Grid -->
+                                <div class="grid grid-cols-2 gap-3 mb-4">
+                                    <button onclick="scrollToSection('#jadwal'); toggleQuickMenu();" class="flex flex-col items-center p-3 bg-blue-50 hover:bg-blue-100 rounded-xl transition-all">
+                                        <span class="text-2xl mb-1">📅</span>
+                                        <span class="text-sm font-semibold text-blue-900">Jadwal Hari Ini</span>
+                                    </button>
+                                    
+                                    <button onclick="scrollToSection('#klasemen'); toggleQuickMenu();" class="flex flex-col items-center p-3 bg-yellow-50 hover:bg-yellow-100 rounded-xl transition-all">
+                                        <span class="text-2xl mb-1">🏆</span>
+                                        <span class="text-sm font-semibold text-blue-900">Klasemen Live</span>
+                                    </button>
+                                    
+                                    <button onclick="scrollToSection('#berita'); toggleQuickMenu();" class="flex flex-col items-center p-3 bg-green-50 hover:bg-green-100 rounded-xl transition-all">
+                                        <span class="text-2xl mb-1">📰</span>
+                                        <span class="text-sm font-semibold text-blue-900">Berita Terbaru</span>
+                                    </button>
+                                    
+                                    <button onclick="scrollToSection('#venue'); toggleQuickMenu();" class="flex flex-col items-center p-3 bg-purple-50 hover:bg-purple-100 rounded-xl transition-all">
+                                        <span class="text-2xl mb-1">🏟️</span>
+                                        <span class="text-sm font-semibold text-blue-900">Lokasi Venue</span>
+                                    </button>
+                                </div>
+                                
+                                <!-- Live Updates -->
+                                <div class="border-t pt-4">
+                                    <h4 class="text-sm font-bold text-gray-700 mb-3">🔴 Update Live</h4>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center justify-between p-2 bg-red-50 rounded-lg">
+                                            <span class="text-sm text-red-800">🏸 Final Bulu Tangkis</span>
+                                            <span class="text-xs bg-red-600 text-white px-2 py-1 rounded-full">LIVE</span>
+                                        </div>
+                                        <div class="flex items-center justify-between p-2 bg-blue-50 rounded-lg">
+                                            <span class="text-sm text-blue-800">🏃‍♂️ Atletik 200m</span>
+                                            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">LIVE</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Quick Stats -->
+                                <div class="border-t pt-4 mt-4">
+                                    <h4 class="text-sm font-bold text-gray-700 mb-3">📊 Statistik Cepat</h4>
+                                    <div class="grid grid-cols-3 gap-2 text-center">
+                                        <div class="p-2 bg-gray-50 rounded-lg">
+                                            <div class="text-lg font-bold text-blue-900" id="quickTotalMedals">0</div>
+                                            <div class="text-xs text-gray-600">Medali</div>
+                                        </div>
+                                        <div class="p-2 bg-gray-50 rounded-lg">
+                                            <div class="text-lg font-bold text-blue-900" id="quickLiveEvents">2</div>
+                                            <div class="text-xs text-gray-600">Live</div>
+                                        </div>
+                                        <div class="p-2 bg-gray-50 rounded-lg">
+                                            <div class="text-lg font-bold text-blue-900" id="quickTodayEvents">5</div>
+                                            <div class="text-xs text-gray-600">Hari Ini</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
-                <!-- Mobile Menu Button -->
-                <button id="mobileMenuBtn" class="md:hidden">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="mobile-menu md:hidden fixed top-0 right-0 w-64 h-full bg-blue-900 shadow-lg">
-            <div class="p-6">
-                <button id="closeMobileMenu" class="float-right text-white">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-                <div class="clear-both mt-8 space-y-4">
-                    <a href="#beranda" class="block py-2 text-white hover:text-yellow-400">Beranda</a>
-                    <a href="#berita" class="block py-2 text-white hover:text-yellow-400">Berita</a>
-                    <a href="#jadwal" class="block py-2 text-white hover:text-yellow-400">Jadwal</a>
-                    <a href="#klasemen" class="block py-2 text-white hover:text-yellow-400">Klasemen</a>
-                    <a href="#venue" class="block py-2 text-white hover:text-yellow-400">Venue</a>
-                    <a href="#layanan" class="block py-2 text-white hover:text-yellow-400">Layanan</a>
-                    <a href="#kontak" class="block py-2 text-white hover:text-yellow-400">Kontak</a>
+                <div class="flex items-center space-x-4">
+                    <div class="countdown-timer">
+                        <span id="countdown">Loading...</span>
+                    </div>
+                    <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="beranda" class="hero-section flex items-center justify-center text-white">
-        <div class="container mx-auto px-4 text-center">
-            <div class="max-w-4xl mx-auto">
-                <h1 class="text-5xl md:text-7xl font-bold mb-6">
-                    PORPROV KALSEL
-                    <span class="block text-yellow-400">2025</span>
-                </h1>
-                <p class="text-xl md:text-2xl mb-8 text-blue-200">
-                    Pekan Olahraga Provinsi Kalimantan Selatan
-                </p>
-                <p class="text-lg mb-12 text-blue-100">
-                    🏟️ Kabupaten Tapin • 📅 15-25 Januari 2025 • 🏆 35+ Cabang Olahraga
-                </p>
-                
-                <!-- Countdown Timer -->
-                <div class="mb-12">
-                    <h3 class="text-2xl font-bold mb-6">Countdown Pembukaan</h3>
-                    <div id="countdown" class="flex justify-center space-x-4">
-                        <div class="countdown-digit">
-                            <div id="days" class="text-3xl">00</div>
-                            <div class="text-sm">Hari</div>
-                        </div>
-                        <div class="countdown-digit">
-                            <div id="hours" class="text-3xl">00</div>
-                            <div class="text-sm">Jam</div>
-                        </div>
-                        <div class="countdown-digit">
-                            <div id="minutes" class="text-3xl">00</div>
-                            <div class="text-sm">Menit</div>
-                        </div>
-                        <div class="countdown-digit">
-                            <div id="seconds" class="text-3xl">00</div>
-                            <div class="text-sm">Detik</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- CTA Buttons -->
-                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                    <a href="#jadwal" class="gold-gradient text-blue-900 px-8 py-4 rounded-full font-bold text-lg hover:shadow-lg transition-all">
-                        📅 Lihat Jadwal Pertandingan
-                    </a>
-                    <a href="#klasemen" class="border-2 border-yellow-400 text-yellow-400 px-8 py-4 rounded-full font-bold text-lg hover:bg-yellow-400 hover:text-blue-900 transition-all">
-                        🏆 Klasemen Medali
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Quick Stats -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <div class="stats-counter" id="statsAthletes">2,500+</div>
-                    <p class="text-gray-600 font-semibold">Atlet</p>
-                </div>
-                <div class="text-center">
-                    <div class="stats-counter" id="statsSports">35+</div>
-                    <p class="text-gray-600 font-semibold">Cabang Olahraga</p>
-                </div>
-                <div class="text-center">
-                    <div class="stats-counter" id="statsRegions">13</div>
-                    <p class="text-gray-600 font-semibold">Kabupaten/Kota</p>
-                </div>
-                <div class="text-center">
-                    <div class="stats-counter" id="statsVenues">15+</div>
-                    <p class="text-gray-600 font-semibold">Venue</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Live Updates -->
-    <section class="py-16 bg-gradient-to-r from-blue-50 to-yellow-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="section-title text-4xl font-bold text-blue-900 mb-4">Live Updates</h2>
-                <p class="text-gray-600 text-lg">Informasi terkini dari PORPROV Kalsel 2025</p>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden fixed top-20 left-0 right-0 bg-blue-900 z-40 md:hidden">
+        <div class="px-4 py-6">
+            <!-- Navigation Links -->
+            <div class="space-y-4 mb-6">
+                <a href="#beranda" onclick="toggleMobileMenu()" class="block text-white hover:text-yellow-400 transition-colors">🏠 Beranda</a>
+                <a href="#berita" onclick="toggleMobileMenu()" class="block text-white hover:text-yellow-400 transition-colors">📰 Berita</a>
+                <a href="#jadwal" onclick="toggleMobileMenu()" class="block text-white hover:text-yellow-400 transition-colors">📅 Jadwal</a>
+                <a href="#klasemen" onclick="toggleMobileMenu()" class="block text-white hover:text-yellow-400 transition-colors">🏆 Klasemen</a>
+                <a href="#venue" onclick="toggleMobileMenu()" class="block text-white hover:text-yellow-400 transition-colors">🏟️ Venue</a>
+                <a href="#official" onclick="toggleMobileMenu()" class="block text-white hover:text-yellow-400 transition-colors">👥 Official</a>
+                <a href="#layanan" onclick="toggleMobileMenu()" class="block text-white hover:text-yellow-400 transition-colors">🛎️ Layanan</a>
             </div>
             
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Live Matches -->
-                <div class="bg-white rounded-2xl p-6 shadow-lg">
-                    <div class="flex items-center justify-between mb-6">
-                        <h3 class="text-xl font-bold text-blue-900">🔴 Pertandingan Live</h3>
-                        <span class="live-indicator">LIVE</span>
+            <!-- Quick Actions -->
+            <div class="border-t border-blue-800 pt-4">
+                <h4 class="text-yellow-400 font-bold mb-3">🚀 Akses Cepat</h4>
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="scrollToSection('#jadwal'); toggleMobileMenu();" class="bg-yellow-400 text-blue-900 p-3 rounded-lg text-sm font-semibold">
+                        📅 Jadwal Hari Ini
+                    </button>
+                    <button onclick="scrollToSection('#klasemen'); toggleMobileMenu();" class="bg-yellow-400 text-blue-900 p-3 rounded-lg text-sm font-semibold">
+                        🏆 Klasemen Live
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Live Status -->
+            <div class="border-t border-blue-800 pt-4 mt-4">
+                <h4 class="text-yellow-400 font-bold mb-3">🔴 Sedang Live</h4>
+                <div class="space-y-2">
+                    <div class="bg-red-600 text-white p-2 rounded-lg text-sm">
+                        🏸 Final Bulu Tangkis - LIVE
                     </div>
-                    <div id="liveMatches" class="space-y-4">
-                        <div class="loading-spinner mx-auto"></div>
+                    <div class="bg-red-600 text-white p-2 rounded-lg text-sm">
+                        🏃‍♂️ Atletik 200m - LIVE
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="hero-section min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center text-white">
+                <div class="mb-8">
+                    <div class="w-32 h-32 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-6xl">🏆</span>
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-bold mb-4">
+                        PORPROV
+                        <span class="text-yellow-400">KALSEL</span>
+                        2025
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-2">Pekan Olahraga Provinsi Kalimantan Selatan</p>
+                    <p class="text-lg text-blue-200 mb-8">15 - 21 Januari 2025 • Kabupaten Tapin</p>
+                </div>
+                
+                <!-- Live Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+                    <div class="text-center">
+                        <div class="stats-number" id="totalAtlets">2000+</div>
+                        <p class="text-blue-200">Atlet</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="stats-number" id="totalSports">50+</div>
+                        <p class="text-blue-200">Cabang Olahraga</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="stats-number" id="totalRegions">13</div>
+                        <p class="text-blue-200">Kabupaten/Kota</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="stats-number" id="totalMedals">0</div>
+                        <p class="text-blue-200">Medali Terdistribusi</p>
                     </div>
                 </div>
                 
-                <!-- Latest Results -->
-                <div class="bg-white rounded-2xl p-6 shadow-lg">
-                    <h3 class="text-xl font-bold text-blue-900 mb-6">🏆 Hasil Terbaru</h3>
-                    <div id="latestResults" class="space-y-4">
-                        <div class="loading-spinner mx-auto"></div>
-                    </div>
+                <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6">
+                    <a href="#jadwal" class="gold-gradient text-blue-900 px-8 py-4 rounded-full font-bold text-lg hover:shadow-lg transition-all">
+                        📅 Lihat Jadwal Hari Ini
+                    </a>
+                    <a href="#klasemen" class="border-2 border-yellow-400 text-yellow-400 px-8 py-4 rounded-full font-bold text-lg hover:bg-yellow-400 hover:text-blue-900 transition-all">
+                        🏆 Klasemen Terkini
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- News Section -->
-    <section id="berita" class="py-16 bg-white">
+    <!-- Berita Section -->
+    <section id="berita" class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
                 <h2 class="section-title text-4xl font-bold text-blue-900 mb-4">Berita Terkini</h2>
-                <p class="text-gray-600 text-lg">Update terbaru seputar PORPROV Kalsel 2025</p>
+                <p class="text-gray-600 text-lg">Update terbaru dari PORPROV Kalsel 2025</p>
+            </div>
+            
+            <!-- News Filter -->
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <button onclick="filterNews('all')" class="filter-button active px-6 py-2 rounded-full font-semibold">Semua</button>
+                <button onclick="filterNews('hasil')" class="filter-button px-6 py-2 rounded-full font-semibold">Hasil</button>
+                <button onclick="filterNews('atlet')" class="filter-button px-6 py-2 rounded-full font-semibold">Atlet</button>
+                <button onclick="filterNews('acara')" class="filter-button px-6 py-2 rounded-full font-semibold">Acara</button>
+                <button onclick="filterNews('layanan')" class="filter-button px-6 py-2 rounded-full font-semibold">Layanan</button>
             </div>
             
             <div id="newsContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="loading-spinner mx-auto"></div>
+                <!-- News items will be populated here -->
             </div>
             
             <div class="text-center mt-12">
@@ -387,406 +445,1629 @@
         </div>
     </section>
 
-    <!-- Schedule Section -->
-    <section id="jadwal" class="py-16 bg-gray-50">
+    <!-- Jadwal Section -->
+    <section id="jadwal" class="py-20 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
                 <h2 class="section-title text-4xl font-bold text-blue-900 mb-4">Jadwal Pertandingan</h2>
-                <p class="text-gray-600 text-lg">Jadwal lengkap semua cabang olahraga</p>
+                <p class="text-gray-600 text-lg">Jadwal lengkap PORPROV Kalsel 2025</p>
             </div>
             
-            <!-- Schedule Filter -->
-            <div class="flex flex-wrap justify-center gap-4 mb-8">
-                <button onclick="filterSchedule('all')" class="schedule-filter active bg-yellow-400 text-blue-900 px-6 py-2 rounded-full font-semibold">
-                    Semua
-                </button>
-                <button onclick="filterSchedule('today')" class="schedule-filter bg-white text-blue-900 px-6 py-2 rounded-full font-semibold border-2 border-gray-200">
-                    Hari Ini
-                </button>
-                <button onclick="filterSchedule('tomorrow')" class="schedule-filter bg-white text-blue-900 px-6 py-2 rounded-full font-semibold border-2 border-gray-200">
-                    Besok
-                </button>
-                <button onclick="filterSchedule('live')" class="schedule-filter bg-white text-blue-900 px-6 py-2 rounded-full font-semibold border-2 border-gray-200">
-                    🔴 Live
-                </button>
+            <!-- Date Navigation -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8" id="dateNavigation">
+                <!-- Date buttons will be populated here -->
             </div>
             
-            <div id="scheduleContainer" class="space-y-4">
-                <div class="loading-spinner mx-auto"></div>
+            <!-- Schedule Content -->
+            <div class="bg-white rounded-2xl shadow-lg p-6">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold text-blue-900" id="selectedDate">Hari Ini</h3>
+                    <div class="flex space-x-4 mt-4 md:mt-0">
+                        <select id="sportFilter" onchange="filterSchedule()" class="px-4 py-2 border border-gray-300 rounded-lg">
+                            <option value="">Semua Cabor</option>
+                        </select>
+                        <select id="venueFilter" onchange="filterSchedule()" class="px-4 py-2 border border-gray-300 rounded-lg">
+                            <option value="">Semua Venue</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div id="scheduleContainer" class="space-y-4">
+                    <!-- Schedule items will be populated here -->
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Medal Standings -->
-    <section id="klasemen" class="py-16 bg-white">
+    <!-- Klasemen Section -->
+    <section id="klasemen" class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
                 <h2 class="section-title text-4xl font-bold text-blue-900 mb-4">Klasemen Medali</h2>
                 <p class="text-gray-600 text-lg">Perolehan medali sementara PORPROV Kalsel 2025</p>
             </div>
             
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-                    <div class="bg-gradient-to-r from-blue-900 to-blue-800 text-white p-6">
-                        <div class="grid grid-cols-6 gap-4 font-bold">
-                            <div class="text-center">Peringkat</div>
-                            <div class="col-span-2">Kabupaten/Kota</div>
-                            <div class="text-center">🥇</div>
-                            <div class="text-center">🥈</div>
-                            <div class="text-center">🥉</div>
-                        </div>
-                    </div>
-                    <div id="medalStandings" class="divide-y divide-gray-200">
-                        <div class="loading-spinner mx-auto my-8"></div>
-                    </div>
+            <!-- Medal Summary -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="medal-card p-6 text-center">
+                    <div class="text-6xl mb-4">🥇</div>
+                    <div class="text-3xl font-bold text-yellow-600" id="totalGold">0</div>
+                    <p class="text-gray-600">Total Emas</p>
+                </div>
+                <div class="medal-card p-6 text-center">
+                    <div class="text-6xl mb-4">🥈</div>
+                    <div class="text-3xl font-bold text-gray-500" id="totalSilver">0</div>
+                    <p class="text-gray-600">Total Perak</p>
+                </div>
+                <div class="medal-card p-6 text-center">
+                    <div class="text-6xl mb-4">🥉</div>
+                    <div class="text-3xl font-bold text-orange-600" id="totalBronze">0</div>
+                    <p class="text-gray-600">Total Perunggu</p>
+                </div>
+            </div>
+            
+            <!-- Medal Table -->
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="p-6 border-b">
+                    <h3 class="text-2xl font-bold text-blue-900">Klasemen Sementara</h3>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-4 text-left font-bold text-gray-900">Peringkat</th>
+                                <th class="px-6 py-4 text-left font-bold text-gray-900">Kabupaten/Kota</th>
+                                <th class="px-6 py-4 text-center font-bold text-gray-900">🥇</th>
+                                <th class="px-6 py-4 text-center font-bold text-gray-900">🥈</th>
+                                <th class="px-6 py-4 text-center font-bold text-gray-900">🥉</th>
+                                <th class="px-6 py-4 text-center font-bold text-gray-900">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="medalTableBody" class="divide-y divide-gray-200">
+                            <!-- Medal standings will be populated here -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Venues Section -->
-    <section id="venue" class="py-16 bg-gray-50">
+    <!-- Venue Section -->
+    <section id="venue" class="py-20 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="section-title text-4xl font-bold text-blue-900 mb-4">Venue Pertandingan</h2>
-                <p class="text-gray-600 text-lg">Fasilitas olahraga terbaik di Kabupaten Tapin</p>
+                <h2 class="section-title text-4xl font-bold text-blue-900 mb-4">Venue & Cabor</h2>
+                <p class="text-gray-600 text-lg">Lokasi pertandingan dan cabang olahraga</p>
+            </div>
+            
+            <!-- Venue Filter -->
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <button onclick="filterVenues('all')" class="filter-button active px-6 py-2 rounded-full font-semibold">Semua</button>
+                <button onclick="filterVenues('Stadion')" class="filter-button px-6 py-2 rounded-full font-semibold">Stadion</button>
+                <button onclick="filterVenues('GOR')" class="filter-button px-6 py-2 rounded-full font-semibold">GOR</button>
+                <button onclick="filterVenues('Lapangan')" class="filter-button px-6 py-2 rounded-full font-semibold">Lapangan</button>
+                <button onclick="filterVenues('Kolam Renang')" class="filter-button px-6 py-2 rounded-full font-semibold">Kolam</button>
             </div>
             
             <div id="venueContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="loading-spinner mx-auto"></div>
+                <!-- Venue items will be populated here -->
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="layanan" class="py-16 bg-white">
+    <!-- Official Section -->
+    <section id="official" class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="section-title text-4xl font-bold text-blue-900 mb-4">Layanan PORPROV</h2>
-                <p class="text-gray-600 text-lg">Layanan terpadu untuk kenyamanan atlet dan pengunjung</p>
+                <h2 class="section-title text-4xl font-bold text-blue-900 mb-4">Official</h2>
+                <p class="text-gray-600 text-lg">Pengurus dan wasit PORPROV Kalsel 2025</p>
             </div>
             
-            <div id="servicesContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="loading-spinner mx-auto"></div>
+            <!-- Official Tabs -->
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <button onclick="filterOfficials('all')" class="tab-button active px-6 py-3 rounded-lg font-semibold">Semua</button>
+                <button onclick="filterOfficials('Ketua')" class="tab-button px-6 py-3 rounded-lg font-semibold">Manajemen</button>
+                <button onclick="filterOfficials('Wasit')" class="tab-button px-6 py-3 rounded-lg font-semibold">Wasit</button>
+                <button onclick="filterOfficials('Juri')" class="tab-button px-6 py-3 rounded-lg font-semibold">Juri</button>
+                <button onclick="filterOfficials('Technical')" class="tab-button px-6 py-3 rounded-lg font-semibold">Technical</button>
+                <button onclick="filterOfficials('Medical')" class="tab-button px-6 py-3 rounded-lg font-semibold">Medis</button>
+            </div>
+            
+            <div id="officialContainer" class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Official items will be populated here -->
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="kontak" class="py-16 bg-gradient-to-r from-blue-900 to-blue-800 text-white">
+    <!-- Layanan Section -->
+    <section id="layanan" class="py-20 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold mb-4">Hubungi Kami</h2>
-                <p class="text-blue-200 text-lg">Informasi dan bantuan PORPROV Kalsel 2025</p>
+                <h2 class="section-title text-4xl font-bold text-blue-900 mb-4">Layanan</h2>
+                <p class="text-gray-600 text-lg">Fasilitas dan layanan untuk atlet dan penonton</p>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-8">
+            <!-- Service Categories -->
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <button onclick="filterServices('all')" class="filter-button active px-6 py-2 rounded-full font-semibold">Semua</button>
+                <button onclick="filterServices('Medis')" class="filter-button px-6 py-2 rounded-full font-semibold">🏥 Medis</button>
+                <button onclick="filterServices('Transportasi')" class="filter-button px-6 py-2 rounded-full font-semibold">🚌 Transportasi</button>
+                <button onclick="filterServices('Konsumsi')" class="filter-button px-6 py-2 rounded-full font-semibold">🍽️ Konsumsi</button>
+                <button onclick="filterServices('Akomodasi')" class="filter-button px-6 py-2 rounded-full font-semibold">🏨 Akomodasi</button>
+                <button onclick="filterServices('Keamanan')" class="filter-button px-6 py-2 rounded-full font-semibold">🛡️ Keamanan</button>
+            </div>
+            
+            <div id="serviceContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Service items will be populated here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-20 bg-blue-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Statistik PORPROV</h2>
+                <p class="text-blue-200 text-lg">Data real-time event olahraga terbesar di Kalsel</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
                 <div class="text-center">
-                    <div class="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-2xl">📞</span>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Hotline</h3>
-                    <p class="text-blue-200">+62 511-41234</p>
-                    <p class="text-blue-200">24 Jam Selama Event</p>
+                    <div class="text-5xl font-bold text-yellow-400 mb-2" id="statEvents">150+</div>
+                    <p class="text-blue-200">Pertandingan</p>
                 </div>
-                
                 <div class="text-center">
-                    <div class="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-2xl">📧</span>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Email</h3>
-                    <p class="text-blue-200">info@porprovkalsel2025.id</p>
-                    <p class="text-blue-200">media@porprovkalsel2025.id</p>
+                    <div class="text-5xl font-bold text-yellow-400 mb-2" id="statVenues">15</div>
+                    <p class="text-blue-200">Venue</p>
                 </div>
-                
                 <div class="text-center">
-                    <div class="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-2xl">📍</span>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Lokasi</h3>
-                    <p class="text-blue-200">Stadion Demang Lehman</p>
-                    <p class="text-blue-200">Rantau, Kabupaten Tapin</p>
+                    <div class="text-5xl font-bold text-yellow-400 mb-2" id="statOfficials">200+</div>
+                    <p class="text-blue-200">Official</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl font-bold text-yellow-400 mb-2" id="statServices">24</div>
+                    <p class="text-blue-200">Layanan</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Floating Action Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <div class="relative">
+            <!-- Main FAB Button -->
+            <button onclick="toggleFAB()" id="fabButton" class="w-16 h-16 bg-yellow-400 hover:bg-yellow-300 text-blue-900 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                <svg class="w-8 h-8 transition-transform duration-300" id="fabIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
+            </button>
+            
+            <!-- FAB Menu Items -->
+            <div id="fabMenu" class="absolute bottom-20 right-0 space-y-3 opacity-0 pointer-events-none transition-all duration-300">
+                <!-- Quick Jadwal -->
+                <div class="flex items-center space-x-3">
+                    <span class="bg-black bg-opacity-75 text-white px-3 py-1 rounded-lg text-sm whitespace-nowrap">Jadwal Hari Ini</span>
+                    <button onclick="scrollToSection('#jadwal'); toggleFAB();" class="w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg flex items-center justify-center transition-all">
+                        <span class="text-lg">📅</span>
+                    </button>
+                </div>
+                
+                <!-- Quick Klasemen -->
+                <div class="flex items-center space-x-3">
+                    <span class="bg-black bg-opacity-75 text-white px-3 py-1 rounded-lg text-sm whitespace-nowrap">Klasemen Live</span>
+                    <button onclick="scrollToSection('#klasemen'); toggleFAB();" class="w-12 h-12 bg-yellow-600 hover:bg-yellow-700 text-white rounded-full shadow-lg flex items-center justify-center transition-all">
+                        <span class="text-lg">🏆</span>
+                    </button>
+                </div>
+                
+                <!-- Quick Berita -->
+                <div class="flex items-center space-x-3">
+                    <span class="bg-black bg-opacity-75 text-white px-3 py-1 rounded-lg text-sm whitespace-nowrap">Berita Terbaru</span>
+                    <button onclick="scrollToSection('#berita'); toggleFAB();" class="w-12 h-12 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-lg flex items-center justify-center transition-all">
+                        <span class="text-lg">📰</span>
+                    </button>
+                </div>
+                
+                <!-- Back to Top -->
+                <div class="flex items-center space-x-3">
+                    <span class="bg-black bg-opacity-75 text-white px-3 py-1 rounded-lg text-sm whitespace-nowrap">Kembali ke Atas</span>
+                    <button onclick="scrollToSection('#beranda'); toggleFAB();" class="w-12 h-12 bg-purple-600 hover:bg-purple-700 text-white rounded-full shadow-lg flex items-center justify-center transition-all">
+                        <span class="text-lg">⬆️</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
-    <footer class="bg-blue-950 text-white py-12">
+    <footer class="gradient-bg text-white py-12">
         <div class="container mx-auto px-4">
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
                     <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center">
-                            <span class="text-lg font-bold text-blue-900">🏆</span>
+                        <div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center">
+                            <span class="text-2xl font-bold text-blue-900">🏆</span>
                         </div>
                         <div>
-                            <h3 class="font-bold text-lg">PORPROV Kalsel 2025</h3>
-                            <p class="text-blue-200 text-sm">Kabupaten Tapin</p>
+                            <h3 class="text-xl font-bold">PORPROV Kalsel 2025</h3>
                         </div>
                     </div>
-                    <p class="text-blue-200 text-sm">
-                        Pekan Olahraga Provinsi Kalimantan Selatan yang diselenggarakan di Kabupaten Tapin.
-                    </p>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">Menu Utama</h4>
-                    <ul class="space-y-2 text-sm text-blue-200">
-                        <li><a href="#beranda" class="hover:text-white">Beranda</a></li>
-                        <li><a href="#berita" class="hover:text-white">Berita</a></li>
-                        <li><a href="#jadwal" class="hover:text-white">Jadwal</a></li>
-                        <li><a href="#klasemen" class="hover:text-white">Klasemen</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">Informasi</h4>
-                    <ul class="space-y-2 text-sm text-blue-200">
-                        <li><a href="#venue" class="hover:text-white">Venue</a></li>
-                        <li><a href="#layanan" class="hover:text-white">Layanan</a></li>
-                        <li><a href="#kontak" class="hover:text-white">Kontak</a></li>
-                        <li><a href="admin.html" class="hover:text-white">Admin Panel</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">Media Sosial</h4>
+                    <p class="text-blue-200 mb-4">Pekan Olahraga Provinsi Kalimantan Selatan yang diselenggarakan di Kabupaten Tapin.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-yellow-400 hover:text-blue-900 transition-colors">
-                            <span class="text-sm">📘</span>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-yellow-400 hover:text-blue-900 transition-colors">
-                            <span class="text-sm">📷</span>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-yellow-400 hover:text-blue-900 transition-colors">
-                            <span class="text-sm">🐦</span>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-yellow-400 hover:text-blue-900 transition-colors">
-                            <span class="text-sm">📺</span>
-                        </a>
+                        <a href="#" class="text-yellow-400 hover:text-white transition-colors">📘</a>
+                        <a href="#" class="text-yellow-400 hover:text-white transition-colors">📷</a>
+                        <a href="#" class="text-yellow-400 hover:text-white transition-colors">🐦</a>
+                        <a href="#" class="text-yellow-400 hover:text-white transition-colors">📺</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-blue-200">
+                        <li><a href="#beranda" class="hover:text-yellow-400 transition-colors">Beranda</a></li>
+                        <li><a href="#berita" class="hover:text-yellow-400 transition-colors">Berita</a></li>
+                        <li><a href="#jadwal" class="hover:text-yellow-400 transition-colors">Jadwal</a></li>
+                        <li><a href="#klasemen" class="hover:text-yellow-400 transition-colors">Klasemen</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Informasi</h4>
+                    <ul class="space-y-2 text-blue-200">
+                        <li><a href="#venue" class="hover:text-yellow-400 transition-colors">Venue & Cabor</a></li>
+                        <li><a href="#official" class="hover:text-yellow-400 transition-colors">Official</a></li>
+                        <li><a href="#layanan" class="hover:text-yellow-400 transition-colors">Layanan</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition-colors">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Kontak</h4>
+                    <div class="space-y-2 text-blue-200">
+                        <p>📍 Kabupaten Tapin, Kalimantan Selatan</p>
+                        <p>📞 +62 511-41234</p>
+                        <p>✉️ info@porprovkalsel2025.id</p>
+                        <p>🌐 www.porprovkalsel2025.id</p>
                     </div>
                 </div>
             </div>
             
-            <div class="border-t border-blue-800 mt-8 pt-6 text-center">
-                <p class="text-blue-200 text-sm">
-                    &copy; 2025 KONI Kalimantan Selatan. Hak Cipta Dilindungi.
-                </p>
+            <div class="border-t border-blue-800 mt-8 pt-8 text-center text-blue-200">
+                <p>&copy; 2025 PORPROV Kalimantan Selatan. Diselenggarakan oleh KONI Kalsel & Pemkab Tapin.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Floating Action Button -->
-    <div class="floating-action">
-        <button onclick="scrollToTop()" class="w-14 h-14 bg-yellow-400 text-blue-900 rounded-full shadow-lg hover:shadow-xl transition-all pulse-animation">
-            <span class="text-xl">⬆️</span>
-        </button>
+    <!-- News Detail Modal -->
+    <div id="newsModal" class="modal">
+        <div class="modal-content p-8 m-4 max-w-4xl">
+            <div class="flex justify-between items-center mb-6">
+                <h2 id="modalNewsTitle" class="text-3xl font-bold text-blue-900"></h2>
+                <button onclick="closeNewsModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            <div id="modalNewsContent" class="prose max-w-none">
+                <!-- News content will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Venue Detail Modal -->
+    <div id="venueModal" class="modal">
+        <div class="modal-content p-8 m-4 max-w-4xl">
+            <div class="flex justify-between items-center mb-6">
+                <h2 id="modalVenueTitle" class="text-3xl font-bold text-blue-900"></h2>
+                <button onclick="closeVenueModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            <div id="modalVenueContent">
+                <!-- Venue content will be populated here -->
+            </div>
+        </div>
     </div>
 
     <script>
-        // Data Storage - Will be populated from GitHub or local storage
-        let newsData = [];
-        let scheduleData = [];
-        let medalData = [];
-        let venueData = [];
-        let serviceData = [];
-        
-        // GitHub Configuration
-        const GITHUB_CONFIG = {
-            username: 'USERNAME_GITHUB_ANDA',
-            repository: 'porprov-kalsel-2025-data',
-            token: 'GITHUB_TOKEN_ANDA',
-            branch: 'main'
-        };
+        // Sample data - in real implementation, this would come from API or admin panel
+        const newsData = [
+            {
+                id: 1,
+                title: "🎉 Pembukaan PORPROV Kalsel 2025 Meriah di Stadion Demang Lehman",
+                category: "acara",
+                content: "Upacara pembukaan PORPROV Kalimantan Selatan 2025 berlangsung meriah di Stadion Demang Lehman, Rantau. Gubernur Kalsel H. Sahbirin Noor memberikan sambutan dan secara resmi membuka pesta olahraga terbesar di Kalsel dengan menyalakan api obor. Acara dihadiri 15.000 penonton dan menampilkan parade 13 kabupaten/kota peserta.",
+                date: "2025-01-15",
+                image: "🏟️",
+                author: "Tim Media PORPROV"
+            },
+            {
+                id: 2,
+                title: "🏊‍♂️ Atlet Renang Tapin Pecahkan Rekor Kalsel di Nomor 100m Gaya Bebas",
+                category: "hasil",
+                content: "Muhammad Rizki Pratama (17) dari Kabupaten Tapin berhasil memecahkan rekor Kalimantan Selatan untuk nomor 100m gaya bebas putra dengan catatan waktu 52.34 detik, memecahkan rekor lama 53.12 detik. Prestasi gemilang ini sekaligus mengantarkan Tapin meraih medali emas pertama di cabang renang.",
+                date: "2025-01-16",
+                image: "🏊‍♂️",
+                author: "Reporter Olahraga"
+            },
+            {
+                id: 3,
+                title: "🥇 Klasemen Sementara Hari Ketiga: Tapin Kokoh di Puncak",
+                category: "hasil",
+                content: "Memasuki hari ketiga pertandingan, Kabupaten Tapin semakin kokoh memimpin klasemen sementara dengan koleksi 15 emas, 12 perak, dan 8 perunggu (total 35 medali). Banjarmasin di posisi kedua dengan 12 emas, 10 perak, 14 perunggu. Persaingan ketat terjadi untuk posisi ketiga antara Banjar dan Barito Kuala.",
+                date: "2025-01-17",
+                image: "🏆",
+                author: "Tim Statistik PORPROV"
+            },
+            {
+                id: 4,
+                title: "⚽ Drama Adu Penalti Sepak Bola Putra: Tapin Lolos ke Final",
+                category: "hasil",
+                content: "Pertandingan semifinal sepak bola putra antara Tapin vs Banjarmasin berakhir dramatis lewat adu penalti 4-2 setelah bermain imbang 2-2 hingga perpanjangan waktu. Kiper Tapin, Akhmad Fauzi, menjadi pahlawan dengan menggagalkan 2 tendangan penalti lawan. Tapin akan menghadapi Banjar di partai final.",
+                date: "2025-01-17",
+                image: "⚽",
+                author: "Koresponden Sepak Bola"
+            },
+            {
+                id: 5,
+                title: "🏸 Ganda Putri Bulu Tangkis Banjarmasin Raih Emas Perdana",
+                category: "hasil",
+                content: "Pasangan ganda putri Banjarmasin, Siti Nurhaliza/Rika Amelia, berhasil meraih medali emas setelah mengalahkan pasangan Tapin 21-18, 19-21, 21-16 dalam pertandingan final yang berlangsung sengit selama 1 jam 15 menit. Ini adalah medali emas pertama Banjarmasin dari cabang bulu tangkis.",
+                date: "2025-01-18",
+                image: "🏸",
+                author: "Tim Liputan Bulu Tangkis"
+            },
+            {
+                id: 6,
+                title: "🏃‍♂️ Atlet Atletik Tanah Laut Sabet Tiga Medali Sekaligus",
+                category: "atlet",
+                content: "Muhammad Fadli Rahman, sprinter andalan Tanah Laut, tampil memukau dengan meraih tiga medali sekaligus: emas 100m (10.45 detik), emas 200m (21.23 detik), dan perak 4x100m estafet. Atlet berusia 19 tahun ini menjadi sorotan dan diprediksi akan memperkuat tim Kalsel di PON mendatang.",
+                date: "2025-01-18",
+                image: "🏃‍♂️",
+                author: "Wartawan Atletik"
+            },
+            {
+                id: 7,
+                title: "🏥 Layanan Medis PORPROV Tangani 127 Kasus Cedera Ringan",
+                category: "layanan",
+                content: "Tim medis PORPROV Kalsel 2025 yang dipimpin dr. Hendra Gunawan, Sp.KO telah menangani 127 kasus cedera ringan dan 3 kasus cedera sedang selama 4 hari pertandingan. Sebagian besar kasus adalah kram otot dan lecet. Tidak ada cedera serius yang mengancam jiwa. Posko medis beroperasi 24 jam di setiap venue.",
+                date: "2025-01-18",
+                image: "🏥",
+                author: "Tim Medis PORPROV"
+            },
+            {
+                id: 8,
+                title: "🎯 Panahan Barito Kuala Dominasi dengan 4 Medali Emas",
+                category: "hasil",
+                content: "Tim panahan Barito Kuala tampil dominan dengan meraih 4 dari 6 medali emas yang diperebutkan. Prestasi terbaik diraih Nurul Hikmah (recurve putri individu) dan Ahmad Syahrial (compound putra individu) yang keduanya memecahkan rekor PORPROV. Barito Kuala memantapkan diri sebagai raja panahan Kalsel.",
+                date: "2025-01-19",
+                image: "🎯",
+                author: "Koresponden Panahan"
+            }
+        ];
 
-        // Load data from GitHub or fallback to sample data
-        async function loadDataFromGitHub() {
-            try {
-                const files = ['berita.json', 'jadwal.json', 'klasemen.json', 'venue.json', 'layanan.json'];
-                const promises = files.map(file => 
-                    fetch(`https://api.github.com/repos/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repository}/contents/data/${file}`)
-                        .then(response => response.ok ? response.json() : null)
-                        .then(data => data ? JSON.parse(atob(data.content)) : null)
-                        .catch(() => null)
-                );
+        const scheduleData = [
+            // Hari 1 - 15 Januari 2025
+            {
+                id: 1,
+                category: "Upacara",
+                sport: "Pembukaan",
+                date: "2025-01-15",
+                time: "19:00",
+                match: "Upacara Pembukaan PORPROV Kalsel 2025",
+                venue: "Stadion Demang Lehman",
+                status: "Completed"
+            },
+            
+            // Hari 2 - 16 Januari 2025
+            {
+                id: 2,
+                category: "Putra",
+                sport: "Renang",
+                date: "2025-01-16",
+                time: "08:00",
+                match: "Kualifikasi 100m Gaya Bebas",
+                venue: "Aquatic Center Tapin",
+                status: "Completed"
+            },
+            {
+                id: 3,
+                category: "Putri",
+                sport: "Renang",
+                date: "2025-01-16",
+                time: "09:30",
+                match: "Final 50m Gaya Kupu-kupu",
+                venue: "Aquatic Center Tapin",
+                status: "Completed"
+            },
+            {
+                id: 4,
+                category: "Putra",
+                sport: "Atletik",
+                date: "2025-01-16",
+                time: "15:00",
+                match: "Kualifikasi Lompat Jauh",
+                venue: "Stadion Demang Lehman",
+                status: "Completed"
+            },
+            {
+                id: 5,
+                category: "Beregu Putra",
+                sport: "Sepak Bola",
+                date: "2025-01-16",
+                time: "16:00",
+                match: "Tapin vs Tanah Laut (Grup A)",
+                venue: "Stadion Demang Lehman",
+                status: "Completed"
+            },
+            
+            // Hari 3 - 17 Januari 2025
+            {
+                id: 6,
+                category: "Putra",
+                sport: "Renang",
+                date: "2025-01-17",
+                time: "08:30",
+                match: "Final 100m Gaya Bebas",
+                venue: "Aquatic Center Tapin",
+                status: "Completed"
+            },
+            {
+                id: 7,
+                category: "Putri",
+                sport: "Bulu Tangkis",
+                date: "2025-01-17",
+                time: "09:00",
+                match: "Semifinal Tunggal Putri",
+                venue: "GOR Tuntung Pandang",
+                status: "Completed"
+            },
+            {
+                id: 8,
+                category: "Putra",
+                sport: "Atletik",
+                date: "2025-01-17",
+                time: "16:00",
+                match: "Final 100m Putra",
+                venue: "Stadion Demang Lehman",
+                status: "Completed"
+            },
+            {
+                id: 9,
+                category: "Beregu Putra",
+                sport: "Sepak Bola",
+                date: "2025-01-17",
+                time: "19:00",
+                match: "Semifinal: Tapin vs Banjarmasin",
+                venue: "Stadion Demang Lehman",
+                status: "Completed"
+            },
+            
+            // Hari 4 - 18 Januari 2025 (Hari Ini)
+            {
+                id: 10,
+                category: "Putri",
+                sport: "Bulu Tangkis",
+                date: "2025-01-18",
+                time: "09:00",
+                match: "Final Ganda Putri",
+                venue: "GOR Tuntung Pandang",
+                status: "Live"
+            },
+            {
+                id: 11,
+                category: "Putra",
+                sport: "Atletik",
+                date: "2025-01-18",
+                time: "10:00",
+                match: "Final 200m Putra",
+                venue: "Stadion Demang Lehman",
+                status: "Live"
+            },
+            {
+                id: 12,
+                category: "Putri",
+                sport: "Bola Voli",
+                date: "2025-01-18",
+                time: "14:00",
+                match: "Semifinal: Banjarmasin vs Barito Kuala",
+                venue: "GOR Tuntung Pandang",
+                status: "Scheduled"
+            },
+            {
+                id: 13,
+                category: "Putra",
+                sport: "Bola Basket",
+                date: "2025-01-18",
+                time: "16:00",
+                match: "Final: Banjarmasin vs Tapin",
+                venue: "GOR Tuntung Pandang",
+                status: "Scheduled"
+            },
+            {
+                id: 14,
+                category: "Beregu Campuran",
+                sport: "Tenis Meja",
+                date: "2025-01-18",
+                time: "19:00",
+                match: "Final Ganda Campuran",
+                venue: "Hall Serbaguna Tapin",
+                status: "Scheduled"
+            },
+            
+            // Hari 5 - 19 Januari 2025
+            {
+                id: 15,
+                category: "Putra",
+                sport: "Panahan",
+                date: "2025-01-19",
+                time: "08:00",
+                match: "Final Recurve Individu Putra",
+                venue: "Lapangan Panahan Tapin",
+                status: "Scheduled"
+            },
+            {
+                id: 16,
+                category: "Putri",
+                sport: "Panahan",
+                date: "2025-01-19",
+                time: "10:00",
+                match: "Final Compound Individu Putri",
+                venue: "Lapangan Panahan Tapin",
+                status: "Scheduled"
+            },
+            {
+                id: 17,
+                category: "Putra",
+                sport: "Karate",
+                date: "2025-01-19",
+                time: "13:00",
+                match: "Final Kumite -67kg",
+                venue: "Arena Pencak Silat Tapin",
+                status: "Scheduled"
+            },
+            {
+                id: 18,
+                category: "Beregu Putra",
+                sport: "Sepak Bola",
+                date: "2025-01-19",
+                time: "16:00",
+                match: "Final: Tapin vs Banjar",
+                venue: "Stadion Demang Lehman",
+                status: "Scheduled"
+            },
+            {
+                id: 19,
+                category: "Putri",
+                sport: "Bola Voli",
+                date: "2025-01-19",
+                time: "19:00",
+                match: "Final Putri",
+                venue: "GOR Tuntung Pandang",
+                status: "Scheduled"
+            },
+            
+            // Hari 6 - 20 Januari 2025
+            {
+                id: 20,
+                category: "Beregu Putra",
+                sport: "Futsal",
+                date: "2025-01-20",
+                time: "09:00",
+                match: "Final Futsal Putra",
+                venue: "GOR Tuntung Pandang",
+                status: "Scheduled"
+            },
+            {
+                id: 21,
+                category: "Putra",
+                sport: "Pencak Silat",
+                date: "2025-01-20",
+                time: "14:00",
+                match: "Final Kelas C (65-70kg)",
+                venue: "Arena Pencak Silat Tapin",
+                status: "Scheduled"
+            },
+            {
+                id: 22,
+                category: "Beregu Campuran",
+                sport: "Catur",
+                date: "2025-01-20",
+                time: "16:00",
+                match: "Final Beregu Campuran",
+                venue: "Hall Serbaguna Tapin",
+                status: "Scheduled"
+            },
+            
+            // Hari 7 - 21 Januari 2025 (Penutupan)
+            {
+                id: 23,
+                category: "Upacara",
+                sport: "Penutupan",
+                date: "2025-01-21",
+                time: "19:00",
+                match: "Upacara Penutupan PORPROV Kalsel 2025",
+                venue: "Stadion Demang Lehman",
+                status: "Scheduled"
+            }
+        ];
+
+        const medalData = [
+            {
+                id: 1,
+                region: "Tapin",
+                gold: 18,
+                silver: 15,
+                bronze: 12,
+                total: 45
+            },
+            {
+                id: 2,
+                region: "Banjarmasin",
+                gold: 16,
+                silver: 14,
+                bronze: 18,
+                total: 48
+            },
+            {
+                id: 3,
+                region: "Banjar",
+                gold: 14,
+                silver: 12,
+                bronze: 15,
+                total: 41
+            },
+            {
+                id: 4,
+                region: "Barito Kuala",
+                gold: 12,
+                silver: 16,
+                bronze: 14,
+                total: 42
+            },
+            {
+                id: 5,
+                region: "Tanah Laut",
+                gold: 10,
+                silver: 11,
+                bronze: 13,
+                total: 34
+            },
+            {
+                id: 6,
+                region: "Hulu Sungai Selatan",
+                gold: 8,
+                silver: 10,
+                bronze: 12,
+                total: 30
+            },
+            {
+                id: 7,
+                region: "Hulu Sungai Tengah",
+                gold: 7,
+                silver: 9,
+                bronze: 11,
+                total: 27
+            },
+            {
+                id: 8,
+                region: "Hulu Sungai Utara",
+                gold: 6,
+                silver: 8,
+                bronze: 10,
+                total: 24
+            },
+            {
+                id: 9,
+                region: "Tabalong",
+                gold: 5,
+                silver: 7,
+                bronze: 9,
+                total: 21
+            },
+            {
+                id: 10,
+                region: "Tanah Bumbu",
+                gold: 4,
+                silver: 6,
+                bronze: 8,
+                total: 18
+            },
+            {
+                id: 11,
+                region: "Kotabaru",
+                gold: 3,
+                silver: 5,
+                bronze: 7,
+                total: 15
+            },
+            {
+                id: 12,
+                region: "Balangan",
+                gold: 2,
+                silver: 4,
+                bronze: 6,
+                total: 12
+            },
+            {
+                id: 13,
+                region: "Banjarbaru",
+                gold: 1,
+                silver: 3,
+                bronze: 5,
+                total: 9
+            }
+        ];
+
+        const venueData = [
+            {
+                id: 1,
+                name: "Stadion Demang Lehman",
+                type: "Stadion",
+                capacity: 15000,
+                location: "Jl. Ahmad Yani, Rantau, Tapin",
+                sports: "Sepak Bola, Atletik, Upacara Pembukaan/Penutupan",
+                facilities: "Parkir 500 mobil, Toilet 20 unit, Kantin 5 outlet, Sound system profesional, Ruang VIP, Tribun bertingkat, Ruang pers, Medical center",
+                contact: "+62 511-41234",
+                status: "Aktif"
+            },
+            {
+                id: 2,
+                name: "GOR Tuntung Pandang",
+                type: "GOR",
+                capacity: 3000,
+                location: "Jl. Tuntung Pandang, Rantau, Tapin",
+                sports: "Bola Voli, Bulu Tangkis, Basket, Futsal",
+                facilities: "AC central, Parkir 200 mobil, Toilet 12 unit, Kantin 2 outlet, Ruang ganti 8 unit, Tribun telescopic, Lighting LED",
+                contact: "+62 511-41235",
+                status: "Aktif"
+            },
+            {
+                id: 3,
+                name: "Aquatic Center Tapin",
+                type: "Kolam Renang",
+                capacity: 1500,
+                location: "Kompleks Olahraga Tapin, Rantau",
+                sports: "Renang, Polo Air, Loncat Indah",
+                facilities: "Kolam Olympic 50m x 25m, Kolam loncat indah, Kolam pemanasan, Tribun 1500 kursi, Ruang ganti 12 unit, Cafeteria, Timing system elektronik",
+                contact: "+62 511-41236",
+                status: "Aktif"
+            },
+            {
+                id: 4,
+                name: "Arena Pencak Silat Tapin",
+                type: "Arena",
+                capacity: 800,
+                location: "Gedung Serbaguna Tapin, Rantau",
+                sports: "Pencak Silat, Karate, Taekwondo, Judo, Gulat, Tinju",
+                facilities: "Matras profesional 12m x 12m, Sound system, Tribun portable, Ruang ganti 6 unit, Medical corner, Ruang wasit",
+                contact: "+62 511-41237",
+                status: "Aktif"
+            },
+            {
+                id: 5,
+                name: "Hall Serbaguna Tapin",
+                type: "Hall",
+                capacity: 1200,
+                location: "Kompleks Perkantoran Tapin, Rantau",
+                sports: "Tenis Meja, Catur, Bridge, Billiard",
+                facilities: "AC central, 20 meja tenis meja, Ruang catur ber-AC, Area billiard, Parkir 150 mobil, Kantin, WiFi gratis",
+                contact: "+62 511-41238",
+                status: "Aktif"
+            },
+            {
+                id: 6,
+                name: "Lapangan Panahan Tapin",
+                type: "Lapangan",
+                capacity: 500,
+                location: "Taman Kota Rantau, Tapin",
+                sports: "Panahan (Recurve & Compound)",
+                facilities: "Target range 70m, Tribun 500 kursi, Ruang peralatan, Scoring system elektronik, Shelter cuaca",
+                contact: "+62 511-41239",
+                status: "Aktif"
+            },
+            {
+                id: 7,
+                name: "Lapangan Tenis Tapin",
+                type: "Lapangan",
+                capacity: 400,
+                location: "Kompleks Olahraga Tapin, Rantau",
+                sports: "Tenis Lapangan",
+                facilities: "4 lapangan hard court, Lighting malam, Tribun 400 kursi, Ruang ganti, Pro shop",
+                contact: "+62 511-41240",
+                status: "Aktif"
+            },
+            {
+                id: 8,
+                name: "Shooting Range Tapin",
+                type: "Arena",
+                capacity: 200,
+                location: "Kawasan Industri Tapin, Rantau",
+                sports: "Menembak (Air Rifle & Air Pistol)",
+                facilities: "10 lane menembak, Electronic scoring, Ruang senjata, Safety equipment, Tribun 200 kursi",
+                contact: "+62 511-41241",
+                status: "Aktif"
+            },
+            {
+                id: 9,
+                name: "Lapangan Sepak Takraw Tapin",
+                type: "Lapangan",
+                capacity: 600,
+                location: "Kompleks Olahraga Tapin, Rantau",
+                sports: "Sepak Takraw",
+                facilities: "2 lapangan outdoor, Tribun 600 kursi, Lighting LED, Ruang ganti, Medical post",
+                contact: "+62 511-41242",
+                status: "Aktif"
+            },
+            {
+                id: 10,
+                name: "Gym Angkat Besi Tapin",
+                type: "GOR",
+                capacity: 300,
+                location: "Gedung Olahraga Tapin, Rantau",
+                sports: "Angkat Besi, Angkat Berat",
+                facilities: "Platform competition grade, Barbel set Olympic, Tribun 300 kursi, AC, Sound system, Ruang doping test",
+                contact: "+62 511-41243",
+                status: "Aktif"
+            },
+            {
+                id: 11,
+                name: "Arena Senam Tapin",
+                type: "Arena",
+                capacity: 800,
+                location: "GOR Tuntung Pandang (Lantai 2)",
+                sports: "Senam Artistik, Senam Ritmik",
+                facilities: "Matras spring floor, Palang sejajar, Kuda pelana, Gelang-gelang, Tribun 800 kursi, Ruang pemanasan",
+                contact: "+62 511-41244",
+                status: "Aktif"
+            },
+            {
+                id: 12,
+                name: "Bowling Center Tapin",
+                type: "Arena",
+                capacity: 200,
+                location: "Mall Tapin Plaza, Rantau",
+                sports: "Bowling",
+                facilities: "8 lane bowling, Automatic scoring, Tribun 200 kursi, Cafeteria, Rental shoes, Pro shop",
+                contact: "+62 511-41245",
+                status: "Aktif"
+            },
+            {
+                id: 13,
+                name: "Danau Tapin",
+                type: "Venue Outdoor",
+                capacity: 1000,
+                location: "Danau Tapin, Rantau",
+                sports: "Dayung, Kano, Perahu Naga",
+                facilities: "Lintasan 2000m, Tribun portable 1000 kursi, Dermaga start/finish, Timing system, Boat storage, Medical boat",
+                contact: "+62 511-41246",
+                status: "Aktif"
+            },
+            {
+                id: 14,
+                name: "Wall Climbing Tapin",
+                type: "Arena",
+                capacity: 300,
+                location: "Gedung Pemuda Tapin, Rantau",
+                sports: "Panjat Tebing (Sport Climbing)",
+                facilities: "Dinding panjat 15m, Speed climbing, Bouldering area, Safety equipment, Tribun 300 kursi, Ruang ganti",
+                contact: "+62 511-41247",
+                status: "Aktif"
+            },
+            {
+                id: 15,
+                name: "Velodrome Tapin",
+                type: "Velodrome",
+                capacity: 2000,
+                location: "Kawasan Olahraga Tapin, Rantau",
+                sports: "Sepeda (Track Cycling)",
+                facilities: "Track 250m, Tribun 2000 kursi, Timing system, Bike storage, Workshop area, Medical center",
+                contact: "+62 511-41248",
+                status: "Aktif"
+            }
+        ];
+
+        const officialData = [
+            // Management Level
+            {
+                id: 1,
+                name: "Dr. H. Ahmad Suryadi, M.Pd",
+                position: "Ketua Umum",
+                organization: "KONI Kalimantan Selatan",
+                sport: "Umum",
+                phone: "+62 812-3456-7890",
+                email: "ahmad.suryadi@koni-kalsel.org",
+                certification: "Manajemen Olahraga Nasional, Sertifikat IOC, Pelatihan Kepemimpinan Olahraga"
+            },
+            {
+                id: 2,
+                name: "Hj. Siti Maryam, S.H., M.H.",
+                position: "Wakil Ketua",
+                organization: "KONI Kalimantan Selatan",
+                sport: "Umum",
+                phone: "+62 813-2345-6789",
+                email: "siti.maryam@koni-kalsel.org",
+                certification: "Hukum Olahraga, Manajemen Event Olahraga"
+            },
+            {
+                id: 3,
+                name: "Drs. H. Muhammad Yusuf",
+                position: "Sekretaris Jenderal",
+                organization: "KONI Kalimantan Selatan",
+                sport: "Umum",
+                phone: "+62 814-3456-7890",
+                email: "yusuf@koni-kalsel.org",
+                certification: "Administrasi Olahraga, Sertifikat Manajemen PORPROV"
+            },
+            
+            // Technical Delegates
+            {
+                id: 4,
+                name: "Ir. Bambang Sutrisno",
+                position: "Technical Delegate",
+                organization: "PB PASI",
+                sport: "Atletik",
+                phone: "+62 815-4567-8901",
+                email: "bambang@pasi-kalsel.org",
+                certification: "TD IAAF Level 3, Juri Atletik Nasional"
+            },
+            {
+                id: 5,
+                name: "Dra. Rina Sari Dewi",
+                position: "Technical Delegate",
+                organization: "PB PRSI",
+                sport: "Renang",
+                phone: "+62 816-5678-9012",
+                email: "rina@prsi-kalsel.org",
+                certification: "TD FINA, Starter Renang Internasional"
+            },
+            
+            // Referees & Judges - Sepak Bola
+            {
+                id: 6,
+                name: "Drs. Bambang Hermanto",
+                position: "Wasit",
+                organization: "PSSI Kalsel",
+                sport: "Sepak Bola",
+                phone: "+62 813-4567-8901",
+                email: "bambang@pssi-kalsel.org",
+                certification: "Wasit FIFA, Lisensi AFC Pro, Instruktur Wasit Nasional"
+            },
+            {
+                id: 7,
+                name: "Ahmad Fauzi, S.Pd",
+                position: "Asisten Wasit",
+                organization: "PSSI Kalsel",
+                sport: "Sepak Bola",
+                phone: "+62 817-6789-0123",
+                email: "fauzi@pssi-kalsel.org",
+                certification: "Asisten Wasit FIFA, Lisensi AFC"
+            },
+            
+            // Bola Voli
+            {
+                id: 8,
+                name: "Siti Nurhaliza, S.Pd",
+                position: "Juri",
+                organization: "PBVSI Kalsel",
+                sport: "Bola Voli",
+                phone: "+62 814-5678-9012",
+                email: "siti@pbvsi-kalsel.org",
+                certification: "Juri Internasional FIVB Level 2, Referee Instructor"
+            },
+            {
+                id: 9,
+                name: "Hendra Gunawan, S.Pd",
+                position: "Wasit",
+                organization: "PBVSI Kalsel",
+                sport: "Bola Voli",
+                phone: "+62 818-7890-1234",
+                email: "hendra@pbvsi-kalsel.org",
+                certification: "Wasit FIVB Level 1, Pelatih Lisensi C"
+            },
+            
+            // Bulu Tangkis
+            {
+                id: 10,
+                name: "Drs. Agus Salim",
+                position: "Juri",
+                organization: "PBSI Kalsel",
+                sport: "Bulu Tangkis",
+                phone: "+62 819-8901-2345",
+                email: "agus@pbsi-kalsel.org",
+                certification: "BWF Certified Umpire Level 2, Technical Official"
+            },
+            {
+                id: 11,
+                name: "Rika Amelia, S.Pd",
+                position: "Line Judge",
+                organization: "PBSI Kalsel",
+                sport: "Bulu Tangkis",
+                phone: "+62 820-9012-3456",
+                email: "rika@pbsi-kalsel.org",
+                certification: "BWF Line Judge, Service Judge Certified"
+            },
+            
+            // Renang
+            {
+                id: 12,
+                name: "Dr. Hendra Wijaya, Sp.KO",
+                position: "Starter",
+                organization: "PB PRSI",
+                sport: "Renang",
+                phone: "+62 821-0123-4567",
+                email: "hendra@prsi-kalsel.org",
+                certification: "FINA Starter Level 2, Timekeeper Official"
+            },
+            {
+                id: 13,
+                name: "Nurul Hikmah, S.Pd",
+                position: "Juri",
+                organization: "PB PRSI",
+                sport: "Renang",
+                phone: "+62 822-1234-5678",
+                email: "nurul@prsi-kalsel.org",
+                certification: "FINA Judge Level 1, Swimming Technical Official"
+            },
+            
+            // Bola Basket
+            {
+                id: 14,
+                name: "Drs. Rizki Pratama",
+                position: "Wasit",
+                organization: "Perbasi Kalsel",
+                sport: "Bola Basket",
+                phone: "+62 823-2345-6789",
+                email: "rizki@perbasi-kalsel.org",
+                certification: "FIBA Referee Level 2, Instructor Wasit Nasional"
+            },
+            
+            // Pencak Silat & Beladiri
+            {
+                id: 15,
+                name: "H. Syamsul Bahri, S.Pd",
+                position: "Juri",
+                organization: "IPSI Kalsel",
+                sport: "Pencak Silat",
+                phone: "+62 824-3456-7890",
+                email: "syamsul@ipsi-kalsel.org",
+                certification: "Juri Internasional PERSILAT, Pelatih Pencak Silat Dan I"
+            },
+            {
+                id: 16,
+                name: "Drs. Akhmad Yani",
+                position: "Wasit",
+                organization: "Forki Kalsel",
+                sport: "Karate",
+                phone: "+62 825-4567-8901",
+                email: "akhmad@forki-kalsel.org",
+                certification: "WKF Referee, Kata & Kumite Judge Level 2"
+            },
+            
+            // Panahan
+            {
+                id: 17,
+                name: "Dra. Fatimah Azzahra",
+                position: "Juri",
+                organization: "Perpani Kalsel",
+                sport: "Panahan",
+                phone: "+62 826-5678-9012",
+                email: "fatimah@perpani-kalsel.org",
+                certification: "World Archery Judge Level 2, Field Captain"
+            },
+            
+            // Tenis Meja
+            {
+                id: 18,
+                name: "Drs. Wahyu Hidayat",
+                position: "Wasit",
+                organization: "PTMSI Kalsel",
+                sport: "Tenis Meja",
+                phone: "+62 827-6789-0123",
+                email: "wahyu@ptmsi-kalsel.org",
+                certification: "ITTF Blue Badge Umpire, Deputy Referee"
+            },
+            
+            // Medical & Support Staff
+            {
+                id: 19,
+                name: "dr. Hendra Gunawan, Sp.KO",
+                position: "Medical Officer",
+                organization: "IDI Kalsel",
+                sport: "Medis",
+                phone: "+62 815-6789-0123",
+                email: "hendra.medical@idi-kalsel.org",
+                certification: "Dokter Olahraga, Sertifikat FIFA Medical, ACLS Provider"
+            },
+            {
+                id: 20,
+                name: "dr. Sari Indah Lestari, Sp.KO",
+                position: "Medical Officer",
+                organization: "IDI Kalsel",
+                sport: "Medis",
+                phone: "+62 828-7890-1234",
+                email: "sari@idi-kalsel.org",
+                certification: "Dokter Olahraga, Sports Medicine Specialist, Doping Control Officer"
+            },
+            
+            // Security & Protocol
+            {
+                id: 21,
+                name: "AKBP Drs. Suryanto",
+                position: "Security Officer",
+                organization: "Polres Tapin",
+                sport: "Keamanan",
+                phone: "+62 829-8901-2345",
+                email: "suryanto@polres-tapin.go.id",
+                certification: "Manajemen Keamanan Event, Crowd Control Specialist"
+            },
+            {
+                id: 22,
+                name: "Drs. H. Ruslan Effendi",
+                position: "Protocol Officer",
+                organization: "Pemkab Tapin",
+                sport: "Protokol",
+                phone: "+62 830-9012-3456",
+                email: "ruslan@tapinkab.go.id",
+                certification: "Protokol Negara, Event Management, Ceremony Specialist"
+            },
+            
+            // Media & Information
+            {
+                id: 23,
+                name: "Drs. Fadli Rahman",
+                position: "Media Officer",
+                organization: "Diskominfo Kalsel",
+                sport: "Media",
+                phone: "+62 831-0123-4567",
+                email: "fadli@diskominfo-kalsel.go.id",
+                certification: "Jurnalistik Olahraga, Digital Media Management, Broadcasting"
+            },
+            {
+                id: 24,
+                name: "Andi Wijaya, S.Kom",
+                position: "IT Support",
+                organization: "Tim IT PORPROV",
+                sport: "Teknologi",
+                phone: "+62 832-1234-5678",
+                email: "andi@porprov-kalsel.org",
+                certification: "Network Administrator, Database Management, Live Streaming"
+            }
+        ];
+
+        const serviceData = [
+            // Medical Services
+            {
+                id: 1,
+                name: "Layanan Medis Darurat",
+                category: "Medis",
+                description: "Layanan kesehatan 24 jam dengan 3 ambulans siaga, 8 dokter spesialis olahraga, perawat terlatih, dan peralatan medis lengkap termasuk defibrilator dan ventilator untuk menangani cedera atlet dan emergency medis.",
+                location: "Posko Medis Utama - Stadion Demang Lehman",
+                hours: "24 Jam",
+                contact: "+62 812-1111-2222",
+                status: "Aktif"
+            },
+            {
+                id: 2,
+                name: "Klinik Fisioterapi",
+                category: "Medis",
+                description: "Layanan fisioterapi dan rehabilitasi untuk atlet dengan 6 fisioterapis berlisensi, peralatan terapi modern, dan ruang recovery khusus.",
+                location: "Klinik Olahraga - Aquatic Center Tapin",
+                hours: "06:00 - 22:00",
+                contact: "+62 813-1111-3333",
+                status: "Aktif"
+            },
+            {
+                id: 3,
+                name: "Doping Control",
+                category: "Medis",
+                description: "Layanan tes doping sesuai standar WADA dengan petugas bersertifikat internasional dan laboratorium terakreditasi.",
+                location: "Fasilitas Doping Control - GOR Tuntung Pandang",
+                hours: "Sesuai Jadwal Pertandingan",
+                contact: "+62 814-1111-4444",
+                status: "Aktif"
+            },
+            
+            // Transportation Services
+            {
+                id: 4,
+                name: "Shuttle Bus Atlet",
+                category: "Transportasi",
+                description: "Layanan transportasi khusus atlet dan official dengan 15 bus ber-AC dari hotel ke venue pertandingan. Jadwal reguler setiap 15 menit pada jam sibuk.",
+                location: "Terminal Shuttle - Hotel Tapin Plaza",
+                hours: "05:00 - 23:00",
+                contact: "+62 813-2222-3333",
+                status: "Aktif"
+            },
+            {
+                id: 5,
+                name: "Transportasi VIP",
+                category: "Transportasi",
+                description: "Layanan transportasi khusus untuk tamu VIP, official tingkat tinggi, dan delegasi dengan 8 kendaraan mewah dan driver berpengalaman.",
+                location: "Pool VIP - Hotel Tapin Plaza",
+                hours: "24 Jam",
+                contact: "+62 814-2222-4444",
+                status: "Aktif"
+            },
+            {
+                id: 6,
+                name: "Parkir Terpadu",
+                category: "Transportasi",
+                description: "Sistem parkir terpadu di semua venue dengan kapasitas 2000 mobil dan 5000 motor, dilengkapi sistem tiket elektronik dan petugas keamanan.",
+                location: "Semua Venue Pertandingan",
+                hours: "05:00 - 24:00",
+                contact: "+62 815-2222-5555",
+                status: "Aktif"
+            },
+            
+            // Accommodation Services
+            {
+                id: 7,
+                name: "Akomodasi Atlet",
+                category: "Akomodasi",
+                description: "Penginapan khusus atlet di 5 hotel berbintang dengan total 800 kamar, fasilitas gym, kolam renang, dan makanan bergizi seimbang.",
+                location: "Hotel Tapin Plaza & Hotel Partner",
+                hours: "24 Jam",
+                contact: "+62 816-3333-6666",
+                status: "Aktif"
+            },
+            {
+                id: 8,
+                name: "Guest House Official",
+                category: "Akomodasi",
+                description: "Penginapan untuk official dan wasit dengan 200 kamar standar internasional, meeting room, dan layanan concierge.",
+                location: "Guest House KONI - Rantau",
+                hours: "24 Jam",
+                contact: "+62 817-3333-7777",
+                status: "Aktif"
+            },
+            
+            // Food & Beverage Services
+            {
+                id: 9,
+                name: "Catering Atlet",
+                category: "Konsumsi",
+                description: "Penyediaan makanan bergizi seimbang untuk 2000 atlet dengan menu khusus diet olahraga, halal, vegetarian, dan menu khusus alergi. Dikelola chef berpengalaman.",
+                location: "Dapur Utama - Kompleks Olahraga Tapin",
+                hours: "04:00 - 22:00",
+                contact: "+62 814-3333-4444",
+                status: "Aktif"
+            },
+            {
+                id: 10,
+                name: "Food Court Penonton",
+                category: "Konsumsi",
+                description: "Area kuliner dengan 25 tenant makanan lokal dan nasional, food truck, dan minuman segar untuk penonton di semua venue.",
+                location: "Semua Venue Utama",
+                hours: "08:00 - 22:00",
+                contact: "+62 818-3333-8888",
+                status: "Aktif"
+            },
+            {
+                id: 11,
+                name: "Hydration Station",
+                category: "Konsumsi",
+                description: "Pos penyediaan air minum gratis dan minuman elektrolit untuk atlet dan official di semua venue dengan standar kesehatan tinggi.",
+                location: "Semua Venue Pertandingan",
+                hours: "06:00 - 22:00",
+                contact: "+62 819-3333-9999",
+                status: "Aktif"
+            },
+            
+            // Security Services
+            {
+                id: 12,
+                name: "Security & Keamanan",
+                category: "Keamanan",
+                description: "Layanan keamanan terpadu dengan 200 petugas bersertifikat, 150 CCTV, metal detector, dan koordinasi dengan TNI-Polri untuk menjamin keamanan event.",
+                location: "Pos Komando Keamanan - Semua Venue",
+                hours: "24 Jam",
+                contact: "+62 816-5555-6666",
+                status: "Aktif"
+            },
+            {
+                id: 13,
+                name: "Lost & Found",
+                category: "Keamanan",
+                description: "Layanan barang hilang dengan sistem database terintegrasi dan petugas khusus di setiap venue untuk membantu pencarian barang hilang.",
+                location: "Information Center - Setiap Venue",
+                hours: "08:00 - 22:00",
+                contact: "+62 820-5555-0000",
+                status: "Aktif"
+            },
+            
+            // Information & Communication
+            {
+                id: 14,
+                name: "Information Center",
+                category: "Informasi",
+                description: "Pusat informasi dengan petugas multilingual (Indonesia, Inggris, Banjar) untuk memberikan informasi jadwal, venue, transportasi, dan layanan lainnya.",
+                location: "Lobby Utama - Setiap Venue",
+                hours: "06:00 - 23:00",
+                contact: "+62 821-4444-1111",
+                status: "Aktif"
+            },
+            {
+                id: 15,
+                name: "WiFi Gratis",
+                category: "Teknologi",
+                description: "Layanan internet gratis berkecepatan tinggi di semua venue dengan bandwidth 1 Gbps dan coverage 100% area pertandingan.",
+                location: "Semua Venue & Area Publik",
+                hours: "24 Jam",
+                contact: "+62 822-4444-2222",
+                status: "Aktif"
+            },
+            {
+                id: 16,
+                name: "Live Streaming",
+                category: "Teknologi",
+                description: "Layanan siaran langsung pertandingan dengan 20 kamera profesional, drone, dan streaming ke platform digital dengan kualitas 4K.",
+                location: "Studio Broadcast - Media Center",
+                hours: "Sesuai Jadwal Pertandingan",
+                contact: "+62 823-4444-3333",
+                status: "Aktif"
+            },
+            
+            // Media Services
+            {
+                id: 17,
+                name: "Media Center",
+                category: "Media",
+                description: "Pusat media dengan 100 workstation, ruang konferensi pers berkapasitas 200 orang, studio TV, editing room, dan fasilitas transmisi satelit.",
+                location: "Gedung Media Center - Stadion Demang Lehman",
+                hours: "05:00 - 24:00",
+                contact: "+62 815-4444-5555",
+                status: "Aktif"
+            },
+            {
+                id: 18,
+                name: "Akreditasi Media",
+                category: "Media",
+                description: "Layanan akreditasi untuk 300 wartawan dan photographer dengan sistem online, ID card khusus, dan akses area restricted.",
+                location: "Media Accreditation Center",
+                hours: "08:00 - 17:00",
+                contact: "+62 824-4444-4444",
+                status: "Aktif"
+            },
+            
+            // Technical Services
+            {
+                id: 19,
+                name: "Timing & Scoring",
+                category: "Teknis",
+                description: "Sistem pencatatan waktu dan skor elektronik untuk semua cabang olahraga dengan teknologi terkini dan backup system untuk memastikan akurasi hasil.",
+                location: "Control Room - Setiap Venue",
+                hours: "Sesuai Jadwal Pertandingan",
+                contact: "+62 825-6666-5555",
+                status: "Aktif"
+            },
+            {
+                id: 20,
+                name: "Sound System",
+                category: "Teknis",
+                description: "Sistem audio profesional di semua venue dengan announcer berpengalaman, musik latar, dan pengeras suara berkualitas tinggi.",
+                location: "Audio Control - Setiap Venue",
+                hours: "06:00 - 23:00",
+                contact: "+62 826-6666-6666",
+                status: "Aktif"
+            },
+            
+            // Protocol & Ceremony
+            {
+                id: 21,
+                name: "Protokol & Upacara",
+                category: "Protokol",
+                description: "Layanan protokol untuk upacara pembukaan, penutupan, dan penyerahan medali dengan tim protokol berpengalaman dan peralatan upacara lengkap.",
+                location: "Sekretariat Protokol - Stadion Demang Lehman",
+                hours: "08:00 - 22:00",
+                contact: "+62 827-7777-7777",
+                status: "Aktif"
+            },
+            {
+                id: 22,
+                name: "Merchandise Official",
+                category: "Komersial",
+                description: "Penjualan merchandise resmi PORPROV Kalsel 2025 termasuk kaos, topi, gantungan kunci, dan souvenir khas Kalimantan Selatan.",
+                location: "Merchandise Store - Setiap Venue",
+                hours: "08:00 - 21:00",
+                contact: "+62 828-8888-8888",
+                status: "Aktif"
+            },
+            
+            // Special Services
+            {
+                id: 23,
+                name: "Layanan Disabilitas",
+                category: "Aksesibilitas",
+                description: "Fasilitas khusus untuk penyandang disabilitas termasuk kursi roda, jalur khusus, toilet accessible, dan pendamping khusus.",
+                location: "Semua Venue Pertandingan",
+                hours: "06:00 - 22:00",
+                contact: "+62 829-9999-9999",
+                status: "Aktif"
+            },
+            {
+                id: 24,
+                name: "Childcare Center",
+                category: "Layanan Khusus",
+                description: "Tempat penitipan anak sementara untuk atlet dan official yang membawa keluarga, dengan pengasuh berpengalaman dan fasilitas bermain.",
+                location: "Family Center - Hotel Tapin Plaza",
+                hours: "07:00 - 21:00",
+                contact: "+62 830-0000-0000",
+                status: "Aktif"
+            }
+        ];
+
+        // Global variables
+        let currentNewsFilter = 'all';
+        let currentVenueFilter = 'all';
+        let currentOfficialFilter = 'all';
+        let currentServiceFilter = 'all';
+        let currentScheduleDate = new Date().toISOString().split('T')[0];
+        let displayedNewsCount = 6;
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCountdown();
+            loadNews();
+            loadSchedule();
+            loadMedals();
+            loadVenues();
+            loadOfficials();
+            loadServices();
+            updateStatistics();
+            initializeDateNavigation();
+            populateFilters();
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+
+        // Countdown timer
+        function initializeCountdown() {
+            const eventDate = new Date('2025-01-21T19:00:00').getTime();
+            
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = eventDate - now;
                 
-                const results = await Promise.all(promises);
-                
-                if (results[0]) newsData = results[0];
-                if (results[1]) scheduleData = results[1];
-                if (results[2]) medalData = results[2];
-                if (results[3]) venueData = results[3];
-                if (results[4]) serviceData = results[4];
-                
-                // If no data from GitHub, load sample data
-                if (!newsData.length && !scheduleData.length) {
-                    loadSampleData();
+                if (distance > 0) {
+                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    
+                    document.getElementById('countdown').innerHTML = `${days}h ${hours}j ${minutes}m ${seconds}d`;
+                } else {
+                    document.getElementById('countdown').innerHTML = "Event Berlangsung!";
                 }
-                
-            } catch (error) {
-                console.log('Loading sample data due to GitHub error:', error);
-                loadSampleData();
+            }
+            
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Quick menu toggle
+        function toggleQuickMenu() {
+            const dropdown = document.getElementById('quickMenuDropdown');
+            const arrow = document.getElementById('quickMenuArrow');
+            
+            dropdown.classList.toggle('hidden');
+            arrow.style.transform = dropdown.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+            
+            // Update quick stats when menu opens
+            if (!dropdown.classList.contains('hidden')) {
+                updateQuickStats();
             }
         }
 
-        // Sample data fallback
-        function loadSampleData() {
-            newsData = [
-                {
-                    id: 1,
-                    title: "🎉 Pembukaan PORPROV Kalsel 2025 Meriah di Stadion Demang Lehman",
-                    category: "acara",
-                    content: "Upacara pembukaan PORPROV Kalimantan Selatan 2025 berlangsung meriah di Stadion Demang Lehman, Rantau. Gubernur Kalsel memberikan sambutan dan secara resmi membuka pesta olahraga terbesar di Kalsel.",
-                    date: "2025-01-15",
-                    image: "🏟️",
-                    author: "Tim Media PORPROV"
-                },
-                {
-                    id: 2,
-                    title: "🏊‍♂️ Atlet Renang Tapin Pecahkan Rekor Kalsel",
-                    category: "hasil",
-                    content: "Muhammad Rizki dari Kabupaten Tapin berhasil memecahkan rekor Kalimantan Selatan untuk nomor 100m gaya bebas putra dengan catatan waktu 52.34 detik.",
-                    date: "2025-01-16",
-                    image: "🏊‍♂️",
-                    author: "Reporter Olahraga"
-                },
-                {
-                    id: 3,
-                    title: "🥇 Klasemen Sementara: Tapin Memimpin Perolehan Medali",
-                    category: "hasil",
-                    content: "Hingga hari ketiga, Kabupaten Tapin memimpin klasemen sementara dengan 12 emas, 8 perak, dan 6 perunggu. Disusul Banjarmasin di posisi kedua.",
-                    date: "2025-01-17",
-                    image: "🏆",
-                    author: "Tim Statistik"
-                }
-            ];
-            
-            scheduleData = [
-                {
-                    id: 1,
-                    category: "Putra",
-                    sport: "Sepak Bola",
-                    date: "2025-01-18",
-                    time: "15:00",
-                    match: "Tapin vs Banjar",
-                    venue: "Stadion Demang Lehman",
-                    status: "Live"
-                },
-                {
-                    id: 2,
-                    category: "Putri",
-                    sport: "Bola Voli",
-                    date: "2025-01-18",
-                    time: "16:30",
-                    match: "Banjarmasin vs Barito Kuala",
-                    venue: "GOR Tuntung Pandang",
-                    status: "Scheduled"
-                },
-                {
-                    id: 3,
-                    category: "Putra",
-                    sport: "Renang",
-                    date: "2025-01-19",
-                    time: "09:00",
-                    match: "Final 100m Gaya Bebas",
-                    venue: "Aquatic Center Tapin",
-                    status: "Scheduled"
-                }
-            ];
-            
-            medalData = [
-                { id: 1, region: "Tapin", gold: 12, silver: 8, bronze: 6, total: 26 },
-                { id: 2, region: "Banjarmasin", gold: 10, silver: 12, bronze: 8, total: 30 },
-                { id: 3, region: "Banjar", gold: 8, silver: 6, bronze: 10, total: 24 },
-                { id: 4, region: "Barito Kuala", gold: 6, silver: 8, bronze: 12, total: 26 },
-                { id: 5, region: "Tanah Laut", gold: 5, silver: 7, bronze: 9, total: 21 }
-            ];
-
-            venueData = [
-                {
-                    id: 1,
-                    name: "Stadion Demang Lehman",
-                    type: "Stadion",
-                    capacity: 15000,
-                    location: "Rantau, Tapin",
-                    sports: "Sepak Bola, Atletik",
-                    facilities: "Parkir luas, Toilet, Kantin, Sound system"
-                },
-                {
-                    id: 2,
-                    name: "GOR Tuntung Pandang",
-                    type: "GOR",
-                    capacity: 3000,
-                    location: "Rantau, Tapin",
-                    sports: "Bola Voli, Bulu Tangkis, Basket",
-                    facilities: "AC, Parkir, Toilet, Kantin"
-                }
-            ];
-
-            serviceData = [
-                {
-                    id: 1,
-                    name: "Layanan Medis Darurat",
-                    category: "Medis",
-                    description: "Layanan kesehatan 24 jam dengan ambulans siaga dan dokter spesialis olahraga.",
-                    location: "Posko Medis Utama",
-                    hours: "24 Jam",
-                    contact: "+62 812-1111-2222",
-                    status: "Aktif"
-                },
-                {
-                    id: 2,
-                    name: "Shuttle Bus Atlet",
-                    category: "Transportasi",
-                    description: "Layanan transportasi khusus atlet dari hotel ke venue pertandingan.",
-                    location: "Terminal Shuttle",
-                    hours: "05:00 - 22:00",
-                    contact: "+62 813-2222-3333",
-                    status: "Aktif"
-                }
-            ];
+        // Scroll to section function
+        function scrollToSection(sectionId) {
+            const element = document.querySelector(sectionId);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
         }
 
-        // Countdown Timer
-        function updateCountdown() {
-            const eventDate = new Date('2025-01-15T09:00:00').getTime();
-            const now = new Date().getTime();
-            const distance = eventDate - now;
+        // Update quick stats in dropdown
+        function updateQuickStats() {
+            // Calculate total medals
+            const totalMedals = medalData.reduce((sum, region) => sum + region.total, 0);
+            document.getElementById('quickTotalMedals').textContent = totalMedals;
             
-            if (distance > 0) {
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                
-                document.getElementById('days').textContent = days.toString().padStart(2, '0');
-                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            // Count live events
+            const liveEvents = scheduleData.filter(event => event.status === 'Live').length;
+            document.getElementById('quickLiveEvents').textContent = liveEvents;
+            
+            // Count today's events
+            const today = new Date().toISOString().split('T')[0];
+            const todayEvents = scheduleData.filter(event => event.date === today).length;
+            document.getElementById('quickTodayEvents').textContent = todayEvents;
+        }
+
+        // Floating Action Button toggle
+        let fabOpen = false;
+        function toggleFAB() {
+            const fabMenu = document.getElementById('fabMenu');
+            const fabIcon = document.getElementById('fabIcon');
+            
+            fabOpen = !fabOpen;
+            
+            if (fabOpen) {
+                fabMenu.classList.remove('opacity-0', 'pointer-events-none');
+                fabMenu.classList.add('opacity-100', 'pointer-events-auto');
+                fabIcon.style.transform = 'rotate(45deg)';
             } else {
-                document.getElementById('countdown').innerHTML = '<div class="text-2xl font-bold text-green-400">🎉 EVENT SEDANG BERLANGSUNG! 🎉</div>';
+                fabMenu.classList.add('opacity-0', 'pointer-events-none');
+                fabMenu.classList.remove('opacity-100', 'pointer-events-auto');
+                fabIcon.style.transform = 'rotate(0deg)';
             }
         }
 
-        // Load and display news
-        function displayNews() {
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            const quickMenu = document.getElementById('quickMenuDropdown');
+            const quickMenuButton = event.target.closest('button[onclick="toggleQuickMenu()"]');
+            
+            const fabMenu = document.getElementById('fabMenu');
+            const fabButton = event.target.closest('button[onclick="toggleFAB()"]');
+            
+            // Close quick menu dropdown
+            if (!quickMenuButton && !quickMenu.contains(event.target)) {
+                quickMenu.classList.add('hidden');
+                document.getElementById('quickMenuArrow').style.transform = 'rotate(0deg)';
+            }
+            
+            // Close FAB menu
+            if (!fabButton && !fabMenu.contains(event.target) && fabOpen) {
+                toggleFAB();
+            }
+        });
+
+        // Load news
+        function loadNews() {
             const container = document.getElementById('newsContainer');
             container.innerHTML = '';
             
-            newsData.slice(0, 6).forEach(news => {
-                const categoryClass = `category-${news.category}`;
+            const filteredNews = currentNewsFilter === 'all' 
+                ? newsData 
+                : newsData.filter(news => news.category === currentNewsFilter);
+            
+            const newsToShow = filteredNews.slice(0, displayedNewsCount);
+            
+            newsToShow.forEach(news => {
                 const newsCard = document.createElement('div');
                 newsCard.className = 'news-card card-hover';
                 newsCard.innerHTML = `
                     <div class="p-6">
-                        <div class="text-6xl mb-4 text-center">${news.image || '📰'}</div>
-                        <div class="category-badge ${categoryClass} mb-3">${news.category.toUpperCase()}</div>
-                        <h3 class="text-xl font-bold text-blue-900 mb-3">${news.title}</h3>
+                        <div class="text-6xl mb-4 text-center">${news.image}</div>
+                        <div class="mb-4">
+                            <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full mb-2">
+                                ${getCategoryName(news.category)}
+                            </span>
+                            <span class="text-gray-500 text-sm ml-2">${formatDate(news.date)}</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-900 mb-3 line-clamp-2">${news.title}</h3>
                         <p class="text-gray-600 mb-4 line-clamp-3">${news.content}</p>
-                        <div class="flex justify-between items-center text-sm text-gray-500">
-                            <span>📅 ${new Date(news.date).toLocaleDateString('id-ID')}</span>
-                            <span>✍️ ${news.author}</span>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">By ${news.author}</span>
+                            <button onclick="openNewsModal(${news.id})" class="gold-gradient text-blue-900 px-4 py-2 rounded-full font-semibold text-sm hover:shadow-lg transition-all">
+                                Baca Selengkapnya
+                            </button>
                         </div>
                     </div>
                 `;
@@ -794,37 +2075,167 @@
             });
         }
 
-        // Load and display schedule
-        function displaySchedule() {
+        // Filter news
+        function filterNews(category) {
+            currentNewsFilter = category;
+            displayedNewsCount = 6;
+            
+            // Update filter buttons
+            document.querySelectorAll('.filter-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            loadNews();
+        }
+
+        // Load more news
+        function loadMoreNews() {
+            displayedNewsCount += 6;
+            loadNews();
+        }
+
+        // Get category name
+        function getCategoryName(category) {
+            const categories = {
+                'hasil': 'Hasil Pertandingan',
+                'atlet': 'Profil Atlet',
+                'acara': 'Acara Khusus',
+                'layanan': 'Layanan'
+            };
+            return categories[category] || category;
+        }
+
+        // Format date
+        function formatDate(dateString) {
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                timeZone: 'Asia/Jakarta'
+            };
+            return new Date(dateString).toLocaleDateString('id-ID', options);
+        }
+
+        // Open news modal
+        function openNewsModal(newsId) {
+            const news = newsData.find(n => n.id === newsId);
+            if (news) {
+                document.getElementById('modalNewsTitle').textContent = news.title;
+                document.getElementById('modalNewsContent').innerHTML = `
+                    <div class="mb-6">
+                        <div class="text-8xl text-center mb-4">${news.image}</div>
+                        <div class="flex items-center justify-between mb-4 text-sm text-gray-500">
+                            <span>📅 ${formatDate(news.date)}</span>
+                            <span>✍️ ${news.author}</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full">${getCategoryName(news.category)}</span>
+                        </div>
+                    </div>
+                    <div class="text-lg leading-relaxed text-gray-700">
+                        ${news.content}
+                    </div>
+                `;
+                document.getElementById('newsModal').classList.add('show');
+            }
+        }
+
+        // Close news modal
+        function closeNewsModal() {
+            document.getElementById('newsModal').classList.remove('show');
+        }
+
+        // Initialize date navigation
+        function initializeDateNavigation() {
+            const container = document.getElementById('dateNavigation');
+            const startDate = new Date('2025-01-15');
+            const endDate = new Date('2025-01-21');
+            
+            for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+                const dateStr = d.toISOString().split('T')[0];
+                const button = document.createElement('button');
+                button.className = `px-4 py-2 rounded-lg font-semibold transition-all ${
+                    dateStr === currentScheduleDate ? 'bg-yellow-400 text-blue-900' : 'bg-white text-gray-700 hover:bg-gray-100'
+                }`;
+                button.textContent = d.toLocaleDateString('id-ID', { 
+                    weekday: 'short', 
+                    day: 'numeric',
+                    month: 'short'
+                });
+                button.onclick = () => selectScheduleDate(dateStr, button);
+                container.appendChild(button);
+            }
+        }
+
+        // Select schedule date
+        function selectScheduleDate(date, button) {
+            currentScheduleDate = date;
+            
+            // Update button styles
+            document.querySelectorAll('#dateNavigation button').forEach(btn => {
+                btn.className = 'px-4 py-2 rounded-lg font-semibold transition-all bg-white text-gray-700 hover:bg-gray-100';
+            });
+            button.className = 'px-4 py-2 rounded-lg font-semibold transition-all bg-yellow-400 text-blue-900';
+            
+            // Update selected date display
+            document.getElementById('selectedDate').textContent = new Date(date).toLocaleDateString('id-ID', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            loadSchedule();
+        }
+
+        // Load schedule
+        function loadSchedule() {
             const container = document.getElementById('scheduleContainer');
             container.innerHTML = '';
             
-            scheduleData.forEach(schedule => {
+            const daySchedule = scheduleData.filter(item => item.date === currentScheduleDate);
+            
+            if (daySchedule.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12">
+                        <div class="text-6xl mb-4">📅</div>
+                        <h3 class="text-xl font-bold text-gray-600 mb-2">Tidak Ada Pertandingan</h3>
+                        <p class="text-gray-500">Tidak ada jadwal pertandingan pada tanggal ini</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            daySchedule.forEach(item => {
                 const scheduleItem = document.createElement('div');
-                scheduleItem.className = 'schedule-item p-6 shadow-lg';
+                scheduleItem.className = 'schedule-item p-4 shadow-sm';
                 
-                const statusBadge = schedule.status === 'Live' ? 
-                    '<span class="live-indicator">LIVE</span>' : 
-                    `<span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm font-semibold">${schedule.status}</span>`;
+                const statusClass = item.status === 'Live' ? 'status-live live-indicator' :
+                                  item.status === 'Completed' ? 'status-completed' : 'status-scheduled';
                 
                 scheduleItem.innerHTML = `
                     <div class="flex flex-col md:flex-row md:items-center justify-between">
                         <div class="flex-1">
                             <div class="flex items-center space-x-4 mb-2">
-                                <span class="text-2xl">⚽</span>
-                                <div>
-                                    <h3 class="text-lg font-bold text-blue-900">${schedule.match}</h3>
-                                    <p class="text-gray-600">${schedule.sport} - ${schedule.category}</p>
-                                </div>
+                                <span class="text-2xl font-bold text-blue-900">${item.time}</span>
+                                <span class="${statusClass} px-3 py-1 rounded-full text-sm font-semibold">
+                                    ${item.status === 'Live' ? '🔴 LIVE' : 
+                                      item.status === 'Completed' ? '✅ Selesai' : '⏰ Terjadwal'}
+                                </span>
                             </div>
-                            <div class="flex items-center space-x-4 text-sm text-gray-500">
-                                <span>📅 ${new Date(schedule.date).toLocaleDateString('id-ID')}</span>
-                                <span>🕐 ${schedule.time}</span>
-                                <span>📍 ${schedule.venue}</span>
+                            <h4 class="text-lg font-bold text-gray-900 mb-1">${item.match}</h4>
+                            <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600">
+                                <span>🏃‍♂️ ${item.sport}</span>
+                                <span>👥 ${item.category}</span>
+                                <span>📍 ${item.venue}</span>
                             </div>
                         </div>
                         <div class="mt-4 md:mt-0">
-                            ${statusBadge}
+                            ${item.status === 'Live' ? 
+                                '<button class="bg-red-600 text-white px-4 py-2 rounded-lg font-semibold">🔴 Tonton Live</button>' :
+                                item.status === 'Completed' ?
+                                '<button class="bg-green-600 text-white px-4 py-2 rounded-lg font-semibold">📊 Lihat Hasil</button>' :
+                                '<button class="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold">🔔 Set Reminder</button>'
+                            }
                         </div>
                     </div>
                 `;
@@ -832,233 +2243,362 @@
             });
         }
 
-        // Load and display medal standings
-        function displayMedalStandings() {
-            const container = document.getElementById('medalStandings');
-            container.innerHTML = '';
+        // Populate filters
+        function populateFilters() {
+            // Sport filter
+            const sportFilter = document.getElementById('sportFilter');
+            const sports = [...new Set(scheduleData.map(item => item.sport))];
+            sports.forEach(sport => {
+                const option = document.createElement('option');
+                option.value = sport;
+                option.textContent = sport;
+                sportFilter.appendChild(option);
+            });
             
+            // Venue filter
+            const venueFilter = document.getElementById('venueFilter');
+            const venues = [...new Set(scheduleData.map(item => item.venue))];
+            venues.forEach(venue => {
+                const option = document.createElement('option');
+                option.value = venue;
+                option.textContent = venue;
+                venueFilter.appendChild(option);
+            });
+        }
+
+        // Filter schedule
+        function filterSchedule() {
+            // Implementation for filtering schedule by sport and venue
+            loadSchedule();
+        }
+
+        // Load medals
+        function loadMedals() {
+            const tbody = document.getElementById('medalTableBody');
+            tbody.innerHTML = '';
+            
+            // Sort by gold medals, then silver, then bronze
             const sortedMedals = [...medalData].sort((a, b) => {
                 if (b.gold !== a.gold) return b.gold - a.gold;
                 if (b.silver !== a.silver) return b.silver - a.silver;
                 return b.bronze - a.bronze;
             });
             
+            let totalGold = 0, totalSilver = 0, totalBronze = 0;
+            
             sortedMedals.forEach((medal, index) => {
-                const row = document.createElement('div');
-                row.className = 'grid grid-cols-6 gap-4 p-4 hover:bg-gray-50 transition-colors';
+                totalGold += medal.gold;
+                totalSilver += medal.silver;
+                totalBronze += medal.bronze;
                 
-                const rankClass = index < 3 ? 'text-yellow-600 font-bold' : 'text-gray-600';
-                const rankIcon = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : '';
+                const row = document.createElement('tr');
+                row.className = index < 3 ? 'bg-yellow-50' : 'hover:bg-gray-50';
+                
+                let rankDisplay = index + 1;
+                if (index === 0) rankDisplay = '🥇 1';
+                else if (index === 1) rankDisplay = '🥈 2';
+                else if (index === 2) rankDisplay = '🥉 3';
                 
                 row.innerHTML = `
-                    <div class="text-center ${rankClass}">
-                        ${rankIcon} ${index + 1}
-                    </div>
-                    <div class="col-span-2 font-semibold text-blue-900">${medal.region}</div>
-                    <div class="text-center font-bold text-yellow-600">${medal.gold}</div>
-                    <div class="text-center font-bold text-gray-500">${medal.silver}</div>
-                    <div class="text-center font-bold text-orange-600">${medal.bronze}</div>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">${rankDisplay}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">${medal.region}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-bold text-yellow-600">${medal.gold}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-bold text-gray-500">${medal.silver}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-bold text-orange-600">${medal.bronze}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-bold text-blue-900">${medal.total}</td>
                 `;
-                container.appendChild(row);
+                tbody.appendChild(row);
             });
+            
+            // Update medal summary
+            document.getElementById('totalGold').textContent = totalGold;
+            document.getElementById('totalSilver').textContent = totalSilver;
+            document.getElementById('totalBronze').textContent = totalBronze;
+            document.getElementById('totalMedals').textContent = totalGold + totalSilver + totalBronze;
         }
 
-        // Load and display venues
-        function displayVenues() {
+        // Load venues
+        function loadVenues() {
             const container = document.getElementById('venueContainer');
             container.innerHTML = '';
             
-            venueData.forEach(venue => {
+            const filteredVenues = currentVenueFilter === 'all' 
+                ? venueData 
+                : venueData.filter(venue => venue.type === currentVenueFilter);
+            
+            filteredVenues.forEach(venue => {
                 const venueCard = document.createElement('div');
-                venueCard.className = 'venue-card card-hover';
+                venueCard.className = 'venue-card p-6 card-hover';
                 
-                const typeIcon = venue.type === 'Stadion' ? '🏟️' : 
-                                venue.type === 'GOR' ? '🏢' : 
-                                venue.type === 'Kolam Renang' ? '🏊‍♂️' : '🏃‍♂️';
+                const typeIcon = {
+                    'Stadion': '🏟️',
+                    'GOR': '🏢',
+                    'Lapangan': '🏃‍♂️',
+                    'Kolam Renang': '🏊‍♂️',
+                    'Hall': '🏛️',
+                    'Arena': '🥊',
+                    'Venue Outdoor': '🌳',
+                    'Velodrome': '🚴‍♂️'
+                };
                 
                 venueCard.innerHTML = `
-                    <div class="p-6">
-                        <div class="text-6xl mb-4 text-center">${typeIcon}</div>
-                        <h3 class="text-xl font-bold text-blue-900 mb-2">${venue.name}</h3>
-                        <p class="text-gray-600 mb-3">${venue.type} • Kapasitas: ${venue.capacity.toLocaleString()}</p>
-                        <p class="text-sm text-gray-500 mb-3">📍 ${venue.location}</p>
-                        <p class="text-sm text-blue-600 mb-3">🏃‍♂️ ${venue.sports}</p>
-                        <p class="text-xs text-gray-500">${venue.facilities}</p>
+                    <div class="text-center mb-4">
+                        <div class="text-6xl mb-2">${typeIcon[venue.type] || '🏢'}</div>
+                        <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full">
+                            ${venue.type}
+                        </span>
                     </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-2 text-center">${venue.name}</h3>
+                    <div class="space-y-2 text-sm text-gray-600 mb-4">
+                        <p><strong>📍 Lokasi:</strong> ${venue.location}</p>
+                        <p><strong>👥 Kapasitas:</strong> ${venue.capacity.toLocaleString()} orang</p>
+                        <p><strong>🏃‍♂️ Cabor:</strong> ${venue.sports}</p>
+                    </div>
+                    <button onclick="openVenueModal(${venue.id})" class="w-full gold-gradient text-blue-900 py-2 rounded-lg font-semibold hover:shadow-lg transition-all">
+                        Lihat Detail
+                    </button>
                 `;
                 container.appendChild(venueCard);
             });
         }
 
-        // Load and display services
-        function displayServices() {
-            const container = document.getElementById('servicesContainer');
+        // Filter venues
+        function filterVenues(type) {
+            currentVenueFilter = type;
+            
+            // Update filter buttons
+            document.querySelectorAll('#venue .filter-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            loadVenues();
+        }
+
+        // Open venue modal
+        function openVenueModal(venueId) {
+            const venue = venueData.find(v => v.id === venueId);
+            if (venue) {
+                const typeIcon = {
+                    'Stadion': '🏟️',
+                    'GOR': '🏢',
+                    'Lapangan': '🏃‍♂️',
+                    'Kolam Renang': '🏊‍♂️',
+                    'Hall': '🏛️',
+                    'Arena': '🥊',
+                    'Venue Outdoor': '🌳',
+                    'Velodrome': '🚴‍♂️'
+                };
+                
+                document.getElementById('modalVenueTitle').textContent = venue.name;
+                document.getElementById('modalVenueContent').innerHTML = `
+                    <div class="text-center mb-6">
+                        <div class="text-8xl mb-4">${typeIcon[venue.type] || '🏢'}</div>
+                        <span class="inline-block px-4 py-2 bg-blue-100 text-blue-800 font-semibold rounded-full">
+                            ${venue.type}
+                        </span>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <h4 class="text-lg font-bold text-blue-900 mb-3">📋 Informasi Dasar</h4>
+                            <div class="space-y-2">
+                                <p><strong>📍 Lokasi:</strong> ${venue.location}</p>
+                                <p><strong>👥 Kapasitas:</strong> ${venue.capacity.toLocaleString()} orang</p>
+                                <p><strong>📞 Kontak:</strong> ${venue.contact}</p>
+                                <p><strong>🔄 Status:</strong> <span class="text-green-600 font-semibold">${venue.status}</span></p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-bold text-blue-900 mb-3">🏃‍♂️ Cabang Olahraga</h4>
+                            <p class="text-gray-700">${venue.sports}</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-bold text-blue-900 mb-3">🏢 Fasilitas</h4>
+                        <p class="text-gray-700 leading-relaxed">${venue.facilities}</p>
+                    </div>
+                `;
+                document.getElementById('venueModal').classList.add('show');
+            }
+        }
+
+        // Close venue modal
+        function closeVenueModal() {
+            document.getElementById('venueModal').classList.remove('show');
+        }
+
+        // Load officials
+        function loadOfficials() {
+            const container = document.getElementById('officialContainer');
             container.innerHTML = '';
             
-            serviceData.forEach(service => {
+            let filteredOfficials = officialData;
+            
+            if (currentOfficialFilter !== 'all') {
+                filteredOfficials = officialData.filter(official => {
+                    switch (currentOfficialFilter) {
+                        case 'Ketua':
+                            return official.position.includes('Ketua') || official.position.includes('Sekretaris');
+                        case 'Wasit':
+                            return official.position.includes('Wasit');
+                        case 'Juri':
+                            return official.position.includes('Juri');
+                        case 'Technical':
+                            return official.position.includes('Technical');
+                        case 'Medical':
+                            return official.position.includes('Medical') || official.sport === 'Medis';
+                        default:
+                            return true;
+                    }
+                });
+            }
+            
+            filteredOfficials.forEach(official => {
+                const officialCard = document.createElement('div');
+                officialCard.className = 'bg-white rounded-lg shadow-md p-6 card-hover';
+                
+                const positionIcon = {
+                    'Ketua Umum': '👑',
+                    'Wakil Ketua': '🤝',
+                    'Sekretaris Jenderal': '📋',
+                    'Wasit': '⚖️',
+                    'Juri': '👨‍⚖️',
+                    'Technical Delegate': '🔧',
+                    'Medical Officer': '🏥',
+                    'Security Officer': '🛡️'
+                };
+                
+                const icon = positionIcon[official.position] || '👤';
+                
+                officialCard.innerHTML = `
+                    <div class="text-center mb-4">
+                        <div class="text-4xl mb-2">${icon}</div>
+                        <h3 class="text-lg font-bold text-blue-900">${official.name}</h3>
+                        <p class="text-sm text-gray-600">${official.position}</p>
+                    </div>
+                    
+                    <div class="space-y-2 text-sm">
+                        <p><strong>🏢 Organisasi:</strong> ${official.organization}</p>
+                        <p><strong>🏃‍♂️ Cabor:</strong> ${official.sport}</p>
+                        <p><strong>📞 Kontak:</strong> ${official.phone}</p>
+                        ${official.email ? `<p><strong>✉️ Email:</strong> ${official.email}</p>` : ''}
+                    </div>
+                    
+                    ${official.certification ? `
+                        <div class="mt-4 p-3 bg-gray-50 rounded-lg">
+                            <p class="text-xs text-gray-600"><strong>🎓 Sertifikasi:</strong></p>
+                            <p class="text-xs text-gray-700">${official.certification}</p>
+                        </div>
+                    ` : ''}
+                `;
+                container.appendChild(officialCard);
+            });
+        }
+
+        // Filter officials
+        function filterOfficials(type) {
+            currentOfficialFilter = type;
+            
+            // Update tab buttons
+            document.querySelectorAll('#official .tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            loadOfficials();
+        }
+
+        // Load services
+        function loadServices() {
+            const container = document.getElementById('serviceContainer');
+            container.innerHTML = '';
+            
+            const filteredServices = currentServiceFilter === 'all' 
+                ? serviceData 
+                : serviceData.filter(service => service.category === currentServiceFilter);
+            
+            filteredServices.forEach(service => {
                 const serviceCard = document.createElement('div');
-                serviceCard.className = 'bg-white rounded-2xl p-6 shadow-lg card-hover';
+                serviceCard.className = 'service-card p-6';
                 
-                const categoryIcon = service.category === 'Medis' ? '🏥' :
-                                   service.category === 'Transportasi' ? '🚌' :
-                                   service.category === 'Konsumsi' ? '🍽️' :
-                                   service.category === 'Keamanan' ? '🛡️' : '🛎️';
+                const categoryIcon = {
+                    'Medis': '🏥',
+                    'Transportasi': '🚌',
+                    'Akomodasi': '🏨',
+                    'Konsumsi': '🍽️',
+                    'Keamanan': '🛡️',
+                    'Informasi': 'ℹ️',
+                    'Teknis': '🔧',
+                    'Media': '📺',
+                    'Protokol': '🎖️',
+                    'Teknologi': '💻',
+                    'Komersial': '🛍️',
+                    'Aksesibilitas': '♿',
+                    'Layanan Khusus': '🎯'
+                };
                 
-                const statusColor = service.status === 'Aktif' ? 'text-green-600' : 'text-red-600';
+                const statusColor = service.status === 'Aktif' ? 'text-green-600' : 
+                                  service.status === 'Tidak Aktif' ? 'text-red-600' : 'text-yellow-600';
                 
                 serviceCard.innerHTML = `
                     <div class="text-center mb-4">
-                        <div class="text-5xl mb-2">${categoryIcon}</div>
-                        <h3 class="text-xl font-bold text-blue-900">${service.name}</h3>
-                        <p class="text-sm text-gray-500">${service.category}</p>
+                        <div class="text-5xl mb-2">${categoryIcon[service.category] || '🔧'}</div>
+                        <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full">
+                            ${service.category}
+                        </span>
                     </div>
-                    <p class="text-gray-600 mb-4 text-sm">${service.description}</p>
+                    
+                    <h3 class="text-lg font-bold text-blue-900 mb-3 text-center">${service.name}</h3>
+                    
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-3">${service.description}</p>
+                    
                     <div class="space-y-2 text-sm">
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">📍 Lokasi:</span>
-                            <span class="font-semibold">${service.location}</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">🕐 Jam:</span>
-                            <span class="font-semibold">${service.hours}</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">📞 Kontak:</span>
-                            <span class="font-semibold">${service.contact}</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">Status:</span>
-                            <span class="font-semibold ${statusColor}">${service.status}</span>
-                        </div>
+                        <p><strong>📍 Lokasi:</strong> ${service.location}</p>
+                        <p><strong>🕒 Jam:</strong> ${service.hours}</p>
+                        <p><strong>📞 Kontak:</strong> ${service.contact}</p>
+                        <p><strong>🔄 Status:</strong> <span class="${statusColor} font-semibold">${service.status}</span></p>
                     </div>
                 `;
                 container.appendChild(serviceCard);
             });
         }
 
-        // Load live matches
-        function displayLiveMatches() {
-            const container = document.getElementById('liveMatches');
-            const liveMatches = scheduleData.filter(match => match.status === 'Live');
+        // Filter services
+        function filterServices(category) {
+            currentServiceFilter = category;
             
-            if (liveMatches.length === 0) {
-                container.innerHTML = '<p class="text-gray-500 text-center">Tidak ada pertandingan live saat ini</p>';
-                return;
+            // Update filter buttons
+            document.querySelectorAll('#layanan .filter-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            loadServices();
+        }
+
+        // Update statistics
+        function updateStatistics() {
+            document.getElementById('statEvents').textContent = scheduleData.length;
+            document.getElementById('statVenues').textContent = venueData.length;
+            document.getElementById('statOfficials').textContent = officialData.length;
+            document.getElementById('statServices').textContent = serviceData.length;
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const newsModal = document.getElementById('newsModal');
+            const venueModal = document.getElementById('venueModal');
+            
+            if (event.target === newsModal) {
+                closeNewsModal();
             }
-            
-            container.innerHTML = '';
-            liveMatches.forEach(match => {
-                const matchDiv = document.createElement('div');
-                matchDiv.className = 'bg-red-50 border border-red-200 rounded-lg p-4';
-                matchDiv.innerHTML = `
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <h4 class="font-bold text-red-800">${match.match}</h4>
-                            <p class="text-sm text-red-600">${match.sport} - ${match.venue}</p>
-                        </div>
-                        <span class="live-indicator">LIVE</span>
-                    </div>
-                `;
-                container.appendChild(matchDiv);
-            });
-        }
-
-        // Load latest results
-        function displayLatestResults() {
-            const container = document.getElementById('latestResults');
-            const results = scheduleData.filter(match => match.status === 'Finished').slice(0, 3);
-            
-            if (results.length === 0) {
-                container.innerHTML = '<p class="text-gray-500 text-center">Belum ada hasil pertandingan</p>';
-                return;
+            if (event.target === venueModal) {
+                closeVenueModal();
             }
-            
-            container.innerHTML = '';
-            results.forEach(result => {
-                const resultDiv = document.createElement('div');
-                resultDiv.className = 'bg-green-50 border border-green-200 rounded-lg p-4';
-                resultDiv.innerHTML = `
-                    <h4 class="font-bold text-green-800">${result.match}</h4>
-                    <p class="text-sm text-green-600">${result.sport} - ${result.venue}</p>
-                    <p class="text-xs text-green-500 mt-1">Selesai</p>
-                `;
-                container.appendChild(resultDiv);
-            });
         }
-
-        // Filter functions
-        function filterSchedule(filter) {
-            // Update active filter button
-            document.querySelectorAll('.schedule-filter').forEach(btn => {
-                btn.classList.remove('active', 'bg-yellow-400', 'text-blue-900');
-                btn.classList.add('bg-white', 'text-blue-900', 'border-2', 'border-gray-200');
-            });
-            event.target.classList.add('active', 'bg-yellow-400', 'text-blue-900');
-            event.target.classList.remove('bg-white', 'border-2', 'border-gray-200');
-            
-            // Filter logic would go here
-            displaySchedule(); // For now, just redisplay all
-        }
-
-        // Utility functions
-        function loadMoreNews() {
-            // Implementation for loading more news
-            alert('Fitur muat lebih banyak berita akan segera hadir!');
-        }
-
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Mobile menu functions
-        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
-            document.getElementById('mobileMenu').classList.add('active');
-        });
-
-        document.getElementById('closeMobileMenu').addEventListener('click', function() {
-            document.getElementById('mobileMenu').classList.remove('active');
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-                // Close mobile menu if open
-                document.getElementById('mobileMenu').classList.remove('active');
-            });
-        });
-
-        // Initialize the website
-        async function initializeWebsite() {
-            // Load data
-            await loadDataFromGitHub();
-            
-            // Display all sections
-            displayNews();
-            displaySchedule();
-            displayMedalStandings();
-            displayVenues();
-            displayServices();
-            displayLiveMatches();
-            displayLatestResults();
-            
-            // Start countdown timer
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
-            
-            // Update live data every 30 seconds
-            setInterval(() => {
-                displayLiveMatches();
-                displayLatestResults();
-            }, 30000);
-        }
-
-        // Start the website when DOM is loaded
-        document.addEventListener('DOMContentLoaded', initializeWebsite);
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'988876bd80349fda',t:'MTc1OTQ1MjgyMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'988a614db2627e32',t:'MTc1OTQ3MjkxMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
