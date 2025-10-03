@@ -8,15 +8,5 @@
     "hours": "24 Jam",
     "contact": "+62 812-1111-2222",
     "status": "Aktif"
-  },
-  {
-    "id": 2,
-    "name": "Shuttle Bus Atlet",
-    "category": "Transportasi",
-    "description": "Layanan transportasi khusus atlet dan official dari hotel ke venue pertandingan dengan jadwal reguler setiap 30 menit.",
-    "location": "Terminal Shuttle - Hotel Tapin Plaza",
-    "hours": "05:00 - 22:00",
-    "contact": "+62 813-2222-3333",
-    "status": "Aktif"
   }
 ]
