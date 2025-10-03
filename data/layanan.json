@@ -18,15 +18,5 @@
     "hours": "05:00 - 22:00",
     "contact": "+62 813-2222-3333",
     "status": "Aktif"
-  },
-  {
-    "id": 3,
-    "name": "Catering Atlet",
-    "category": "Konsumsi",
-    "description": "Penyediaan makanan bergizi seimbang untuk atlet dengan menu khusus diet olahraga, halal, dan pilihan vegetarian.",
-    "location": "Dapur Utama - Kompleks Olahraga Tapin",
-    "hours": "05:00 - 21:00",
-    "contact": "+62 814-3333-4444",
-    "status": "Aktif"
   }
 ]
